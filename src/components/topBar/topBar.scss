@@ -1,0 +1,46 @@
+.barraTop {
+  .wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    vertical-align: middle;
+    height: 2.75rem;
+    position: sticky;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 0.5rem;
+
+    box-shadow: 0px 0.9px 1.3px rgba(0, 0, 0, 0.035),
+      0px 7px 10px rgba(0, 0, 0, 0.07);
+  }
+
+  .logo {
+    height: 100%;
+    margin-right: 1rem;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .elementiSinistra {
+    font-weight: bold;
+    display: flex;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .elemento {
+      transition: all 100ms ease-in-out;
+      color: inherit;
+      margin: 0 0.5em;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--colore-principale);
+      }
+    }
+  }
+}

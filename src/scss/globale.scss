@@ -1,0 +1,42 @@
+$colorePrincipale: #008000;
+$coloreBarraSotto: darken($colorePrincipale, 15%);
+
+:root {
+  --font-size-base: 16px;
+  --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+  --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+
+  --colore-principale: #{$colorePrincipale};
+  --colore-barraSotto: #{$coloreBarraSotto};
+
+  --color-text: hsl(12, 5%, 4%);
+  --color-bg: hsl(10, 21%, 95%);
+  --color-border: hsl(17, 24%, 90%);
+}
+
+html {
+  font-family: "Figtree", sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+h1 {
+  font-family: "DM Mono", monospace;
+  margin-bottom: 0em;
+  font-size: 4rem;
+  margin-top: 0;
+}
+
+body {
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--font-size-lg);
+}
+
+code {
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}

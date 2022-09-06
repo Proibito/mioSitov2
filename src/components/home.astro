@@ -1,0 +1,38 @@
+---
+import { Image } from "@astrojs/image/components";
+import miafoto from "../images/miaFoto.png";
+---
+
+<div class="wrapper">
+  <div class="colonna1">
+    <h1>Edoardo Balzano</h1>
+    <span>
+      Mi diverto a scrivere, prendo appunti e cerco di rendermi utile! 🤓
+    </span>
+  </div>
+
+  <div class="colonna2">
+    <Image src={miafoto} />
+  </div>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    padding: 4rem 1rem;
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  .colonna1 {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 769px) {
+    .wrapper {
+      padding: 1rem;
+      flex-direction: column;
+    }
+  }
+</style>

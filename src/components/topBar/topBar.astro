@@ -1,0 +1,27 @@
+---
+import "./topBar.scss";
+import logo from "../../images/24x24.svg";
+import { topBarImpostazioni } from "../../settings/topBar";
+---
+
+<div class="barraTop">
+   <div class="wrapper">
+      <div class="logo">
+         <a href="/">
+            <img src={logo} alt="Logo Edoardo" />
+         </a>
+      </div>
+
+      <div class="elementiSinistra">
+         {
+            topBarImpostazioni.elementiSinistra.map((elmento) => (
+               <div class="elemento">
+                  <span>
+                     <a href={elmento.link}>{elmento.testo}</a>
+                  </span>
+               </div>
+            ))
+         }
+      </div>
+   </div>
+</div>
