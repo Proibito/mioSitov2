@@ -9,7 +9,7 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     ssr: {
-      noExternal: ["@fontsource/*"],
+      external: ["@fontsource/Figtree"],
     },
   },
 });
