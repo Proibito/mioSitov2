@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import miafoto from "../images/miaFoto.png";
+import Bottone from "../components/bottoni/Bottone.astro";
 ---
 
 <div class="wrapper">
@@ -9,10 +10,13 @@ import miafoto from "../images/miaFoto.png";
     <span>
       Mi diverto a scrivere, prendo appunti e cerco di rendermi utile! 🤓
     </span>
+    <div class="wrapperBottone">
+      <Bottone link="/contatti" testo="Scopri di più 😊" />
+    </div>
   </div>
 
   <div class="colonna2">
-    <Image src={miafoto} />
+    <Image src={miafoto} alt="Imaggine di Edoardo Balzano" />
   </div>
 </div>
 
@@ -20,7 +24,7 @@ import miafoto from "../images/miaFoto.png";
   .wrapper {
     padding: 4rem 1rem;
     display: flex;
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
   }
 
   .colonna1 {
@@ -29,7 +33,16 @@ import miafoto from "../images/miaFoto.png";
     flex-direction: column;
   }
 
+  .wrapperBottone {
+    max-width: 15rem;
+    margin-top: 1rem;
+  }
+
   @media only screen and (max-width: 769px) {
+    .wrapperBottone {
+      max-width: none;
+      width: 100%;
+    }
     .wrapper {
       padding: 1rem;
       flex-direction: column;

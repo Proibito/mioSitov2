@@ -4,8 +4,6 @@ export interface Props {
 }
 import BottomBar from "../components/bottomBar.astro";
 import "../scss/globale.scss";
-import "@fontsource/Figtree";
-import "@fontsource/dm-mono";
 const { title } = Astro.props;
 ---
 
@@ -15,6 +13,19 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link
+      rel="preload"
+      href="/fonts/Geonik-Bold.woff2"
+      as="font"
+      crossorigin="anonymous"
+    /> -->
+    <link rel="preload" href="/fonts/georgia-regular.woff2" as="font" crossorigin="anonymous" />
+    <!-- <link
+      rel="preload"
+      href="/fonts/Geonik-Regular.woff2"
+      as="font"
+      crossorigin="anonymous"
+    /> -->
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>

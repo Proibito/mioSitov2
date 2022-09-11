@@ -1,0 +1,29 @@
+$coloreSfondo: #030413;
+
+
+.stella {
+  animation: mymove;
+  animation-direction: alternate;
+  opacity: 0;
+  animation-iteration-count: 2;
+  position: absolute;
+  overflow: hidden;
+}
+
+.stellina {
+  height: auto;
+  width: 15px;
+  z-index: 999;
+  fill: #ffcc3b;
+}
+
+@keyframes mymove {
+  from {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+}

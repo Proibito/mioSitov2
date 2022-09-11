@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  height: 500px;
+}
+
+.sotto {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.immagine {
+  max-height: 500px;
+  width: auto;
+  transform: translateX(-50%);
+}
+
+.io {
+  max-height: 30%;
+  // transform: rotate(307deg) translateX(-259%) translateY(-18%);
+}
+
+.titolone {
+  font-size: 2em;
+}

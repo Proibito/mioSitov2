@@ -1,12 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TopBar from '../components/topBar/topBar.astro';
-import Home from '../components/home.astro';
+import Layout from "../layouts/Layout.astro";
+import TopBar from "../components/topBar/topBar.astro";
+import Home from "../components/home.astro";
+import LConTopBar from "../layouts/LConTopBar.astro";
 ---
 
-<Layout title="Edoardo Balzano">
-	<TopBar></TopBar>
-	<main>
-		<Home/>
-	</main>
-</Layout>
+<LConTopBar title="Edoardo Balzano">
+  <main>
+    <Home />
+  </main>
+</LConTopBar>
+
+<style lang="scss">
+  @media only screen and (min-width: 1025px) {
+    main {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+</style>

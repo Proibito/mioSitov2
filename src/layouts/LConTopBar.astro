@@ -3,14 +3,27 @@ import TopBar from "../components/topBar/topBar.astro";
 import Layout from "./Layout.astro";
 
 export interface Props {
-   title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <Layout title={title}>
-   <nav>
-      <TopBar />
-   </nav>
+  <nav class="barra">
+    <TopBar />
+  </nav>
+
+  <main>
+    <slot />
+  </main>
 </Layout>
+
+<style>
+  .barra {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+  }
+</style>

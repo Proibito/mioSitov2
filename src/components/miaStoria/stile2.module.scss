@@ -1,0 +1,24 @@
+$coloreSfondo: #030413;
+
+.wrapperScritte {
+  padding: 0 3vw;
+  background-color: $coloreSfondo;
+  overflow: hidden;
+}
+
+.scrittaWrappata {
+  background-color: $coloreSfondo;
+  padding: 5rem 0;
+}
+
+.scritteGiu {
+  color: white;
+  // padding: 3em 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.aTorino {
+  background: linear-gradient($coloreSfondo 20%, #f5f0f0);
+  height: 200vh;
+}

@@ -1,0 +1,45 @@
+---
+import HomeStoria from "./homeStoria.astro";
+import { Stelline } from "./stelline";
+import luna from "./immagini/luna.svg";
+import { Image } from "@astrojs/image/components";
+import { ScritteCheVannoGiu } from "./scritteChevannoGiu";
+---
+
+<div class="homeRelativo">
+  <div class="box sopra luna">
+    <Image src={luna} alt="luna" width={100} height={100} />
+  </div>
+  <div class="box sopra">
+    <Stelline client:load />
+  </div>
+  <div class="box">
+    <HomeStoria />
+  </div>
+</div>
+<ScritteCheVannoGiu client:idle />
+
+<style lang="scss">
+  .homeRelativo {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .sopra {
+    z-index: 9;
+  }
+
+  .luna {
+    top: 10%;
+    display: inline-flex;
+    left: 75%;
+    width: fit-content;
+  }
+</style>
