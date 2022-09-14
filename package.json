@@ -10,14 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/dm-mono": "^4.5.9",
-    "@fontsource/figtree": "^4.5.0",
-    "astro": "^1.1.5"
+    "astro": "^1.1.5",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@astrojs/image": "^0.5.0",
+    "@astrojs/mdx": "^0.11.1",
     "@astrojs/react": "^1.1.1",
     "@astrojs/vercel": "^1.0.2",
+    "@types/lodash": "^4.14.185",
     "@types/react": "^18.0.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

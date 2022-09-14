@@ -1,0 +1,70 @@
+---
+import TopBar from "../components/topBar/topBar.astro";
+import Layout from "./Layout.astro";
+import fs from "fs";
+import moment from "moment";
+import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
+
+const astroProps = Astro.props;
+moment.locale("it");
+
+let ultimaModificaDate = fs.statSync(astroProps.file).mtime;
+
+const ultimaModifica = moment(ultimaModificaDate).format("DD MMMM YYYY");
+
+const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+---
+
+<Layout title={titolo}>
+  <nav class="testa" id="barra">
+    <TopBar />
+  </nav>
+  <main>
+    <div class="articolo">
+      <slot />
+    </div>
+    <div class="sideBar">
+      <SideBarHeadings client:idle headings={astroProps.headings} />
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  @import "../scss/variabili";
+
+  .testa {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+  }
+
+  main {
+    padding-top: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    // max-width: 1100px;
+  }
+
+  .sideBar {
+    position: sticky;
+    top: $altezzaBarra;
+    padding-bottom: 100px;
+    padding: $paddingContenuto 2rem;
+  }
+
+  .articolo {
+    flex: 1 1 auto;
+    max-width: min(60%, 100%);
+  }
+
+  h2,
+  h3 {
+    scroll-margin-top: "10%";
+  }
+
+  @media only screen and (max-width: 768px) {
+  }
+</style>

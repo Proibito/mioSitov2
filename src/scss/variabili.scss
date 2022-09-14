@@ -1,10 +1,15 @@
 $colorePrincipale: #008000;
 $coloreBarraSotto: darken($colorePrincipale, 15%);
 
-$coloreTestoMoltoChiaro: rgb(82, 82, 82);
-$coloreTesto: #475248;
+$coloreTestoMoltoChiaro: rgb(44, 44, 44);
+$coloreTesto: #1c201c;
 $coloreEvidenziato: black;
+$coloreDisattivato: rgb(155, 155, 155);
 
 $bordiBottoni: 5px;
 
 $velocitaNormaleTransazione: 150ms;
+
+$altezzaBarra: 3.75rem;
+$paddingContenuto: 1.75rem;
+$altezzaEpadding: $altezzaBarra + ($paddingContenuto * 2);
