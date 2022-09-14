@@ -18,10 +18,7 @@ export class ElementiTopBar extends Component {
   render() {
     return (
       <div className={stile.wrapper}>
-        <div
-          className={`${stile.muovi} ${stile.comune}`}
-          ref={this.muoviDiv}
-        ></div>
+        <div className={`${stile.muovi} ${stile.comune}`} ref={this.muoviDiv}></div>
         <div ref={this.items}></div>
         {topBarImpostazioni.elementiSinistra.map((elemento, index) => (
           <a
@@ -58,9 +55,7 @@ export class ElementiTopBar extends Component {
     if (this.muoviDiv.current) {
       const stile = this.muoviDiv.current.style;
       const posizione = this.items.current[0] as HTMLDivElement;
-      stile.transform = `translateX(${
-        posizione.getBoundingClientRect().left
-      }px)`;
+      stile.transform = `translateX(${posizione.getBoundingClientRect().left}px)`;
     }
   }
 

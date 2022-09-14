@@ -1,6 +1,7 @@
 ---
 import logo from "../../images/24x24.svg";
 import { ElementiTopBar } from "./elementiTopBar";
+import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
 ---
 
 <div class="barraTop">
@@ -12,7 +13,13 @@ import { ElementiTopBar } from "./elementiTopBar";
     </div>
 
     <div class="elementiSinistra">
-      <ElementiTopBar client:idle />
+      <div class="pc">
+        <ElementiTopBar client:visible />
+      </div>
+
+      <div class="mobile">
+        <HamburgerMobile client:visible />
+      </div>
     </div>
   </div>
 </div>
@@ -21,19 +28,6 @@ import { ElementiTopBar } from "./elementiTopBar";
   @import "../../scss/variabili.scss";
 
   .barraTop {
-    .wrapper {
-      display: flex;
-      flex: 1 1 auto;
-      align-items: center;
-      vertical-align: middle;
-      height: $altezzaBarra;
-      position: sticky;
-      border: 1px solid rgb(221, 221, 221);
-      padding: 0.5rem 5rem;
-      border-bottom: 1px solid #d0d0d0;
-      // box-shadow: 0px 0.9px 1.3px rgba(0, 0, 0, 0.035), 0px 7px 10px rgba(0, 0, 0, 0.07);
-    }
-
     .logo {
       height: 100%;
       margin-right: 1rem;
@@ -42,6 +36,42 @@ import { ElementiTopBar } from "./elementiTopBar";
         height: 100%;
         width: auto;
       }
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    vertical-align: middle;
+    height: $altezzaBarra;
+    position: sticky;
+    border: 1px solid rgb(221, 221, 221);
+    padding: 0.5rem 5rem;
+    border-bottom: 1px solid #d0d0d0;
+    // box-shadow: 0px 0.9px 1.3px rgba(0, 0, 0, 0.035), 0px 7px 10px rgba(0, 0, 0, 0.07);
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .elementiSinistra {
+    width: 100%;
+  }
+
+  @media screen and (max-width: "768px") {
+    .wrapper {
+      padding: 0.5rem 2rem;
+    }
+
+    .pc {
+      display: none;
+    }
+
+    .mobile {
+      float: right;
+      display: flex;
     }
   }
 </style>
