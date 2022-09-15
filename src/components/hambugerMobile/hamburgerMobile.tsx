@@ -25,24 +25,8 @@ export class HamburgerMobile extends Component<any, any> {
           className="menuHamburger"
           style={{ width: "32px", height: "32px", transform: "rotate(0deg)" }}
         >
-          <line
-            x1="4.8"
-            y1="9.6"
-            x2="27.2"
-            y2="9.6"
-            stroke="var(--color-text)"
-            strokeWidth="3"
-            strokLinecap="round"
-          ></line>
-          <line
-            x1="27.2"
-            y1="22.4"
-            x2="4.8"
-            y2="22.4"
-            stroke="var(--color-text)"
-            strokeWidth="3"
-            strokLinecap="round"
-          ></line>
+          <line x1="4.8" y1="9.6" x2="27.2" y2="9.6" stroke="var(--color-text)" strokeWidth="3"></line>
+          <line x1="27.2" y1="22.4" x2="4.8" y2="22.4" stroke="var(--color-text)" strokeWidth="3"></line>
         </svg>
         <span>{this.state.visibile}</span>
         {this.state.visibile ? (
@@ -76,8 +60,10 @@ class Menu extends Component<{ chiudi: any }> {
         </svg>
         <div className={stile.menu}>
           Menu
-          {topBarImpostazioni.elementiSinistra.map((elemento) => (
-            <a href={elemento.link}>{elemento.testo}</a>
+          {topBarImpostazioni.elementiSinistra.map((elemento, index) => (
+            <a href={elemento.link} key={index}>
+              {elemento.testo}
+            </a>
           ))}
         </div>
       </div>

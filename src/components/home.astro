@@ -1,30 +1,49 @@
 ---
 import { Image } from "@astrojs/image/components";
 import miafoto from "../images/miaFoto.png";
-import Bottone from "../components/bottoni/Bottone.astro";
+import Bottone from "../components/bottoni/BottoneBianco.astro";
+import SloganIniziale from "./sloganIniziale.astro";
 ---
 
 <div class="wrapper">
-  <div class="colonna1">
+  <div class="colonna1 colonne">
     <h1>Edoardo Balzano</h1>
     <span> Mi diverto a scrivere, prendo appunti e cerco di rendermi utile! 🤓</span>
     <div class="wrapperBottone">
       <Bottone link="/contatti" testo="Scopri di più 😊" />
     </div>
   </div>
+  <div class="colonna colonne">
+    <SloganIniziale />
+  </div>
 </div>
 
 <style lang="scss">
+  @import "../scss/variabili.scss";
+
   .wrapper {
-    padding: 4rem 1rem;
     display: flex;
-    // flex: 1 1 auto;
+    flex: 1 1 auto;
+    background: linear-gradient(80deg, $colorePrincipale, $coloreBarraSotto);
+    background-size: 400% 400%;
+    animation: GradientBackground 10s ease infinite;
+    padding: 4rem 5rem;
+    min-height: 70vh;
+    gap: 1rem;
+  }
+
+  .colonna {
+    flex-grow: 1;
   }
 
   .colonna1 {
     flex-basis: 60%;
     display: flex;
     flex-direction: column;
+    & * {
+      color: white;
+    }
+    justify-content: center;
   }
 
   .wrapperBottone {
@@ -37,6 +56,15 @@ import Bottone from "../components/bottoni/Bottone.astro";
       max-width: none;
       width: 100%;
     }
+
+    .colonna1 {
+      margin: 4rem 0;
+    }
+
+    .colonna {
+      margin: 2rem 0;
+    }
+
     .wrapper {
       padding: 1rem;
       flex-direction: column;

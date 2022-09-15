@@ -1,0 +1,47 @@
+---
+export interface Props {
+  testo: string;
+  link: string;
+}
+
+const { testo, link } = Astro.props;
+---
+
+<div class="bottone">
+  <a href={link}>
+    {testo}
+  </a>
+</div>
+
+<style lang="scss">
+  @import "../../scss/variabili.scss";
+
+  .bottone {
+    background-color: white;
+    padding: 0.8em 2em;
+    color: $colorePrincipale;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all $velocitaNormaleTransazione ease-in-out;
+    border: white 4px solid;
+
+    &:hover {
+      border: white 4px solid;
+      background-color: $coloreBarraSotto;
+      color: white;
+    }
+
+    a {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden !important;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+    }
+  }
+</style>
