@@ -1,6 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
-import miafoto from "../images/miaFoto.png";
 import Bottone from "../components/bottoni/BottoneBianco.astro";
 import SloganIniziale from "./sloganIniziale.astro";
 ---
@@ -28,7 +26,7 @@ import SloganIniziale from "./sloganIniziale.astro";
     background-size: 400% 400%;
     animation: GradientBackground 10s ease infinite;
     padding: 4rem 5rem;
-    min-height: 70vh;
+    min-height: 60vh;
     gap: 1rem;
   }
 
@@ -37,7 +35,7 @@ import SloganIniziale from "./sloganIniziale.astro";
   }
 
   .colonna1 {
-    flex-basis: 60%;
+    flex-basis: 87%;
     display: flex;
     flex-direction: column;
     & * {
@@ -49,6 +47,12 @@ import SloganIniziale from "./sloganIniziale.astro";
   .wrapperBottone {
     max-width: 15rem;
     margin-top: 1rem;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    .wrapper {
+      padding: 4rem 16rem;
+    }
   }
 
   @media only screen and (max-width: 769px) {

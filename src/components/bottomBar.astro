@@ -1,46 +1,68 @@
 ---
+import { topBarImpostazioni } from "../settings/topBar";
 ---
 
 <div>
-	<div class="barraSotto">
-		<div class="wrapper">
-			<div class="colonna">
-				<span class="titolo"> Su di me</span>
-				<span>elemento 1</span>
-				<span>elemento 2</span>
-				<span>elemento 3</span>
-			</div>
-		</div>
-		<span class="citazione">fatto da Edoardo con il 💖</span>
-	</div>
+  <div class="barraSotto">
+    <div class="wrapper">
+      <div class="colonna">
+        <span class="titolo"> Mappa del sito</span>
+        {
+          topBarImpostazioni.elementiSinistra.map((elemento) => (
+            <a class="links" href={elemento.link}>
+              {elemento.testo}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <span class="citazione">fatto da Edoardo con il 💖</span>
+  </div>
 </div>
 
 <style lang="scss">
-	.barraSotto {
-		background-color: var(--colore-barraSotto);
-		color: white;
-		padding: 2em;
-	}
+  @import "../scss/variabili.scss";
 
-	.wrapper {
-		display: flex;
-	}
+  .barraSotto {
+    background-color: var(--colore-barraSotto);
+    color: white;
+    padding: 2em;
+  }
 
-	.colonna {
-		display: flex;
-		flex-direction: column;
-	}
+  .wrapper {
+    display: flex;
+  }
 
-	.titolo {
-		font-size: 1.1em;
-		font-weight: bold;
-		margin-bottom: 0.5rem;
-	}
+  .colonna {
+    display: flex;
+    flex-direction: column;
+  }
 
-	.citazione {
-		font-size: 0.8rem;
-		display: block;
-		text-align: center;
-		margin: 0 auto;
-	}
+  .titolo {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .links {
+    color: white;
+    padding: 0.5em 1rem;
+    transition: all $velocitaNormaleTransazione ease-in-out;
+    background-color: inherit;
+    border-radius: $bordiBottoni;
+    margin-left: -1rem;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: rgba(white, 0.2);
+      border: 2px solid white;
+    }
+  }
+
+  .citazione {
+    font-size: 0.8rem;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
 </style>
