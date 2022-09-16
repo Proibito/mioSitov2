@@ -37,7 +37,7 @@
 
 html {
   font-family: ReadexPro, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: var(--font-size-base);
   color: $coloreTesto;
   background-color: var(--color-bg);
@@ -46,7 +46,7 @@ html {
 h1 {
   color: $coloreEvidenziato;
   font-family: ReadexPro, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-  "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-bottom: 0em;
   font-size: 4rem;
   margin-top: 0;
@@ -58,7 +58,8 @@ body {
 
 h2 {
   font-size: var(--font-size-lg);
-  color: $coloreEvidenziato
+  color: $coloreEvidenziato;
+  margin-top: 0;
 }
 
 a {

@@ -13,3 +13,46 @@ $velocitaNormaleTransazione: 150ms;
 $altezzaBarra: 3.75rem;
 $paddingContenuto: 1.75rem;
 $altezzaEpadding: $altezzaBarra + ($paddingContenuto * 2);
+
+$paddingNormale: 5rem;
+$paddingTablet: 1rem;
+$paddingDesktopGrandi: 16rem;
+
+@mixin telefono {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 769px) {
+    @content;
+  }
+}
+
+@mixin desktopGrandi {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin tabletConPadding {
+  @include tablet {
+    @content;
+  }
+  padding: 1rem;
+}
+
+@mixin paddingGenerale {
+  padding-left: $paddingNormale;
+  padding-right: $paddingNormale;
+
+  @include tablet {
+    padding-left: $paddingTablet;
+    padding-right: $paddingTablet;
+  }
+
+  @include desktopGrandi {
+    padding-left: $paddingDesktopGrandi;
+    padding-right: $paddingDesktopGrandi;
+  }
+}
