@@ -1,7 +1,6 @@
 import { Component, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import stile from "./stileMenu.module.scss";
-import { topBar } from "../../types/topBar";
 import { topBarImpostazioni } from "../../settings/topBar";
 
 export class HamburgerMobile extends Component<any, any> {
@@ -87,12 +86,12 @@ class PortalNav extends Component<any, any> {
   }
 
   componentDidMount() {
-    this.appendiA!.appendChild(this.el);
+    this.appendiA?.appendChild(this.el);
   }
 
   componentWillUnmount() {
     // Remove the element from the DOM when we unmount
-    this.appendiA!.removeChild(this.el);
+    this.appendiA?.removeChild(this.el);
     const body = document.getElementsByTagName("body")[0];
     body.style.position = "initial";
   }

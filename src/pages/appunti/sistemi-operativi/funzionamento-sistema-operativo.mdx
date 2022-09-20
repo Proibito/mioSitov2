@@ -1,0 +1,13 @@
+# Funzionamento sistema operativo
+
+L’avviamento del sistema, conseguente all’accensione del calcolatore, così come il riavvio di un calcolatore già acceso, richiedono la presenza di uno specifico programma iniziale, di solito non troppo complesso, detto **programma d’avviamento** (il bootstrap program).
+
+Una volta caricato e in esecuzione, il kernel può iniziare a offrire servizi al sistema e agli utenti. Alcuni servizi vengono forniti all’esterno del kernel da programmi di
+sistema caricati in memoria durante l’avviamento. Questi processi di sistema, o demoni, restano in esecuzione per tutto il tempo in cui è in esecuzione il kernel. In
+UNIX il primo processo di sistema è “init”, che avvia diversi altri demoni. Una volta che questa fase è completata il sistema risulta completamente inizializzato e attende
+che si verifichi qualche evento. Per questo motivo il sistema operativo si dice **guidato dagli eventi** o in inglese _event driven_
+
+## le interruzioni
+
+Un evento è di solito segnalato da un’interruzione dell’attuale sequenza d’esecuzione della CPU (interrupt), che può essere causata dall'hardware o da un programma.
+Nel primo caso i controllori dei dispositivi e altri elementi dell’architettura possono inviare alla CPU segnali d’interruzione, di solito attraverso il bus di sistema. Nel secondo caso il software genera un’interruzione eseguendo una speciale istruzione detta chiamata di sistema (system call, a volte chiamata anche monitor call).

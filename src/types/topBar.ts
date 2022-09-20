@@ -7,7 +7,7 @@ export interface elementoDestra extends elemento{
     icona?: string
 }
 
-export interface elementoSinistra extends elemento{}
+export type elementoSinistra = elemento
 
 export interface elemento{
     testo: string,

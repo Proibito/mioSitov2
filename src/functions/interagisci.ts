@@ -77,7 +77,7 @@ function percentualePosizione(margini: number, ref: RefObject<any>): number {
   const posizioneRelativaElemento = elementoDimensioni.top - (window.innerHeight * margini) / 100;
   const dimensioniSchermoCorrette = altezzaSchermoConMargini - elementoDimensioni.height;
 
-  let posizione = 1 - posizioneRelativaElemento / dimensioniSchermoCorrette;
+  const posizione = 1 - posizioneRelativaElemento / dimensioniSchermoCorrette;
 
   if (posizione > 1) {
     return 1;

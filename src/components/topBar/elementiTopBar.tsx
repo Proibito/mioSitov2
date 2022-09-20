@@ -1,4 +1,4 @@
-import React, { Component, createRef, Ref, RefObject } from "react";
+import React, { Component, RefObject } from "react";
 import stile from "./ElementiTopBar.module.scss";
 import { topBarImpostazioni } from "../../settings/topBar";
 

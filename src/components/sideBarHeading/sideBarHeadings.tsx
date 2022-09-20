@@ -1,4 +1,4 @@
-import { Component, ReactNode, MouseEvent, RefObject, createRef } from "react";
+import { Component, ReactNode, MouseEvent } from "react";
 import { muoviPagina } from "../../functions/muoviAllaPosizione";
 import stile from "./sideBarHeading.module.scss";
 
@@ -22,7 +22,7 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
     window.removeEventListener("scroll", this.scrolla);
   }
 
-  scrolla(ev: Event) {
+  scrolla() {
     const headers = document.querySelectorAll("h2, h3");
     const filtrati = Array.prototype.slice.call(headers).filter((elem) => {
       return window.innerHeight - elem.getBoundingClientRect().top > 0;

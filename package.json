@@ -1,6 +1,7 @@
 {
   "name": "@example/basics",
   "version": "0.0.1",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -10,7 +11,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.1.5",
     "lodash": "^4.17.21",
     "moment": "^2.29.4"
   },
@@ -22,6 +22,12 @@
     "@types/lodash": "^4.14.185",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "astro": "^1.2.7",
+    "eslint": "^8.23.1",
+    "eslint-plugin-mdx": "^2.0.5",
+    "eslint-plugin-react": "^7.31.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.54.8"
