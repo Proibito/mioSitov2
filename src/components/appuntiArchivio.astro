@@ -1,0 +1,77 @@
+---
+import LConTopBar from "../layouts/LConTopBar.astro";
+export interface Props {
+  title: string;
+  posts: Record<string, any>[];
+}
+const { title, posts } = Astro.props;
+
+function getTitolo(post: any): string {
+  return (
+    post.getHeadings()[post.getHeadings().findIndex((head: any) => head.depth == 1)]?.text ?? "non ancora definito"
+  );
+}
+---
+
+<LConTopBar title={`${title} Archivio - Edoardo`}>
+  <div class="wrapper">
+    <div class="articoli">
+      {
+        posts.map((post) => (
+          <article>
+            <a href={post.url}>
+              <span class="titolo">{getTitolo(post)}</span>
+              <span class="descrione">{post.frontmatter.descrizione}</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</LConTopBar>
+
+<style lang="scss">
+  @import "../scss/variabili.scss";
+
+  $animazione: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  .articoli {
+    display: flex;
+    flex-direction: column;
+  }
+
+  article {
+    border: 3px solid $coloreBordoGrigio;
+    margin: 1rem 0;
+    border-radius: $bordiBottoni;
+    background: linear-gradient(45deg, rgba($colorePrincipale, 0.05) 40%, white 60%);
+    background-size: 400%;
+    background-position: 100%;
+    transition: all $animazione;
+  }
+
+  article:hover {
+    background-position: 0;
+    border-color: $colorePrincipale;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 1em 2em;
+    display: block;
+  }
+
+  .titolo {
+    font-size: 1.25rem;
+    display: block;
+  }
+
+  .wrapper {
+    @include paddingGenerale;
+  }
+
+  .titolo::first-letter {
+    display: none;
+    text-transform: uppercase;
+  }
+</style>

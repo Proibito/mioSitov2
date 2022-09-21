@@ -15,10 +15,12 @@ import { MATERIEAPPUNTI } from "../../settings/materie-appunti";
       {
         MATERIEAPPUNTI.map((materia) => (
           <div class="appunto">
-            <a href={`${materia.link}`}>
-              <h3>{materia.titolo}</h3>
-              <p>{materia.descrizione}</p>
-            </a>
+            <div class="inner">
+              <a href={`${materia.link}`}>
+                <h3>{materia.titolo}</h3>
+                <p>{materia.descrizione}</p>
+              </a>
+            </div>
           </div>
         ))
       }
@@ -52,13 +54,17 @@ import { MATERIEAPPUNTI } from "../../settings/materie-appunti";
     border: 1px solid $coloreBordoGrigio;
     border-radius: $bordiBottoni;
     background-color: white;
-
+    padding: 0.25rem;
     box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.02), 0px 0px 20px rgba(0, 0, 0, 0.04);
     background-image: linear-gradient(45deg, $coloreBarraSotto, $colorePrincipale 40%, white 60%);
     background-size: 400%;
     background-position: 100%;
     transition: background-position $animazione;
     cursor: pointer;
+
+    .inner {
+      background-color: rgba(white, 0.2);
+    }
 
     a {
       display: block;
