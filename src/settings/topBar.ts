@@ -4,7 +4,7 @@ export const topBarImpostazioni: topBar = {
   elementiDestra: [],
   elementiSinistra: [
     { testo: "Home", link: "/" },
-    { testo: "contatti", link: "/contatti" },
+    { testo: "Appunti 🎓", link: "/appunti/" },
     { testo: "Edoardo", link: "/edoardo" },
   ],
 };

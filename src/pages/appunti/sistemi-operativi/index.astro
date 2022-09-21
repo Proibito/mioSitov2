@@ -1,0 +1,29 @@
+---
+import LConTopBar from "../../../layouts/LConTopBar.astro";
+const posts = await Astro.glob("./*.mdx");
+console.log(posts);
+---
+
+<LConTopBar title="Sistemi operativi">
+  <div class="wrapper">
+    <div>
+      {
+        posts.map((post) => (
+          <article>
+            <h1>{post.frontmatter.title}</h1>
+            <p>{post.url}</p>
+            <a href={post.frontmatter.url}>Read more</a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</LConTopBar>
+
+<style lang="scss">
+  @import "../../../scss/variabili.scss";
+
+  .wrapper {
+    @include paddingGenerale;
+  }
+</style>
