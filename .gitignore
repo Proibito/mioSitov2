@@ -5,6 +5,8 @@ dist/
 .idea/
 .vscode/
 
+yarn.lock
+
 # dependencies
 node_modules/
 
