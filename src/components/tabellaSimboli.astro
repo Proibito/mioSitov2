@@ -1,0 +1,27 @@
+---
+export interface Props {
+  simboli: string[];
+}
+import "../scss/globale.scss";
+const { simboli } = Astro.props;
+
+import { renderToString } from "katex";
+---
+
+<table>
+  <tr>
+    <th>Simbolo</th>
+    <th>Come è fatto</th>
+  </tr>
+
+  {
+    simboli.map((simbolo) => (
+      <tr>
+        <td set:html={renderToString(simbolo)} />
+        <td>{simbolo}</td>
+      </tr>
+    ))
+  }
+
+
+</table>

@@ -5,8 +5,6 @@ dist/
 .idea/
 .vscode/
 
-yarn.lock
-
 # dependencies
 node_modules/
 
@@ -25,3 +23,5 @@ pnpm-debug.log*
 .DS_Store
 
 .vercel
+yarn.lock
+package-lock.json

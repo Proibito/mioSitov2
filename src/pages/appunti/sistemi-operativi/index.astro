@@ -1,7 +1,11 @@
 ---
 import AppuntiArchivio from "../../../components/appuntiArchivio.astro";
+import LarchivioAppunti from "../../../layouts/LarchivioAppunti.astro";
 
 const cartella = await Astro.glob("./*.mdx");
 ---
 
-<AppuntiArchivio title="Sistemi operativi" posts={cartella} />
+<LarchivioAppunti titoloMateria="Sistemi operativi">
+  <AppuntiArchivio posts={cartella} />
+</LarchivioAppunti>
+
