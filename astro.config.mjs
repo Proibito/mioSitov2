@@ -6,8 +6,6 @@ import react from "@astrojs/react";
 import { ottieniDescrizione, ottieniSimboli } from "./src/functions/ottieniDescrizione.ts";
 import mdx from "@astrojs/mdx";
 
-// import netlify from "@astrojs/netlify/functions";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -19,6 +17,4 @@ export default defineConfig({
       extendPlugins: "astroDefaults",
     }),
   ],
-  // output: "server",
-  // adapter: netlify()
 });
