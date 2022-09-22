@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 import { ottieniDescrizione, ottieniSimboli } from "./src/functions/ottieniDescrizione.ts";
 import mdx from "@astrojs/mdx";
 
-import cloudflare from "@astrojs/cloudflare";
+// import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,6 +19,6 @@ export default defineConfig({
       extendPlugins: "astroDefaults",
     }),
   ],
-  output: "server",
-  adapter: cloudflare({ mode: "directory" }),
+  // output: "server",
+  // adapter: netlify()
 });

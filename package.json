@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^2.0.0",
+    "@astrojs/netlify": "^1.0.4",
     "katex": "^0.16.2",
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^3.1.0",
