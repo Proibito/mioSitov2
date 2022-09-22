@@ -1,0 +1,36 @@
+---
+export interface Props {
+  titoloMateria: string;
+}
+
+import Bottone from "../components/bottoni/Bottone.astro";
+import "../scss/globale.scss";
+import LconPadding from "./LconPadding.astro";
+const { titoloMateria } = Astro.props;
+---
+
+<LconPadding title={`${titoloMateria} - Archivio Edoardo`}>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Argomento: {titoloMateria}</h1>
+      <p>Questi sono gli appunti per la materia {titoloMateria}. Libera visione a tutti 🤓🥸</p>
+      <Bottone testo="Torna indietro" link="./" />
+    </div>
+    <hr />
+    <div>
+      <slot />
+    </div>
+  </div>
+</LconPadding>
+
+<style lang="scss">
+  @import "../scss/variabili.scss";
+
+  .header {
+    margin: 2.5rem 0;
+  }
+
+  .bottone {
+    flex-basis: 10%;
+  }
+</style>

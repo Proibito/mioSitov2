@@ -17,8 +17,9 @@ const { testo, link } = Astro.props;
   @import "../../scss/variabili.scss";
 
   .bottone {
+    max-width: fit-content;
     background-color: var(--colore-principale);
-    padding: 0.8em 2em;
+
     color: white;
     border-radius: 5px;
     display: flex;
@@ -38,10 +39,11 @@ const { testo, link } = Astro.props;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden !important;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-decoration: none;
       color: inherit;
       text-align: center;
+      padding: 0.7rem 1.75rem;
     }
   }
 </style>

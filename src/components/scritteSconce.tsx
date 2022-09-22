@@ -1,4 +1,4 @@
-import { Component, createRef, ReactNode, RefObject } from "react";
+import React, { Component, createRef, ReactNode, RefObject } from "react";
 import stile from "./stileLettereSconce.module.scss";
 
 export class ScritteSconce extends Component<{ numeroLettere: number; prima?: string; dopo?: string }, any> {

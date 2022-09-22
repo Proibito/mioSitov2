@@ -1,10 +1,12 @@
-import { Component, ReactNode, MouseEvent, RefObject, createRef } from "react";
+import { Component, ReactNode, MouseEvent } from "react";
 import { muoviPagina } from "../../functions/muoviAllaPosizione";
 import stile from "./sideBarHeading.module.scss";
 
 import { throttle } from "lodash";
 export class SideBarHeadings extends Component<{ headings: { depth: number; slug: string; text: string }[] }> {
-  headings = this.props.headings.filter((elemento) => elemento.depth == 2 || elemento.depth == 3);
+  headings = this.props.headings.filter(
+    (elemento) => elemento.depth == 2 || elemento.depth == 3 || elemento.depth == 1
+  );
   precedente: HTMLElement | null = null;
 
   cliccato(clickEvent: MouseEvent<HTMLAnchorElement>, destinazione: string) {
@@ -15,6 +17,8 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
   }
 
   componentDidMount(): void {
+    console.log(this.props);
+
     window.addEventListener("scroll", throttle(this.scrolla, 500));
   }
 
@@ -22,8 +26,8 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
     window.removeEventListener("scroll", this.scrolla);
   }
 
-  scrolla(ev: Event) {
-    const headers = document.querySelectorAll("h2, h3");
+  scrolla() {
+    const headers = document.querySelectorAll("h1, h2, h3");
     const filtrati = Array.prototype.slice.call(headers).filter((elem) => {
       return window.innerHeight - elem.getBoundingClientRect().top > 0;
     });

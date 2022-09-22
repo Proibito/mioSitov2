@@ -4,6 +4,7 @@ import Layout from "./Layout.astro";
 import fs from "fs";
 import moment from "moment";
 import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
+import TabellaSimboli from "../components/tabellaSimboli.astro";
 
 const astroProps = Astro.props;
 moment.locale("it");
@@ -13,24 +14,39 @@ let ultimaModificaDate = fs.statSync(astroProps.file).mtime;
 const ultimaModifica = moment(ultimaModificaDate).format("DD MMMM YYYY");
 
 const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+
+console.log(Astro.props.frontmatter);
 ---
 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+  integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
+  crossorigin="anonymous"
+/>
 <Layout title={titolo}>
   <nav class="testa" id="barra">
     <TopBar />
   </nav>
   <main>
-    <div class="articolo">
-      <slot />
+    <div class="main">
+      <div class="articolo">
+        <slot />
+      </div>
+      <div class="sideBar">
+        <SideBarHeadings client:idle headings={astroProps.headings} />
+      </div>
     </div>
-    <div class="sideBar">
-      <SideBarHeadings client:idle headings={astroProps.headings} />
-    </div>
+    <TabellaSimboli simboli={Astro.props.frontmatter.formule} />
   </main>
 </Layout>
 
 <style lang="scss">
   @import "../scss/variabili";
+
+  main {
+    @include paddingGenerale;
+  }
 
   .testa {
     position: sticky;
@@ -39,7 +55,7 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
     background-color: white;
   }
 
-  main {
+  .main {
     padding-top: 48px;
     display: flex;
     flex-direction: row;
@@ -57,7 +73,7 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
 
   .articolo {
     flex: 1 1 auto;
-    max-width: min(60%, 100%);
+    line-height: 1.75rem;
   }
 
   h2,
