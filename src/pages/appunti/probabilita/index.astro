@@ -1,0 +1,10 @@
+---
+import AppuntiArchivio from "../../../components/appuntiArchivio.astro";
+import LarchivioAppunti from "../../../layouts/LarchivioAppunti.astro";
+
+const cartella = await Astro.glob("./*.mdx");
+---
+
+<LarchivioAppunti titoloMateria="Probabilita e Statistica">
+  <AppuntiArchivio posts={cartella} />
+</LarchivioAppunti>

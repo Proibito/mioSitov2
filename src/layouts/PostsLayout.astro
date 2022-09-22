@@ -14,8 +14,6 @@ let ultimaModificaDate = fs.statSync(astroProps.file).mtime;
 const ultimaModifica = moment(ultimaModificaDate).format("DD MMMM YYYY");
 
 const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
-
-console.log(Astro.props.frontmatter);
 ---
 
 <link
@@ -33,16 +31,16 @@ console.log(Astro.props.frontmatter);
       <div class="articolo">
         <slot />
       </div>
-      <div class="sideBar">
-        <SideBarHeadings client:idle headings={astroProps.headings} />
-      </div>
+      <div class="sideBar"><SideBarHeadings client:idle headings={astroProps.headings} /></div>
     </div>
-    <TabellaSimboli simboli={Astro.props.frontmatter.formule} />
+    <div>
+      {Astro.props.frontmatter.formule.length > 0 ? <TabellaSimboli simboli={Astro.props.frontmatter.formule} /> : null}
+    </div>
   </main>
 </Layout>
 
 <style lang="scss">
-  @import "../scss/variabili";
+  @import "../scss/variabili.scss";
 
   main {
     @include paddingGenerale;
@@ -82,5 +80,8 @@ console.log(Astro.props.frontmatter);
   }
 
   @media only screen and (max-width: 768px) {
+    .sideBar {
+      display: none;
+    }
   }
 </style>

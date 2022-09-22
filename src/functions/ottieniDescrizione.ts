@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+import uniq from "lodash/uniq";
 
 export function ottieniDescrizione() {
   return function (tree: any, { data }: { data: any }) {
@@ -19,6 +20,6 @@ export function ottieniSimboli() {
     visit(tree, "inlineMath", (paragrafi) => {
       matematica.push(paragrafi.value);
     });
-    data.astro.frontmatter.formule = matematica;
+    data.astro.frontmatter.formule = uniq(matematica);
   };
 }

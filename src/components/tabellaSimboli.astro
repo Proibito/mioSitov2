@@ -5,7 +5,7 @@ export interface Props {
 import "../scss/globale.scss";
 const { simboli } = Astro.props;
 
-import { renderToString } from "katex";
+import katex from 'katex';
 ---
 
 <table>
@@ -17,8 +17,10 @@ import { renderToString } from "katex";
   {
     simboli.map((simbolo) => (
       <tr>
-        <td set:html={renderToString(simbolo)} />
-        <td>{simbolo}</td>
+        <td set:html={katex.renderToString(simbolo)} />
+        <td>
+          <code>${simbolo}$</code>
+        </td>
       </tr>
     ))
   }

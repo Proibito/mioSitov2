@@ -1,6 +1,10 @@
+---
+layout: "../../../layouts/PostsLayout.astro"
+---
+
 # Automa
 
-Il programma (spessso chimato *lexer*) deve saper analizzare il codice scritto dallo sviluppatore, non può ovviamente farlo come facciamo noi esseri umani con il "colpo d'occhio". Il lexer quindi analizza carattere per carattere e deve saper riconoscere una parola da il suo susseguirsi di caratteri. Le parole si chiamano **token** e per esempio nel linguaggio JavaScript possono essere:
+Il programma (spessso chimato _lexer_) deve saper analizzare il codice scritto dallo sviluppatore, non può ovviamente farlo come facciamo noi esseri umani con il "colpo d'occhio". Il lexer quindi analizza carattere per carattere e deve saper riconoscere una parola da il suo susseguirsi di caratteri. Le parole si chiamano **token** e per esempio nel linguaggio JavaScript possono essere:
 
 - costanti: `42, 1, true, "questa è una stringa"`
 - parole chiave: `const, class, for, if, ...`
@@ -15,7 +19,7 @@ Alcuni simboli come gli spazi, i simboli di nuova riga e i commenti vengono scar
 
 Un automa a stati finiti è un progrmma (o macchina) che **riconosce un testo** con "poca memoria" cioè che tiene in memoria poche cose.
 
-In input l'automa come input ha una **stringa** e in output ritorna *sì* se viene riconosciuta e *no* altrimenti.
+In input l'automa come input ha una **stringa** e in output ritorna _sì_ se viene riconosciuta e _no_ altrimenti.
 
 ### Come funziona
 

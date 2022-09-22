@@ -1,68 +1,81 @@
+---
+layout: "../../../layouts/PostsLayout.astro"
+---
+
+import { Definizione } from "../../../MDXcomponents/definizione";
+
 # Probabilità
 
-Matematica pratica e non solo teorica. Cioè matematica applicata. La probabilità si occupa di fenomeni casuali cioè si occupa di descrivere degli esperimenti che sono soggetti a caso. Un esperimento che si può ben capire e il _lancio del dado_, nel senso che non so facilmente che faccia vedremo. In realtà è vero che a priori non so a dire che faccia uscirà, ma se sapessi TUTTE le espressioni della fisica io potrei sapere la faccia che uscirà. Nel senso che la casualità non è indice di mancanza di conoscenza ma può essere indice di complessità. È un cambio di punto di vista la probabilità.
+La **probabilità** è una branca della matematica pratica e non solo teorica; cioè matematica applicata.
+
+La probabilità si occupa di fenomeni casuali e quindi di descrivere degli avvenimenti che sono soggetti al caso. Un esperimento tipico e chiaro è il _lancio del dado_ 🎲.
+Il punto dello studio della probabilità è capire che un avvenimento complicato da calcolare (come un lancio di un dado) si può studiare sotto un'altra ottica e anche se non sapremo mai con certezza quale sarà il risultato potremmo capire cosa aspettarci.
 
 ## Che cos'è un caso
 
-Un esperimento che stiamo guardando ha un esito che non è facilmente prevedibile (definizione). Alcuni sinonimi che useremo è aleatorio.
+<Definizione>
+
+Il **caso** è la probabilità degli esperimenti che hanno un esito non facilmente prevedibile.
+
+</Definizione>
+
+Alcuni sinonimi che useremo è aleatorio.
 
 ## Richiami teoria degli insiemi
 
-Un insieme è una collezione di oggetti; che questi vengono chiamati _elementi dell'insieme_; in genere elenchiamo gli elementi dell'insieme con la lettera maiuscola.
+Un insieme è una collezione di oggetti, questi vengono chiamati _elementi dell'insieme_; in genere denotiamo l'insieme con la lettera maiuscola. Es.: $A,B,C$ ecc...
 
-Definizione degli insiemi.
+Definizione degli insiemi:
 
-Insiemi numerabili infiniti ma numerabili e non numerabili talmente tanti che non sono numerabili.
+- Insieme per definizione $A = \{ 1,2,3,4,5,6\}$ cioè l'elencazione degli oggetti dell'insieme.
+- Con una funziona o con delle proprietà. Es. $A = \{x|x \textup{ ha alcune prop.}\}$
 
-I sottoinsiemi. I quantificatori.
+Insiemi numerabili infiniti ($\N$) e non numerabili ($\R$) talmente tanti che non sono numerabili.
 
-Spazio campionario: Insieme che contiene tutti i possibili esiti dell'esperimento probabilistico. simbolo omega (Definizione).
+Altre cose che potranno tornarci utili:
 
-* sottrazione degli insiemi
+- **Inclusione** $A\sube B$ ($A$ sottoinsieme proprio di $B$) $A\sub B$ $A$ sottoinsieme proprio di $B$ infatti $\forall  x\in A \textup{ allora} (x\in B)$
+- **Complementare** $A^C=\{x|x\not\in A\}$
+- **Inters. e Unione** $A\cup B=\{x|x\in A\land x\in B\}\ \ \ A\cap B=\{x|x\in A\lor x\in B\}$
+- **Disgiunti** sse. $A\cap B=\empty$
+- **Insieme delle parti** $P(A)={B|B\sube A}$
+- **sottrazione** degli insiemi
+- **partizione** dato `S` siano partizione di s una collezione di insiemi (A) con le seguenti proprietà:
+  - A due a due disgiunti
+  - Unione di tutti gli insiemi che ricoprono `S`
+- Diagrammi di venn.
+- Leggi di De Morgan
 
-Dato `S` siano partizione di s una collezione di insiemi (A) con le seguenti proprietà:
+## Lo spazio Campionario
 
-- A due a due disgiunti
-- Unione di tutti gli insiemi che ricoprono `S`
+<Definizione>
+  Lo spazio campionario è l'insieme che contiene tutti i possibili esiti dell'esperimento probabilistico. In simboli
+  $\Omega$ (omega maiuscola).
+</Definizione>
 
-Diagrammi di venn.
-
-(quadrato gli universi)
-
-Leggi di De Morgan
-
---- fine ripasso ---
+È un insieme che contiene tutti i possibili **esiti elementari** dell'esperimento probabilistico. Che sono le cose che rappresentano i possibili esisti.
+esempio: se lancio un dato sono l'insieme sarà composto da `1,2,3,4,5,6`. **N.B.:** i valori `1,2,3,...` sono come delle etichette che non rappresentano la _quantità_, se il dado fosse colorato avremmo potuto usare l'insieme formato dai colori. La cosa importante è ci sia una chiara definizione.
 
 ## Modello probabilistico
 
-È l'oggetto matematico che fornisce la rappresentazione astratta dell'esperimento probabilistico (definizione).
-
+<Definizione>
+È l'oggetto matematico che fornisce la **rappresentazione astratta** dell'esperimento probabilistico (definizione).
 Il modello è il composto di due oggetti:
 
-1. omega - lo spazio campionario. Quindi omega nell'esempio del dato deve contenere 3 oggetti
-1. Legge di probabilità `P.
+1. $\Omega$ - lo spazio campionario.
+1. Legge di probabilità $P$.
 
-
-## Lo spazio campionario
-
-È un insieme che contiene tutti i possibili **esiti elementari** dell'esperimento probabilistico. Che sono le cose che rappresentano i possibili esisti.
-esempio: se lancio un dato sono `1,2,3,4,5,6`.
-
-Che in una definizione rigorsa ci interessa anche la codifica, l'imporante è che sia chiaro se non è ovvio la spieghi. Sempre nell'esempio `2` intende la faccia con la rappresentazione 2 non la quantità. Se il dado fosse colorato potremmo definire i colori. In sostanza sono delle etichette
+</Definizione>
 
 ## Legge di probabilità
 
-La legge di probabilità è una funzione. Associano l'insieme di partenza sono i sottoinsieme di omega e ci associano una probabilità. Quindi P(omega) è la famiglia delle parti di omega. È l'insime con elementi i sottoinsiemi di omega. La P prende un sottoinsieme di omega ad un numero. Questi sottoinsiemi d'ora in poi li chiameremo **elementi**. Esempio: lancio del dado; A evento che esce un numero pari. A = {2,4,6} (che è un sottoinsieme) P(A) =1/2. 
+La legge di probabilità ($\mathbb P$) è una funzione. L'insieme di partenza sono i sottoinsieme di $\Omega$ e si associano una probabilità. In simboli
+$\mathbb P(\Omega) \longrightarrow \R$
+
+$P(\Omega)$ è la famiglia delle parti di omega.
 
 La P (legge di probabilità) non è una qualunque funzione ma deve avere queste proprietà:
 
-- P(A) >= 0 cioè deve essere positiva o nulli
-- p(omega) = 1, cioè lo spazio campionario deve essere finito. (1 è indicativo). In soldoni che la somma di tutto omega deve avere somma finita
-- Se A e B che sono sottoinsiemi di omega e sono disgiunti. Se prendo l'unione di A e B deve essere uguale alla somma di probabilità di a e B **additività**. Questo stesso concetto si deve applicare a sottoinsiemi infiniti. L'idea è quella che il concetto di area (probabilità di area).
-0
-
-
-
-una funzione è una relazione elementi di un insieme ad un altro. In più tutti gli elementi di A so dove mandarli e per ogni elemento esiste una sola corrispondenza in B.
-
-
+- $\mathbb P(A) \geq 0$ cioè deve essere **positiva o nulla**
+- $\mathbb P(\Omega) = 1$, cioè lo spazio campionario deve essere **finito**. (`1` è indicativo). In soldoni: la somma di tutte le probabilità deve avere il valore che indichiamo (in questo caso `1`)
+- Siano $A$ e $B$ due sottoinsiemi di $\Omega$ disgiunti. Se prendo l'unione di $A$ e $B$ deve essere uguale alla somma di probabilità di $a$ e $b$ **additività**. In simboli: $(A\cup B)=P(A)+P(B)$. Questo stesso concetto si deve applicare a sottoinsiemi infiniti. L'idea è quella del concetto di area (probabilità di area).

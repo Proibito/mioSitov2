@@ -2,7 +2,7 @@ import { Component, ReactNode, MouseEvent } from "react";
 import { muoviPagina } from "../../functions/muoviAllaPosizione";
 import stile from "./sideBarHeading.module.scss";
 
-import { throttle } from "lodash";
+import throttle from "lodash/throttle";
 export class SideBarHeadings extends Component<{ headings: { depth: number; slug: string; text: string }[] }> {
   headings = this.props.headings.filter(
     (elemento) => elemento.depth == 2 || elemento.depth == 3 || elemento.depth == 1

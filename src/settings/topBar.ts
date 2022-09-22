@@ -5,6 +5,5 @@ export const topBarImpostazioni: topBar = {
   elementiSinistra: [
     { testo: "Home", link: "/" },
     { testo: "Appunti 🎓", link: "/appunti/" },
-    { testo: "Edoardo", link: "/edoardo" },
   ],
 };
