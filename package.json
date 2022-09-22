@@ -13,7 +13,10 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^3.1.0",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "rehype-katex": "^6.0.2",
+    "remark-math": "^5.1.1",
+    "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
     "@astrojs/image": "^0.5.0",

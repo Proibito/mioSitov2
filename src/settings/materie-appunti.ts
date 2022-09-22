@@ -4,4 +4,8 @@ export interface MateriaAppunti {
   link: string
 }
 
-export const MATERIEAPPUNTI: MateriaAppunti[] = [{ titolo: "Sistemi Operativi 💻", descrizione: "", link: "sistemi-operativi" }];
+export const MATERIEAPPUNTI: MateriaAppunti[] = [
+  { titolo: "Sistemi Operativi 💻", descrizione: "", link: "sistemi-operativi" },
+  { titolo: "Compilatore 🥎", descrizione: "", link: "sistemi-operativi" },
+  { titolo: "Sistemi Operativi 💻", descrizione: "", link: "sistemi-operativi" },
+];

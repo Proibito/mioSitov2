@@ -8,7 +8,9 @@ const { title, posts } = Astro.props;
 
 function getTitolo(post: any): string {
   return (
-    post.getHeadings()[post.getHeadings().findIndex((head: any) => head.depth == 1)]?.text ?? "non ancora definito"
+    post.getHeadings()[
+      post.getHeadings().findIndex((head: any) => head.depth == 1)
+    ]?.text ?? "non ancora definito"
   );
 }
 ---
@@ -21,7 +23,8 @@ function getTitolo(post: any): string {
           <article>
             <a href={post.url}>
               <span class="titolo">{getTitolo(post)}</span>
-              <span class="descrione">{post.frontmatter.descrizione}</span>
+              <p class="descrizione">{post.frontmatter.descrizione}</p>
+              <span class="link">Leggi tutto</span>
             </a>
           </article>
         ))
@@ -44,7 +47,11 @@ function getTitolo(post: any): string {
     border: 3px solid $coloreBordoGrigio;
     margin: 1rem 0;
     border-radius: $bordiBottoni;
-    background: linear-gradient(45deg, rgba($colorePrincipale, 0.05) 40%, white 60%);
+    background: linear-gradient(
+      45deg,
+      rgba($colorePrincipale, 0.05) 40%,
+      white 60%
+    );
     background-size: 400%;
     background-position: 100%;
     transition: all $animazione;
@@ -64,6 +71,7 @@ function getTitolo(post: any): string {
   .titolo {
     font-size: 1.25rem;
     display: block;
+    color: $coloreEvidenziato;
   }
 
   .wrapper {
@@ -71,7 +79,22 @@ function getTitolo(post: any): string {
   }
 
   .titolo::first-letter {
-    display: none;
     text-transform: uppercase;
+  }
+
+  .descrizione {
+    margin-bottom: 0;
+    line-height: 1.35rem;
+  }
+
+  .descrizione:after {
+    content: "...";
+  }
+
+  .link {
+    display: block;
+    color: $colorePrincipale;
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
   }
 </style>
