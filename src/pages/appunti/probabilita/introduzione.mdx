@@ -49,8 +49,8 @@ Altre cose che potranno tornarci utili:
 ## Lo spazio Campionario
 
 <Definizione>
-  Lo spazio campionario è l'insieme che contiene tutti i possibili esiti dell'esperimento probabilistico. In simboli
-  $\Omega$ (omega maiuscola).
+  Lo spazio campionario è l'insieme che contiene tutti i possibili esiti
+  dell'esperimento probabilistico. In simboli $\Omega$ (omega maiuscola).
 </Definizione>
 
 È un insieme che contiene tutti i possibili **esiti elementari** dell'esperimento probabilistico. Che sono le cose che rappresentano i possibili esisti.
@@ -79,3 +79,88 @@ La P (legge di probabilità) non è una qualunque funzione ma deve avere queste 
 - $\mathbb P(A) \geq 0$ cioè deve essere **positiva o nulla**
 - $\mathbb P(\Omega) = 1$, cioè lo spazio campionario deve essere **finito**. (`1` è indicativo). In soldoni: la somma di tutte le probabilità deve avere il valore che indichiamo (in questo caso `1`)
 - Siano $A$ e $B$ due sottoinsiemi di $\Omega$ disgiunti. Se prendo l'unione di $A$ e $B$ deve essere uguale alla somma di probabilità di $a$ e $b$ **additività**. In simboli: $(A\cup B)=P(A)+P(B)$. Questo stesso concetto si deve applicare a sottoinsiemi infiniti. L'idea è quella del concetto di area (probabilità di area).
+
+## Esempi modelli probabilistici
+
+### Esempio 1
+
+_il lancio di una moneta equa_ -> esperimento probabilistico
+
+La domanda: formulazione del modello probabilistico
+
+Ricordiamo per essere un modello devo dare:
+
+- $\Omega$ spazio campionario
+- $\mathbb P$ misura di probabilità
+
+$\Omega$ è lo spazio campionario è l'insieme composto da tutti gli esiti possibili, e in più devo scegliere _l'etichetta_ (il nome delle facce). in questo caso sceglieremo $\Omega = \{ \textup{testa}, \textup{ croce} \}$ (per esempio se fossimo inglese le avremmo potuto scriverlo in inglese).
+
+$\mathbb P$ è una funzione che esprime la misura della Probabilità. È una famiglia delle parti di $\Omega$. $\mathbb P(\Omega) = \{ \{t\}, \{c\}, \emptyset, \Omega \}$ specificare $\mathbb P$ vuole dire specificare i seguenti valori:
+
+- $\mathbb P(o)$
+- $\mathbb P(\Omega)$
+- $\mathbb P(\{t\})$
+- $\mathbb P(\{c\})$
+
+Quindi noi sappiamo già che $\mathbb P(\Omega) = 1$ per la regola 2 cioè la finitezza [vedi](./introduzione.mdx)
+
+- $\mathbb P(\emptyset) = 0$ lo deduco tramite la deduzione hce se la $\mathbb P(\Omega) = 1$ e tramite la regola dell'attività e della finezza si deduce che la $\mathbb P(\emptyset) = 0$
+
+- Ora calcoliamo la $\mathbb P$ dei _singoletti_ (`t,c`), ora useremo al frase `moneta equa`, e con equità si intende che la monete non sia truccata e quindi testa e croce hanno la stessa equità, in simboli $\mathbb P(t) = \mathbb P(c)$, noi a intuito sappiamo che il valore sarà uguale a $0.5$. Senza induzione avremmo potuto pensare: dato che $\mathbb P(\Omega) = 1$ e io sto cercando due numeri uguali che sommano a `1` è subito chiaro che i due saranno uguali a `0.5`.
+
+### Esempio 2
+
+_lancio un dado a $n$ facce_
+
+- $\Omega$ = \{1,2,3,4,5,6\} (se il dado fosse stato colorato avremmo potuto usare l'iniziale del nome del colore della faccia del dado)
+- $\mathbb P(\Omega) = \{\emptyset, \Omega, \{1\}, \{2\}, ..., \{1,2\}, \{1,3\}, ... \}$ eccetera con tutte le cardinalità. Grazie all'utilizzo del coefficiente binomiale riusciamo a contare quanto è $|\mathbb P|$.
+
+Risoluzione:
+
+- $\mathbb P(\emptyset) = 0$
+- $\mathbb P(\Omega) = 1$
+- Calcolo i _singoletti_ con lo stesso principio dell'esempio 1, l'equità del dado; cioè tutti i _singoletti_ devono essere uguali. $\mathbb P(\textup{singoletto}) = \frac{1}{6}$ (con singoletto intendo `1 o 2 o 3 ecc..`)
+- Calcolo la $\mathbb P$ composto da due elementi (per esempio esce il `3 o 4`), dato che $\mathbb P(\{3\} \cup \{4\}) = \mathbb P(\{1\}) + \mathbb P(\{2\}) = \frac{1}{6} + \frac{1}{6}$. Con lo stesso ragionamento prendendo l'insieme `P` composto da $n$ elementi basta fare: $\mathbb P(a) = \frac{|a|}{|n|}$. spesso $n$ e $a$ vengono chiamati $\frac{\textup{casi favorevoli}}{\textup{casi possibili}}$
+
+La $\mathbb P$ si può anche chiamare anche **uniforme discreta**
+
+### Esempio 3
+
+_lancio 3 volte una moneta equa_
+
+---
+
+- $\Omega = \{ ttt, ccc, tcc, ctc, ...\}$ dove la sua cardinalità è `8` perchè $2^3=8$ dove `2` sono i simboli che posso scegliere per ogni posizione e invece `3` è il numero delle posizione
+- $\mathbb P(\Omega)$:
+  - P dei _singoletti_ $\mathbb P(\{t,t,t\})$ (la moneta è equa) cerco una P la quale per tutti i singoletti siano uguali (come tutti gli atri esempi che abbiamo visto). Lanciare una moneta `3` volte è uguale a lanciare un dado a 8 facce, da ciò si può usare la P uniforme discreta. $\mathbb P(\{ttt\}) = \frac{1}{8}$
+  - P "il primo lancio è testa" $P = \frac{1}{2}$
+  - B = "ottengo 2 teste" $B = \{ttc, tct, ctt \}$ n.b.: ttt non è valido perchè ha più di 2 teste, se avessi detto almeno avremmo potuto aggiungerlo, un'altro esempio è dire più di due teste vuol dire ottengo 3 testa
+
+## Probabilità di $\mathbb P$ detotte dagli assiomi
+
+Se $A,B,C$ sono sottoinsiemi di $\Omega$:
+
+1. $A\sube B → \mathbb P(A)≤\mathbb P(B)$ se A sottoinsieme proprio di **monotonia**, pensando alla $\mathbb P$ come area ci dice che $A$ è più piccolo dell'area di $B$.
+2. $\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)-P(A\cap B)$ La legge dall'inclusione esclusione, di non contare due volte la stessa probabilità
+3. **Subaddività** viene dalla due se togliamo un numero maggiore di 0 $\mathbb P(A\cup B)≤ \mathbb P(A)+\mathbb P(B)$
+4. Sempre il principio di inclusione esclusione
+
+## Esercizi
+
+### Es 1
+
+_Una scatola contiene 3 biglie: una rossa, una verde e una blu. Considero il seguente esperimento: estraggo una biglia, la reimbussolo(parola coniata che significa: "la guardo e la rimetto dentro") e ne estraggo una seconda. Scrivere un possibile modello probabilistico e calcolare la probabilità che le due biglie estratte siano uguali_
+
+Possibile modello
+
+- $\Omega = \{(w_1,w_2)\} \lq w_1 \in \{r,v,b\}$ la cardinalità di $\Omega$ è $3^2 = 9$ (3 possibilità, 2 estrazioni)
+- $\mathbb P$ posso usare la P come uniforme discreta? sì perchè $\Omega$ è finito e le estrazioni casuali continuano a garantire equità dei singoletti.
+
+$A =$ l'evento che "le due biglie uguali sono uguali"  
+$A = \{(v,v), (b,b), (r,r) = \mathbb P(A) = \frac{3}{9}\}$
+
+### Esercizio due
+
+_Un dado a 4 facce equo viene lanciato ripetutamente fino a che esce un numero pari. Scrivere lo spazio campionario per questo esperimento. Quanti sono gli esiti possibili? posso usare la legge uniforme discreta?_
+
+- $\Omega$ dato che non so quanti lanci farò $\Omega$ e quando uscirà un pari. $\Omega = \{\ (w_1, w_2, w_3, ..., w_n) \}$ $w_i \in \{1,2,3,4 \}$ sapendo però che l'ultimo numero è pari e tutti gli altri dispari; $\Omega$ ha cardinalità infinita dato che potrei lanciare infinite volte e ottenere sempre un dispari. Non posso usare la legge uniforme discreta perchè $\Omega$ non è finito.

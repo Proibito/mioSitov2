@@ -1,0 +1,93 @@
+---
+layout: "../../../layouts/PostsLayout.astro"
+---
+
+# Che cos'è un sistema operativo
+
+Non esiste una vera e propria definizione di sistema operativo per via della sua vastità; in generale
+un sistema operativo è il solo programma che funziona sempre nel calcolatore, chiamato **kernel**.
+Spesso però il kernel è affiancato ad altri programmi, come la GUI presente in Windows e non in Linux, questi si chiamano
+**programmi di sistema** e sono associati al sistema operativo. I programmi di sistema non fanno parte necessariamente del kernel.
+
+Infine un sistema operativo può possedere dei **programmi applicativi** che non sono correlati al funzionamento di quest'ultimo.
+
+Oggigiorno molti nei sistemi operativi mobili non sono costituiti solo da un kernel ma anche da un **middleware**, ovvero da una collezione
+di ambienti software che fornisce servizi aggiuntivi per chi
+sviluppa applicazioni. Per esempio, entrambi i principali sistemi operativi per dispositivi mobili (iOS di Apple e Android di Google) oltre a un kernel di base dispongono di un middleware che supporta (tra l’altro) database, multimedialità e grafica.
+
+# Interruzioni
+
+Le iturruzioni devo aggiungerlo
+
+
+## Gerarchia delle memorie 1.2.2
+
+Ci sono due tipi di memoria:
+
+1. La **memoria principale** chiamata anche RAM, è la memora indirizzata direttamente dalle istruzioni eseugite dalla CPU. È una memoria volatile cioè che perde i dati una volta spenta la macchina
+
+2. La **memoria secondaria** dove risiedono permanentemente le informazioni ovvero che se spengo il PC il giorno dopo i miei dati ci saranno ancora.
+
+IMMAGINE
+
+La gerarchia delle memorie sono dalle più veloci alle più lente. Le memorie più capienti sono più lente, le memorie veloci sono meno capienti e più costose.
+
+Ci sono poi delle memorie velocissime ma piccole piccola come la memoria cache e i registri che si parla di decimi di nanosecondi, tutte e due sono memorie volatili.
+
+
+## Il concetto di caching 1.8.3
+
+La tecnologia con i suoi limiti non permette di avere per esempio 500 GB di registri. Le memorie nelle sue gerarchie funge da chache alla memoria più "in alto", per esempio la RAM fa da cache dell'Hard Disk poi la Chache fa da chace alla RAM e così via.
+
+Ci sono due modi di implementare la RAM statica e dinamica:
+nella ram dinamica c'è il consendatore che si carica e si scarica. In circa due secondi il condensatore si scarica e quindi non sappiamo più se era carico o scarico (quindi o 0 o 1). I personal computer hanno tutti la memoria dinamica. Per costruirlo servono 1 transitor e 1 condensatore.
+
+Invece i registri hanno la ram statica, la ram statica invece una il concetto dei flip flip nel quale servono 6 transitor: occupa più spazio, costa di più per questa ragione possiamo usarne di meno in più ha dei tempi più lenti di accesso.
+
+Ecco spiegato il motivo per il quale abbiamo una gerarchia all'interno del PC.
+
+Un altro motivo: ogni dispositivo input/output (immaginiamo una tastiera) parla attraverso il controller il quale è regolato da un piccolo semplice processore esso si chiamato buffer. Il SO interagisce con il controller attraverso un software apposito noto come driver del dispositivo.
+Per avviare un operazione il sistema operativo tramite il driver. 
+
+Questo tipo di connessione non va bene per le memorie con tantissime informazioni, questi vengono spostare a blocchi di 1024,2048,4096 blocchi. Per efficienza la ram non coinvolge troppo il SO c'è un canle chiamate "direct memory access" (**DMA**).
+
+## Multitasking e Time-sharing
+
+Qundo lanciamo unn programma -> il sistema oprativo lo copia in RAM -> "fa partire il programma". IN questa operazione notiamo che il sistema opartivo ci vuole rendere la vita semplice, perchè noi non dobbiamo sapere dove il tutto è salvato.
+Sappiamo che c'è già un programma in esecuzione, magari questo programma ha una pausa di 10ms. Il sistema operativo invece che lasciare la CPU inoccupata la usa. Questo è il concetto di multiprogrammazione (multitasking). Quando un programma si ferma temporaneamente, il sistema operativa ha già in RAM un altro programma a cui assegnare la CPU. Come se ci fosse una coda per la CPU.
+
+---
+
+Alcune applicazione degli unenti però sono **interattive** (come un editor di testo), cioè aspetta che l'utente faccia qualcosa. Ci sono anche sistemi più utenti. Ma cosa succede se il programma "è in attesa" e quindi la CPU è sempre occupata?
+Per evitare queste situazione si usa il **time-sharing** cioè di dare distribuire il tempo della CPU (ad esempio ogni 10ms) così da dare una impressione di simultaneità. In questo modo più programmi possono girare "contemporaneamente"
+
+Questa è una semplificazione ci sono alcuni problemi che dobbiamo affrontare.
+
+
+Come un programma si protegge
+
+### Duplice modalità di funzionamento
+
+Nei moderno procosseori le istruzioni possono essere di due modalità: privilegi e no. Ci sono istruzioni delicate che possono essere eseguite solo dal sistema operativo le **operazioni di sistema**. I programmi degli utenti possono chiedere le chiamate utenti le system calls, una system calls provacano un'eccezzione.
+Quando chiamiamo un system call viene modificato il bit di modalità il che comporta poter eseguire istruzioni privilegiate, quando termina l'istruzione privilegiata il bit di sistema viene rimesso a 0.
+
+Si dice spesso che si usa il codice in **kernel mode**. Istruzioni potenzialmente pericolose non posso essere eseguite dall'utente.
+
+### Timer
+
+Immaginiamo un ciclo infinito, come liberare la CPU? COn il **timer** hardware. Il sistema operativa fa partire un timer che al termine della sua scadenza fa partire un'altro programma. per esempio se si hanno 10ms il progrmma 1 usa 10ms poi passa al programma 2 e così via.
+
+Quando il timer scade manda una System Call. Questo principio è il **time sharing**.
+
+### Protezione della memoria
+
+Cosa succede se un progrmma modifica i dati di un altro programma o ancora peggio quello del sistema operativo.
+
+Ci sono due registri dedicati alla memorizzazione della base e la fine della porzione di memoria dell'area della ram dedicata al programma. Se il programma prova a modificare una porzione fuori da quell'area l'harware glielo impedirà.
+
+Concettualmente è così i pc moderni hanno una sofisticatezza maggiore.
+
+## Riassunto
+
+I sistemi operativi sono dei **mediatori** tra l'hardware e il software. I sistemi operativi si evolvo. Testo.
+
