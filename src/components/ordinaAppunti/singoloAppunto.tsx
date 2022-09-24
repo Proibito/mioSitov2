@@ -10,9 +10,15 @@ export class SingoloAppunto extends Component<{ post: PostPreviewType }> {
           <div className={stile.rigaTitolo}>
             <span className={stile.titolo}>{this.props.post.titolo}</span>
             {this.props.post.frontmatter.capitolo ? (
-              <span className={stile.ultimaModifica}>Capitolo: {this.props.post.frontmatter.capitolo}</span>
+              <span className={stile.ultimaModifica}>
+                Capitolo: {this.props.post.frontmatter.capitolo}
+              </span>
             ) : null}
-            <span className={stile.ultimaModifica}>Ultima modifica - {this.props.post.ultimaModifica}</span>
+            <span className={stile.ultimaModifica}>
+              {this.props.post.ultimaModificaInNumeri == 0
+                ? null
+                : `Ultima modifica - ${this.props.post.ultimaModifica}`}
+            </span>
           </div>
           <p className={stile.descrizione}>{this.props.post.frontmatter.descrizione}</p>
           <span className={stile.link}>Leggi tutto</span>
