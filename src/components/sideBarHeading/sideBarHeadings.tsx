@@ -1,7 +1,6 @@
 import { Component, ReactNode, MouseEvent } from "react";
 import { muoviPagina } from "../../functions/muoviAllaPosizione";
 import stile from "./sideBarHeading.module.scss";
-
 import throttle from "lodash/throttle";
 
 interface headings {
@@ -10,14 +9,9 @@ interface headings {
   text: string;
 }
 
-export class SideBarHeadings extends Component<
-  {
-    headings: { depth: number; slug: string; text: string }[];
-  },
-  { headings: headings[] }
-> {
+export class SideBarHeadings extends Component<any, { headings: headings[] }> {
   precedente: HTMLElement | null = null;
-  headings: headings[] = [];
+
   constructor(props: any) {
     super(props);
     this.state = { headings: [] };
@@ -32,8 +26,7 @@ export class SideBarHeadings extends Component<
 
   componentDidMount(): void {
     const teste: headings[] = [];
-    const headersRaw =
-      document.querySelectorAll<HTMLHeadingElement>("h1, h2, h3");
+    const headersRaw = document.querySelectorAll<HTMLHeadingElement>("h1, h2, h3");
     headersRaw.forEach((elemento) => {
       const testa: headings = {
         depth: parseInt(elemento.tagName.replace(/^\D+/g, "")),

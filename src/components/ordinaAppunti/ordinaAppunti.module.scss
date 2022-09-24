@@ -1,0 +1,61 @@
+@import "../../scss/variabili.scss";
+
+$spessoreBordi: 3px;
+
+.comandi {
+  display: flex;
+}
+
+.fine {
+  margin-left: auto;
+}
+
+.ordinamento {
+  display: flex;
+  border-radius: $bordiBottoni;
+  border: $spessoreBordi solid $colorePrincipale;
+  width: fit-content;
+
+  div:first-child {
+    border-left: none;
+  }
+
+  div {
+    padding: $paddingBottoni;
+    cursor: pointer;
+    background-color: white;
+    border-left: $spessoreBordi solid $colorePrincipale;
+    transition: background-color $velocitaNormaleTransazione;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: $colorePrincipaleChiaro;
+    }
+  }
+
+  div[data-attivo="true"] {
+    color: white;
+    background-color: $colorePrincipale;
+  }
+}
+
+@include tablet() {
+  .comandi {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fine {
+    margin: 0;
+  }
+}
+
+@include telefono {
+  .ordinamento {
+    div {
+      padding: 0.7rem;
+    }
+  }
+}
