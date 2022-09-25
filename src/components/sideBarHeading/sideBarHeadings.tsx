@@ -1,13 +1,21 @@
 import { Component, ReactNode, MouseEvent } from "react";
 import { muoviPagina } from "../../functions/muoviAllaPosizione";
 import stile from "./sideBarHeading.module.scss";
-
 import throttle from "lodash/throttle";
-export class SideBarHeadings extends Component<{ headings: { depth: number; slug: string; text: string }[] }> {
-  headings = this.props.headings.filter(
-    (elemento) => elemento.depth == 2 || elemento.depth == 3 || elemento.depth == 1
-  );
+
+interface headings {
+  slug: string;
+  depth: number;
+  text: string;
+}
+
+export class SideBarHeadings extends Component<any, { headings: headings[] }> {
   precedente: HTMLElement | null = null;
+
+  constructor(props: any) {
+    super(props);
+    this.state = { headings: [] };
+  }
 
   cliccato(clickEvent: MouseEvent<HTMLAnchorElement>, destinazione: string) {
     clickEvent.preventDefault();
@@ -17,7 +25,21 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
   }
 
   componentDidMount(): void {
-    console.log(this.props);
+    const teste: headings[] = [];
+    const headersRaw = document.querySelectorAll<HTMLHeadingElement>("h1, h2, h3");
+    headersRaw.forEach((elemento) => {
+      const testa: headings = {
+        depth: parseInt(elemento.tagName.replace(/^\D+/g, "")),
+        slug: elemento.id,
+        text: elemento.innerHTML,
+      };
+
+      teste.push(testa);
+    });
+
+    this.setState({
+      headings: teste,
+    });
 
     window.addEventListener("scroll", throttle(this.scrolla, 500));
   }
@@ -29,7 +51,7 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
   scrolla() {
     const headers = document.querySelectorAll("h1, h2, h3");
     const filtrati = Array.prototype.slice.call(headers).filter((elem) => {
-      return window.innerHeight - elem.getBoundingClientRect().top > 0;
+      return window.innerHeight / 2 - elem.getBoundingClientRect().top > 0;
     });
     const elemento = filtrati[filtrati.length - 1] as HTMLElement;
     const id = elemento.id;
@@ -45,7 +67,7 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
   render(): ReactNode {
     return (
       <div className={stile.wrapper}>
-        {this.headings.map((head) => {
+        {this.state.headings.map((head) => {
           return (
             <a
               key={head.slug}
@@ -53,7 +75,7 @@ export class SideBarHeadings extends Component<{ headings: { depth: number; slug
               onClick={(e) => this.cliccato(e, head.slug)}
               href={`#${head.slug}`}
             >
-              {head.text}
+              <span dangerouslySetInnerHTML={{ __html: head.text }}></span>
             </a>
           );
         })}

@@ -1,0 +1,51 @@
+@import "./variabili.scss";
+
+$spessoreBordo: 5px;
+
+.conteinerSpegazioni {
+  $paddingBox: 2rem;
+
+  padding: 1rem;
+  margin: 2em 0;
+  margin-left: -$paddingBox;
+  padding-left: $paddingBox;
+  border-radius: $bordiBottoni;
+
+  .intestazioneSpiegazione {
+    display: flex;
+    gap: 1em;
+    font-weight: bold;
+    align-items: center;
+    font-size: 1.25rem;
+
+    span::first-letter {
+      text-transform: uppercase;
+    }
+
+    img {
+      height: 40px;
+    }
+  }
+}
+
+@include tablet {
+  .conteinerSpegazioni {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+}
+
+@mixin box($nomeClasse, $colore) {
+  .#{$nomeClasse}Container {
+    background-color: mix($colore, rgb(236, 236, 236), 10%);
+    border-left: 5px solid $colore;
+  }
+}
+
+@include box("attenzione", red);
+@include box("definizione", $colorePrincipale);
+@include box("notaBene", #e6a700);
+
+a {
+  color: $colorePrincipale;
+}

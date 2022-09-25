@@ -1,19 +1,11 @@
 ---
 import TopBar from "../components/topBar/topBar.astro";
 import Layout from "./Layout.astro";
-import fs from "fs";
-import moment from "moment";
 import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
 import TabellaSimboli from "../components/tabellaSimboli.astro";
 
-const astroProps = Astro.props;
-moment.locale("it");
-
-let ultimaModificaDate = fs.statSync(astroProps.file).mtime;
-
-const ultimaModifica = moment(ultimaModificaDate).format("DD MMMM YYYY");
-
-const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+const titolo: string = Astro.props.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+import "../scss/remarkPlugin.scss";
 ---
 
 <link
@@ -24,6 +16,7 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
   rel="preload"
   as="style"
 />
+
 <Layout title={titolo}>
   <nav class="testa" id="barra">
     <TopBar />
@@ -33,10 +26,14 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
       <div class="articolo">
         <slot />
       </div>
-      <div class="sideBar"><SideBarHeadings client:idle headings={astroProps.headings} /></div>
+      <div class="sideBar"><SideBarHeadings client:idle /></div>
     </div>
     <div>
-      {Astro.props.frontmatter.formule.length > 0 ? <TabellaSimboli simboli={Astro.props.frontmatter.formule} /> : null}
+      {
+        Astro.props.frontmatter.formule.length > 0 ? (
+          <TabellaSimboli simboli={Astro.props.frontmatter.formule} />
+        ) : null
+      }
     </div>
   </main>
 </Layout>
@@ -51,7 +48,7 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
   .testa {
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 50;
     background-color: white;
   }
 
@@ -85,5 +82,9 @@ const titolo: string = astroProps.headings.filter((titolo: any) => titolo.depth 
     .sideBar {
       display: none;
     }
+  }
+
+  a {
+    color: $colorePrincipale;
   }
 </style>
