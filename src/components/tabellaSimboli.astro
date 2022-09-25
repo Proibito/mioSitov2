@@ -5,7 +5,7 @@ export interface Props {
 import "../scss/globale.scss";
 const { simboli } = Astro.props;
 
-import katex from 'katex';
+import katex from "katex";
 ---
 
 <table>
@@ -25,5 +25,11 @@ import katex from 'katex';
     ))
   }
 
+  <style>
+    table {
+      overflow: auto;
+      display: block;
+    }
+  </style>
 
 </table>

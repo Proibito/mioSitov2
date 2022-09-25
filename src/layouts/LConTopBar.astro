@@ -10,7 +10,6 @@ const { title } = Astro.props;
 ---
 
 <Layout title={title}>
-  <div id="portalNav"></div>
   <nav class="barra">
     <TopBar />
   </nav>
@@ -26,9 +25,5 @@ const { title } = Astro.props;
     top: 0;
     z-index: 100;
     background-color: white;
-  }
-
-  #portalNav {
-    z-index: 101;
   }
 </style>
