@@ -5,6 +5,12 @@ import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
 import TabellaSimboli from "../components/tabellaSimboli.astro";
 
 const titolo: string = Astro.props.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+import "../scss/remarkPlugin.scss";
+import shinki from "shiki";
+
+// const tema = shinki.loadTheme("rose-pine");
+
+shinki.getHighlighter({ theme: "css-variables" });
 ---
 
 <link
@@ -28,7 +34,11 @@ const titolo: string = Astro.props.headings.filter((titolo: any) => titolo.depth
       <div class="sideBar"><SideBarHeadings client:idle /></div>
     </div>
     <div>
-      {Astro.props.frontmatter.formule.length > 0 ? <TabellaSimboli simboli={Astro.props.frontmatter.formule} /> : null}
+      {
+        Astro.props.frontmatter.formule.length > 0 ? (
+          <TabellaSimboli simboli={Astro.props.frontmatter.formule} />
+        ) : null
+      }
     </div>
   </main>
 </Layout>

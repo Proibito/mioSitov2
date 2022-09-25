@@ -1,12 +1,14 @@
 $colorePrincipale: #008000;
 $coloreBarraSotto: darken($colorePrincipale, 15%);
 $colorePrincipaleChiaro: lighten($colorePrincipale, 75);
+$coloreSfondo: rgb(245, 245, 245);
 
 $coloreTestoMoltoChiaro: rgb(119, 119, 119);
 $coloreTesto: #292e29;
 $coloreEvidenziato: darken($colorePrincipale, 100);
 $coloreDisattivato: rgb(155, 155, 155);
 $coloreBordoGrigio: rgb(221, 221, 221);
+$coloreSfondoCode: rgba(175, 184, 193, 0.2);
 
 $bordiBottoni: 5px;
 
