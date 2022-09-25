@@ -46,3 +46,6 @@ $spessoreBordo: 5px;
 @include box("definizione", $colorePrincipale);
 @include box("notaBene", #e6a700);
 
+a {
+  color: $colorePrincipale;
+}

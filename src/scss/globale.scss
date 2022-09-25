@@ -91,13 +91,17 @@ pre {
 
 .astro-code {
   padding: 2rem 1.5rem;
-  border: $coloreDisattivato 1px solid;
+  border: $coloreBordoGrigio 1px solid;
 }
 
 .codeInline {
   background-color: $coloreSfondoCode;
   padding: 0.2em 0.4em;
   margin: 0;
-  font-size: 85%;
+  font-size: 95%;
   border-radius: 6px;
+}
+
+h2 {
+  margin-top: 2em;
 }

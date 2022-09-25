@@ -18,73 +18,77 @@ sviluppa applicazioni. Per esempio, entrambi i principali sistemi operativi per 
 
 # Interruzioni
 
-Le iturruzioni devo aggiungerlo
+Le interruzioni devo aggiungerlo
 
-## Gerarchia delle memorie 1.2.2
+## 📝 Gerarchia delle memorie 1.2.2
 
 Ci sono due tipi di memoria:
 
-1. La **memoria principale** chiamata anche RAM, è la memora indirizzata direttamente dalle istruzioni eseugite dalla CPU. È una memoria volatile cioè che perde i dati una volta spenta la macchina
+1. La **memoria principale** chiamata anche RAM, è la memoria indirizzata direttamente dalle istruzioni eseguite dalla CPU. È una memoria volatile cioè che perde i dati una volta spenta la macchina
 
-2. La **memoria secondaria** dove risiedono permanentemente le informazioni ovvero che se spengo il PC il giorno dopo i miei dati ci saranno ancora.
+2. La **memoria secondaria** è il luogo in cui risiedono permanentemente le informazioni ovvero se spengo il PC alla riaccensione i miei dati ci saranno ancora.
 
-IMMAGINE
+![Gerarchia Memoria](https://i.ibb.co/6YQS3Hw/gerarchia.png)
 
-La gerarchia delle memorie sono dalle più veloci alle più lente. Le memorie più capienti sono più lente, le memorie veloci sono meno capienti e più costose.
+La gerarchia delle memorie sono dalle più veloci alle più lente. Le memorie più capienti sono più lente 🐌, le memorie veloci sono meno capienti e più costose🤑🫰.
 
 Ci sono poi delle memorie velocissime ma piccole piccola come la memoria cache e i registri che si parla di decimi di nanosecondi, tutte e due sono memorie volatili.
 
 ## Il concetto di caching 1.8.3
 
-La tecnologia con i suoi limiti non permette di avere per esempio 500 GB di registri. Le memorie nelle sue gerarchie funge da chache alla memoria più "in alto", per esempio la RAM fa da cache dell'Hard Disk poi la Chache fa da chace alla RAM e così via.
+La tecnologia con i suoi limiti non permette di avere per esempio 500 GB di registri.
+Le memoria hanno una scala di gerarchia è la memoria "che sta più in alto" funge da cache a quella più in basso. Esempio (la RAM fa da cache per l'ssd)
 
+Per capire come mai non possiamo aumentare a sproposito i numeri dei registri facciamo una piccola digressione parlando di come sia fatta una memoria RAM.
 Ci sono due modi di implementare la RAM statica e dinamica:
-nella ram dinamica c'è il consendatore che si carica e si scarica. In circa due secondi il condensatore si scarica e quindi non sappiamo più se era carico o scarico (quindi o 0 o 1). I personal computer hanno tutti la memoria dinamica. Per costruirlo servono 1 transitor e 1 condensatore.
+nella ram dinamica c'è un condensatore che si carica e si scarica. In circa due secondi il condensatore si scarica e di conseguenza non sappiamo più se fosse carico o scarico (quindi o 0 o 1), dato che noi abbiamo bisogno di tenere vivo il dato il PC aggiorna il valore del condensatore ogni due secondi (circa). I personal computer hanno tutti la memoria dinamica. Per costruirla servono 1 transistor e 1 condensatore.
 
-Invece i registri hanno la ram statica, la ram statica invece una il concetto dei flip flip nel quale servono 6 transitor: occupa più spazio, costa di più per questa ragione possiamo usarne di meno in più ha dei tempi più lenti di accesso.
+I registri usano il concetto della memoria statica. La ram statica usa il funzionamento dei flip flip nel quale servono 6 transistor: occupa più spazio e costa di più. Questa è la ragione per cui conviene usarne di meno ma in maniera più efficiente.
 
 Ecco spiegato il motivo per il quale abbiamo una gerarchia all'interno del PC.
 
 Un altro motivo: ogni dispositivo input/output (immaginiamo una tastiera) parla attraverso il controller il quale è regolato da un piccolo semplice processore esso si chiamato buffer. Il SO interagisce con il controller attraverso un software apposito noto come driver del dispositivo.
 Per avviare un operazione il sistema operativo tramite il driver.
 
-Questo tipo di connessione non va bene per le memorie con tantissime informazioni, questi vengono spostare a blocchi di 1024,2048,4096 blocchi. Per efficienza la ram non coinvolge troppo il SO c'è un canle chiamate "direct memory access" (**DMA**).
+Questo tipo di connessione non va bene per le memorie con tantissime informazioni, questi vengono spostare a blocchi di 1024,2048,4096 blocchi. Per efficienza la ram non coinvolge troppo il SO c'è un canale chiamate "direct memory access" (**DMA**).
 
 ## Multitasking e Time-sharing
 
-Qundo lanciamo unn programma -> il sistema oprativo lo copia in RAM -> "fa partire il programma". IN questa operazione notiamo che il sistema opartivo ci vuole rendere la vita semplice, perchè noi non dobbiamo sapere dove il tutto è salvato.
-Sappiamo che c'è già un programma in esecuzione, magari questo programma ha una pausa di 10ms. Il sistema operativo invece che lasciare la CPU inoccupata la usa. Questo è il concetto di multiprogrammazione (multitasking). Quando un programma si ferma temporaneamente, il sistema operativa ha già in RAM un altro programma a cui assegnare la CPU. Come se ci fosse una coda per la CPU.
+Quando lanciamo unn programma -> il sistema operativo lo copia in RAM -> "fa partire il programma". In questa operazione notiamo che il sistema operativo ci vuole rendere la vita semplice perché noi non dobbiamo sapere dove il programma è salvato.
+
+Immaginiamo che ci sia già un programma in esecuzione e questo ha bisogno una pausa di 10ms. **Il sistema operativo invece che lasciare la CPU inoccupata la usa per un'altro programma**. Questo è il concetto di multiprogrammazione (multitasking). Quando un programma si ferma temporaneamente, il sistema operativa ha già in RAM un altro programma a cui assegnare la CPU. Come se ci fosse una coda per la CPU. Un po' come nell'immagine qui sotto (ma un po' più velocemente)
+
+![persone in coda che rappresentano i programmi](https://c.tenor.com/9QhYEwBkNwYAAAAd/line-up-kasabian.gif)
 
 ---
 
-Alcune applicazione degli unenti però sono **interattive** (come un editor di testo), cioè aspetta che l'utente faccia qualcosa. Ci sono anche sistemi più utenti. Ma cosa succede se il programma "è in attesa" e quindi la CPU è sempre occupata?
-Per evitare queste situazione si usa il **time-sharing** cioè di dare distribuire il tempo della CPU (ad esempio ogni 10ms) così da dare una impressione di simultaneità. In questo modo più programmi possono girare "contemporaneamente"
+Alcune applicazione degli unenti sono **interattive** (come un editor di testo), cioè aspetta che l'utente faccia qualcosa. Ci sono anche sistemi più utenti. Ma cosa succede se il programma "è in attesa"? La CPU è sempre occupata?
+Ovviamente no gli ingegneri hanno trovato una soluzione: il **time-sharing** cioè l'idea di distribuire il tempo della CPU (ad esempio ogni 10ms) così da dare una impressione di simultaneità. In questo modo più programmi possono girare "contemporaneamente"
 
 Questa è una semplificazione ci sono alcuni problemi che dobbiamo affrontare.
 
-Come un programma si protegge
+## Come un programma si protegge
 
 ### Duplice modalità di funzionamento
 
-Nei moderno procosseori le istruzioni possono essere di due modalità: privilegi e no. Ci sono istruzioni delicate che possono essere eseguite solo dal sistema operativo le **operazioni di sistema**. I programmi degli utenti possono chiedere le chiamate utenti le system calls, una system calls provacano un'eccezzione.
-Quando chiamiamo un system call viene modificato il bit di modalità il che comporta poter eseguire istruzioni privilegiate, quando termina l'istruzione privilegiata il bit di sistema viene rimesso a 0.
-
-Si dice spesso che si usa il codice in **kernel mode**. Istruzioni potenzialmente pericolose non posso essere eseguite dall'utente.
+Nei moderni processori le istruzioni possono essere di due modalità: con privilegi e no. Ci sono istruzioni delicate che possono essere eseguite solo dal sistema operativo le **operazioni di sistema**. I programmi degli utenti possono chiedere di fare delle system calls, una system calls provoca un'eccezione.
+Quando chiamiamo un system call viene modificato il bit di modalità il che comporta poter eseguire istruzioni privilegiate, quando termina l'istruzione privilegiata il bit di sistema viene rimesso a 0. <br/>
+Si dice spesso che si usa il codice in **kernel mode**. Istruzioni potenzialmente pericolose non possono essere eseguite dall'utente.
 
 ### Timer
 
-Immaginiamo un ciclo infinito, come liberare la CPU? COn il **timer** hardware. Il sistema operativa fa partire un timer che al termine della sua scadenza fa partire un'altro programma. per esempio se si hanno 10ms il progrmma 1 usa 10ms poi passa al programma 2 e così via.
+Immaginiamo un ciclo infinito, come liberare la CPU? Con il **timer hardware**. Il sistema operativa fa partire un timer che al termine della sua scadenza fa partire un'altro programma. per esempio se si hanno 10ms il programma 1 usa 10ms poi passa al programma 2 e così via.
 
 Quando il timer scade manda una System Call. Questo principio è il **time sharing**.
 
 ### Protezione della memoria
 
-Cosa succede se un progrmma modifica i dati di un altro programma o ancora peggio quello del sistema operativo.
+Cosa succede se un programma modifica i dati di un altro programma o ancora peggio quello del sistema operativo.
 
-Ci sono due registri dedicati alla memorizzazione della base e la fine della porzione di memoria dell'area della ram dedicata al programma. Se il programma prova a modificare una porzione fuori da quell'area l'harware glielo impedirà.
+Ci sono due registri dedicati alla memorizzazione della base e la fine della porzione di memoria dell'area della ram dedicata al programma. Se il programma prova a modificare una porzione fuori da quell'area l'hardware glielo impedirà.
 
-Concettualmente è così i pc moderni hanno una sofisticatezza maggiore.
+Concettualmente è così, i pc moderni hanno una sofisticatezza maggiore.
 
 ## Riassunto
 
-I sistemi operativi sono dei **mediatori** tra l'hardware e il software. I sistemi operativi si evolvo. Testo.
+I sistemi operativi sono dei **mediatori** tra l'hardware e il software. I sistemi operativi si evolvo.

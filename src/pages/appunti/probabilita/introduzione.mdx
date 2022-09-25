@@ -1,5 +1,6 @@
 ---
 layout: "../../../layouts/PostsLayout.astro"
+capitolo: 1
 ---
 
 import { Definizione } from "../../../MDXcomponents/definizione";
@@ -8,24 +9,18 @@ import { Definizione } from "../../../MDXcomponents/definizione";
 
 La **probabilità** è una branca della matematica pratica e non solo teorica; cioè matematica applicata.
 
-`ciao ->`
-
-```javascript
-const ciao = "ciao";
-```
-
 La probabilità si occupa di fenomeni casuali e quindi di descrivere degli avvenimenti che sono soggetti al caso. Un esperimento tipico e chiaro è il _lancio del dado_ 🎲.
 Il punto dello studio della probabilità è capire che un avvenimento complicato da calcolare (come un lancio di un dado) si può studiare sotto un'altra ottica e anche se non sapremo mai con certezza quale sarà il risultato potremmo capire cosa aspettarci.
 
-## Che cos'è un caso
+## 🎲 Che cos'è un caso
 
-<Definizione>
+:::def
 
 Il **caso** è la probabilità degli esperimenti che hanno un esito non facilmente prevedibile.
 
-</Definizione>
+:::
 
-Alcuni sinonimi che useremo è aleatorio.
+Un sinonimo che useremo è _aleatorio_.
 
 ## Richiami teoria degli insiemi
 
@@ -52,35 +47,44 @@ Altre cose che potranno tornarci utili:
 - Diagrammi di venn.
 - Leggi di De Morgan
 
-## Lo spazio Campionario
+## Lo Spazio Campionario
 
-<Definizione>
-  Lo spazio campionario è l'insieme che contiene tutti i possibili esiti dell'esperimento
-  probabilistico. In simboli $\Omega$ (omega maiuscola).
-</Definizione>
+:::def
+Lo spazio campionario è l'insieme che contiene **tutti i possibili esiti** dell'esperimento probabilistico. In simboli $\Omega$ (omega maiuscola).
+:::
 
 È un insieme che contiene tutti i possibili **esiti elementari** dell'esperimento probabilistico. Che sono le cose che rappresentano i possibili esisti.
-esempio: se lancio un dato sono l'insieme sarà composto da `1,2,3,4,5,6`. **N.B.:** i valori `1,2,3,...` sono come delle etichette che non rappresentano la _quantità_, se il dado fosse colorato avremmo potuto usare l'insieme formato dai colori. La cosa importante è ci sia una chiara definizione.
+esempio: se lancio un dato sono l'insieme sarà composto da `1,2,3,4,5,6`.
+
+:::nb
+I valori `1,2,3,...` sono come delle etichette che non rappresentano la _quantità_, se il dado fosse stato colorato avremmo potuto usare l'insieme formato dai colori. La cosa importante è ci sia una chiara definizione.
+:::
 
 ## Modello probabilistico
 
-<Definizione>
-È l'oggetto matematico che fornisce la **rappresentazione astratta** dell'esperimento probabilistico (definizione).
+:::def
+È l'oggetto matematico che fornisce la **rappresentazione astratta** dell'esperimento probabilistico.
 Il modello è il composto di due oggetti:
 
 1. $\Omega$ - lo spazio campionario.
-1. Legge di probabilità $P$.
+1. Legge di probabilità $\mathbb P$.
 
-</Definizione>
+:::
 
 ## Legge di probabilità
 
+:::def
 La legge di probabilità ($\mathbb P$) è una funzione. L'insieme di partenza sono i sottoinsieme di $\Omega$ e si associano una probabilità. In simboli
-$\mathbb P(\Omega) \longrightarrow \R$
 
-$P(\Omega)$ è la famiglia delle parti di omega.
+$$
+\mathbb P(\Omega) \longrightarrow \R
+$$
 
-La P (legge di probabilità) non è una qualunque funzione ma deve avere queste proprietà:
+:::
+
+$P(\Omega)$ è la [famiglia delle parti](https://it.wikipedia.org/wiki/Insieme_delle_parti) di omega.
+
+La $\mathbb P$ non è una funzione qualunque ma deve avere queste proprietà:
 
 - $\mathbb P(A) \geq 0$ cioè deve essere **positiva o nulla**
 - $\mathbb P(\Omega) = 1$, cioè lo spazio campionario deve essere **finito**. (`1` è indicativo). In soldoni: la somma di tutte le probabilità deve avere il valore che indichiamo (in questo caso `1`)
@@ -90,36 +94,40 @@ La P (legge di probabilità) non è una qualunque funzione ma deve avere queste 
 
 ### Esempio 1
 
-_il lancio di una moneta equa_ -> esperimento probabilistico
+_il lancio di una moneta equa_ `->` esperimento probabilistico
+
+---
 
 La domanda: formulazione del modello probabilistico
 
-Ricordiamo per essere un modello devo dare:
+Ricordiamo per essere un modello devo definire:
 
 - $\Omega$ spazio campionario
 - $\mathbb P$ misura di probabilità
 
-$\Omega$ è lo spazio campionario è l'insieme composto da tutti gli esiti possibili, e in più devo scegliere _l'etichetta_ (il nome delle facce). in questo caso sceglieremo $\Omega = \{ \textup{testa}, \textup{ croce} \}$ (per esempio se fossimo inglese le avremmo potuto scriverlo in inglese).
+$\Omega$ è lo spazio campionario è l'insieme composto da tutti gli esiti possibili, e in più devo scegliere _l'etichetta_ (il nome delle facce). in questo caso sceglieremo $\Omega = \{ \textup{testa}, \textup{ croce} \}$ (per esempio se fossimo inglesi avremmo potuto scrivere _heads, tails_, nulla sarebbe cambiato).
 
-$\mathbb P$ è una funzione che esprime la misura della Probabilità. È una famiglia delle parti di $\Omega$. $\mathbb P(\Omega) = \{ \{t\}, \{c\}, \emptyset, \Omega \}$ specificare $\mathbb P$ vuole dire specificare i seguenti valori:
+$\mathbb P$ è una funzione che esprime la misura della Probabilità. $\mathbb P(\Omega) = \{ \{t\}, \{c\}, \emptyset, \Omega \}$ specificare $\mathbb P$ vuole dire specificare i seguenti valori:
 
-- $\mathbb P(o)$
+- $\mathbb P(\emptyset)$
 - $\mathbb P(\Omega)$
 - $\mathbb P(\{t\})$
 - $\mathbb P(\{c\})$
 
-Quindi noi sappiamo già che $\mathbb P(\Omega) = 1$ per la regola 2 cioè la finitezza [vedi](./introduzione.mdx)
+Noi sappiamo già che $\mathbb P(\Omega) = 1$ per la regola 2 cioè la finitezza [vedi](#legge-di-probabilità)
 
-- $\mathbb P(\emptyset) = 0$ lo deduco tramite la deduzione hce se la $\mathbb P(\Omega) = 1$ e tramite la regola dell'attività e della finezza si deduce che la $\mathbb P(\emptyset) = 0$
+- $\mathbb P(\emptyset) = 0$ lo deduciamo tramite la regola: "se la $\mathbb P(\Omega) = 1$ e tramite la regola dell'attività e della finezza si deduce che la $\mathbb P(\emptyset) = 0$"
 
-- Ora calcoliamo la $\mathbb P$ dei _singoletti_ (`t,c`), ora useremo al frase `moneta equa`, e con equità si intende che la monete non sia truccata e quindi testa e croce hanno la stessa equità, in simboli $\mathbb P(t) = \mathbb P(c)$, noi a intuito sappiamo che il valore sarà uguale a $0.5$. Senza induzione avremmo potuto pensare: dato che $\mathbb P(\Omega) = 1$ e io sto cercando due numeri uguali che sommano a `1` è subito chiaro che i due saranno uguali a `0.5`.
+- Calcoliamo ora la $\mathbb P$ dei _singoletti_ (`t,c`). Useremo al frase `moneta equa`, e con equità si intende che la moneta non sia truccata e di conseguenza testa e croce hanno la stessa equità, in simboli $\mathbb P(t) = \mathbb P(c)$, noi a intuito sappiamo che il valore sarà uguale a $0.5$. Senza intuizione avremmo potuto pensare: dato che $\mathbb P(\Omega) = 1$ e io sto cercando due numeri uguali che sommano a `1` è subito chiaro che i due saranno uguali a `0.5`.
 
 ### Esempio 2
 
-_lancio un dado a $n$ facce_
+_lancio un dado a 6 facce_
+
+---
 
 - $\Omega$ = \{1,2,3,4,5,6\} (se il dado fosse stato colorato avremmo potuto usare l'iniziale del nome del colore della faccia del dado)
-- $\mathbb P(\Omega) = \{\emptyset, \Omega, \{1\}, \{2\}, ..., \{1,2\}, \{1,3\}, ... \}$ eccetera con tutte le cardinalità. Grazie all'utilizzo del coefficiente binomiale riusciamo a contare quanto è $|\mathbb P|$.
+- $\mathbb P(\Omega) = \{\emptyset, \Omega, \{1\}, \{2\}, ..., \{1,2\}, \{1,3\}, ... \}$. Grazie all'utilizzo del [coefficiente binomiale](https://it.wikipedia.org/wiki/Coefficiente_binomiale) riusciamo a contare quanto vale la cardinalità di $\mathbb P$ (cioè $|\mathbb P|$).
 
 Risoluzione:
 
@@ -136,13 +144,22 @@ _lancio 3 volte una moneta equa_
 
 ---
 
-- $\Omega = \{ ttt, ccc, tcc, ctc, ...\}$ dove la sua cardinalità è `8` perchè $2^3=8$ dove `2` sono i simboli che posso scegliere per ogni posizione e invece `3` è il numero delle posizione
+- $\Omega = \{ ttt, ccc, tcc, ctc, ...\}$ dove la sua cardinalità è `8` perché $2^3=8$ dove `2` sono i simboli che posso scegliere per ogni posizione e invece `3` è il numero delle posizione
 - $\mathbb P(\Omega)$:
   - P dei _singoletti_ $\mathbb P(\{t,t,t\})$ (la moneta è equa) cerco una P la quale per tutti i singoletti siano uguali (come tutti gli atri esempi che abbiamo visto). Lanciare una moneta `3` volte è uguale a lanciare un dado a 8 facce, da ciò si può usare la P uniforme discreta. $\mathbb P(\{ttt\}) = \frac{1}{8}$
-  - P "il primo lancio è testa" $P = \frac{1}{2}$
-  - B = "ottengo 2 teste" $B = \{ttc, tct, ctt \}$ n.b.: ttt non è valido perchè ha più di 2 teste, se avessi detto almeno avremmo potuto aggiungerlo, un'altro esempio è dire più di due teste vuol dire ottengo 3 testa
+  - P "il primo lancio è testa" $\mathbb P = \frac{1}{2}$
 
-## Probabilità di $\mathbb P$ detotte dagli assiomi
+### Esempio 4
+
+_lancio 3 volte una moneta equa e ottengo 2 teste_
+
+$B = \{ttc, tct, ctt \}$
+
+:::nb
+$ttt$ non è valido perché ha più di 2 teste, se il testo citasse "almeno due teste" avremmo potuto aggiungerlo.
+:::
+
+## Probabilità di $\mathbb P$ dedotte dagli assiomi
 
 Se $A,B,C$ sono sottoinsiemi di $\Omega$:
 
@@ -153,20 +170,20 @@ Se $A,B,C$ sono sottoinsiemi di $\Omega$:
 
 ## Esercizi
 
-### Es 1
+### Esercizio 1
 
 _Una scatola contiene 3 biglie: una rossa, una verde e una blu. Considero il seguente esperimento: estraggo una biglia, la reimbussolo(parola coniata che significa: "la guardo e la rimetto dentro") e ne estraggo una seconda. Scrivere un possibile modello probabilistico e calcolare la probabilità che le due biglie estratte siano uguali_
 
 Possibile modello
 
-- $\Omega = \{(w_1,w_2)\} \lq w_1 \in \{r,v,b\}$ la cardinalità di $\Omega$ è $3^2 = 9$ (3 possibilità, 2 estrazioni)
-- $\mathbb P$ posso usare la P come uniforme discreta? sì perchè $\Omega$ è finito e le estrazioni casuali continuano a garantire equità dei singoletti.
+- $\Omega = \{(w_1,w_2)\} \quad w_1 \in \{r,v,b\}$ la cardinalità di $\Omega$ è $3^2 = 9$ (3 possibilità, 2 estrazioni)
+- $\mathbb P$ posso usare la P come uniforme discreta? sì perché $\Omega$ è **finito** e le estrazioni casuali continuano a garantire **equità** dei singoletti.
 
 $A =$ l'evento che "le due biglie uguali sono uguali"  
-$A = \{(v,v), (b,b), (r,r) = \mathbb P(A) = \frac{3}{9}\}$
+$A = \{(v,v), (b,b), (r,r) = \mathbb P(A) = \frac{3}{9} = \frac{1}{3}\}$
 
-### Esercizio due
+### Esercizio 2
 
 _Un dado a 4 facce equo viene lanciato ripetutamente fino a che esce un numero pari. Scrivere lo spazio campionario per questo esperimento. Quanti sono gli esiti possibili? posso usare la legge uniforme discreta?_
 
-- $\Omega$ dato che non so quanti lanci farò $\Omega$ e quando uscirà un pari. $\Omega = \{\ (w_1, w_2, w_3, ..., w_n) \}$ $w_i \in \{1,2,3,4 \}$ sapendo però che l'ultimo numero è pari e tutti gli altri dispari; $\Omega$ ha cardinalità infinita dato che potrei lanciare infinite volte e ottenere sempre un dispari. Non posso usare la legge uniforme discreta perchè $\Omega$ non è finito.
+- $\Omega$ dato che non so quanti lanci farò $\Omega$ e quando uscirà un pari. $\Omega = \{\ (w_1, w_2, w_3, ..., w_n) \}$ $w_i \in \{1,2,3,4 \}$ l'unico cosa certa è che l'ultimo numero sarà pari mentre tutti saranno dispari; <br/> $\Omega$ ha cardinalità infinita dato che potrei lanciare infinite volte e ottenere sempre un dispari. Non posso usare la legge uniforme discreta perché $\Omega$ non è finito.

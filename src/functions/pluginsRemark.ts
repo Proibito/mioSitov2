@@ -88,7 +88,6 @@ export function codiceInline() {
     visit(tree, "inlineCode", (node) => {
       const data = node.data || (node.data = {});
       data.hProperties = h(".codeInline").properties;
-      console.log(node);
     });
   };
 }

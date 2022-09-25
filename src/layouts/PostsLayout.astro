@@ -6,11 +6,6 @@ import TabellaSimboli from "../components/tabellaSimboli.astro";
 
 const titolo: string = Astro.props.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
 import "../scss/remarkPlugin.scss";
-import shinki from "shiki";
-
-// const tema = shinki.loadTheme("rose-pine");
-
-shinki.getHighlighter({ theme: "css-variables" });
 ---
 
 <link
@@ -87,5 +82,9 @@ shinki.getHighlighter({ theme: "css-variables" });
     .sideBar {
       display: none;
     }
+  }
+
+  a {
+    color: $colorePrincipale;
   }
 </style>
