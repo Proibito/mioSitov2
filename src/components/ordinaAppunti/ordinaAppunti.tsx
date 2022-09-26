@@ -27,7 +27,10 @@ export class OrdinaAppunti extends Component<
     this.state = { attivo1: 2, attivo2: true };
   }
 
-  opzioni: OrdinamentoOpzioni = { tipoDiOrdinamento: OrdinamentoStringa.importanza, crescente: true };
+  opzioni: OrdinamentoOpzioni = {
+    tipoDiOrdinamento: OrdinamentoStringa.importanza,
+    crescente: true,
+  };
   cambia(opzioni: OrdinamentoOpzioni) {
     this.opzioni = { ...this.opzioni, ...opzioni };
     this.props.cambio(this.opzioni);
@@ -45,17 +48,22 @@ export class OrdinaAppunti extends Component<
           {[
             { testo: "Capitolo", valore: OrdinamentoStringa.importanza },
             { testo: "Alfabetico", valore: OrdinamentoStringa.alfabetico },
-            { testo: "Data di modifica", valore: OrdinamentoStringa.dataDiModifica },
+            {
+              testo: "Data di modifica",
+              valore: OrdinamentoStringa.dataDiModifica,
+            },
           ].map((menuItem) => (
             <div
               key={menuItem.valore}
-              data-attivo={this.state.attivo1 === menuItem.valore ? "true" : undefined}
+              data-attivo={
+                this.state.attivo1 === menuItem.valore ? "true" : undefined
+              }
               onClick={() => {
                 this.qua(menuItem, undefined);
                 this.cambia({ tipoDiOrdinamento: menuItem.valore });
               }}
             >
-              {menuItem.testo}
+              <span>{menuItem.testo}</span>
             </div>
           ))}
         </div>
@@ -67,7 +75,9 @@ export class OrdinaAppunti extends Component<
           ].map((menuItem) => (
             <div
               key={menuItem.testo}
-              data-attivo={this.state.attivo2 === menuItem.valore ? "true" : undefined}
+              data-attivo={
+                this.state.attivo2 === menuItem.valore ? "true" : undefined
+              }
               onClick={() => {
                 this.qua(undefined, menuItem.valore);
                 this.cambia({ crescente: !!menuItem.valore });

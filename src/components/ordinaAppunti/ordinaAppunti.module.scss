@@ -27,7 +27,7 @@ $spessoreBordi: 3px;
     border-left: $spessoreBordi solid $colorePrincipale;
     transition: background-color $velocitaNormaleTransazione;
     font-size: 0.9rem;
-    display: flex;
+    // display: flex;
     align-items: center;
 
     &:hover {

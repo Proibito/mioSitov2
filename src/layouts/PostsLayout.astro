@@ -4,7 +4,9 @@ import Layout from "./Layout.astro";
 import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
 import TabellaSimboli from "../components/tabellaSimboli.astro";
 
-const titolo: string = Astro.props.headings.filter((titolo: any) => titolo.depth == 1)[0].text;
+const titolo: string = Astro.props.headings.filter(
+  (titolo: any) => titolo.depth == 1
+)[0].text;
 import "../scss/remarkPlugin.scss";
 ---
 
@@ -71,6 +73,7 @@ import "../scss/remarkPlugin.scss";
   .articolo {
     flex: 1 1 auto;
     line-height: 1.75rem;
+    text-align: justify;
   }
 
   h2,
