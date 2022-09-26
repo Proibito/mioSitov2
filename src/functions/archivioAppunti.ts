@@ -23,18 +23,18 @@ export async function CreaArrayAppunti(
       auth: segreti.tokenGithub,
     });
 
-    const risposta = await octokit.request(
-      `GET /repos/Proibito/miositov2/commits?path=src/pages${item.url}.mdx&page=1&per_page=1`,
-      {
-        owner: "Proibito",
-        repo: "miositov2",
-      }
-    );
-
     let ultimaModifica = "";
     let ultimaModificaInNumeri = 0;
 
     if (import.meta.env.PROD) {
+      const risposta = await octokit.request(
+        `GET /repos/Proibito/miositov2/commits?path=src/pages${item.url}.mdx&page=1&per_page=1`,
+        {
+          owner: "Proibito",
+          repo: "miositov2",
+        }
+      );
+
       if (risposta.data.length > 0) {
         const data = risposta.data[0].commit.author.date;
         const interpretaData = Date.parse(data);
