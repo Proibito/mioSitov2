@@ -1,0 +1,71 @@
+---
+capitolo: 3
+layout: "../../../layouts/PostsLayout.astro"
+---
+
+kernel: gestione processi, memoria primaria e secondaria
+
+# I Processi
+
+:::def
+Il **processo** è l’unità di lavoro del sistema operativo, perché
+ciò che fa un qualsiasi SO è innanzi tutto amministrare la
+vita dei processi che girano sul computer gestito da quel SO. 
+
+:::
+
+Un processo è quasi come un progrmma in esecuizione tuttavia:
+
+Un processo è più di un semplice programma, infatti ha una
+struttura in memoria primaria (in un’area assegnatagli dal
+SO) suddivisa in più parti (fig. 3.1):
+- Codice da eseguire (il “testo”) +
+- dati +
+- stack (per le chiamate alle procedure / metodi e il passaggio dei parametri) +
+- heap (la memoria dinamica)
+
+Ci processi che hanno lo stesso codice; un programma può generare più processi.
+
+:::nb
+
+Differenza tra **processo** e **programma** è che il processo è un'entità attiva invece il programma è un'entità statica 
+
+:::
+
+Alcuni sinonimi di processo sono: task, job def occupa
+
+## Gli stati dei processi
+
+Da quando nasce a quando termina un processo cambia di stato. Lo stato di un processo evolve a casusa del codice esegutio e dall'azione del sistema operativo, alcuni stati sono:
+
+- new: Il processo è appena nato nel sistema e il SO sta allestendo le strutture di dati necessari per amministrarlo
+- Ready (to run): il processo è pronto per entrare in esecuizone, quando sarà il suo turno
+- Running: La cpu sta esegunendo codice del processo
+- Waiting: Il processo ha lasciato le CPU e attende il completamento di un evento
+- Terminated: il processo è terminato, il SO sta recuperandole strutture dati e le aree di memoria liberate.
+
+Questo diagramma fa vedere in che modo un processo cambia di stato:
+
+[Diagramma]
+
+## Process Control Block
+
+Per ogni processo il SO cmaniente una struttura dati il PRocess Control Block, che serve ad amministrare il processo stesso.
+I dati sono:
+
+- ID che è il numero univoco del processo
+- Lo stato del processo
+- Il contenuto dei registri della CP salvati nel momento in cui il SO sospende il processo
+- Gli indirizzi RAM delle aree dati e codice del processo
+- I file e gli altri dispositivi I/O correntemente in uso del processo
+- Le informazioni per lo scheduling della CPU (ad esempio quanta CPU ha usato fino a quel momento in un processo)
+
+## Scheduling Process
+
+Per implementare il multitasking e il time-sharing il SO ha bisogno di implementare lo Scheduling
+
+:::def 
+Il SO deve decidere periodicamente quale sarà il prossimo processo a cui assegnare la CPU
+:::
+
+Nel momento in cui il processo è in esecuizione ha a disposizione tutta la macchina. Il SO è incaricato a passare da processo a proccesso salvando e riprisitinando i dati, questo procgit 
