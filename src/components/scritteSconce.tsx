@@ -1,7 +1,10 @@
 import React, { Component, createRef, ReactNode, RefObject } from "react";
 import stile from "./stileLettereSconce.module.scss";
 
-export class ScritteSconce extends Component<{ numeroLettere: number; prima?: string; dopo?: string }, any> {
+export class ScritteSconce extends Component<
+  { numeroLettere: number; prima?: string; dopo?: string },
+  any
+> {
   render(): ReactNode {
     return (
       <div style={{ display: "inline-flex" }}>
@@ -27,7 +30,7 @@ export class ScritteSconce extends Component<{ numeroLettere: number; prima?: st
 
 class CaratteriSconci extends Component<any, { mostra: string }> {
   caratteri = ["$", "!", "*", "?", "☺", "♥", "&", "@", "€", "£"];
-  intervallo!: number;
+  intervallo!: ReturnType<typeof setTimeout>;
   ref: RefObject<HTMLSpanElement> = createRef();
 
   constructor(props: any) {
@@ -51,7 +54,7 @@ class CaratteriSconci extends Component<any, { mostra: string }> {
 
   render(): ReactNode {
     return (
-      <span style={{ fontSize: "inherit" }} ref={this.ref}>
+      <span style={{ fontSize: "inherit", color: "inherit" }} ref={this.ref}>
         {this.state.mostra}
       </span>
     );

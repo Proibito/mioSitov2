@@ -2,6 +2,10 @@ $colorePrincipale: #008000;
 $coloreBarraSotto: darken($colorePrincipale, 15%);
 $colorePrincipaleChiaro: lighten($colorePrincipale, 75);
 $coloreSfondo: rgb(245, 245, 245);
+$coloreSfondoScuro: #181d16;
+$coloreSfondoPiuChiaroScuro: lighten($coloreSfondoScuro, 10);
+$coloreBordiScuro: black;
+$coloreTestoScuro: hsl(210deg, 25%, 96%);
 
 $coloreTestoMoltoChiaro: rgb(119, 119, 119);
 $coloreTesto: #292e29;
@@ -60,5 +64,17 @@ $paddingBottoni: 0.7rem 1.75rem;
   @include desktopGrandi {
     padding-left: $paddingDesktopGrandi;
     padding-right: $paddingDesktopGrandi;
+  }
+}
+
+@mixin scuro {
+  html.night & {
+    @content;
+  }
+}
+
+@mixin scuroBox {
+  :global(html.night) {
+    @content;
   }
 }

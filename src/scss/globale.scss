@@ -41,6 +41,10 @@ html {
   font-size: var(--font-size-base);
   color: $coloreTesto;
   background-color: $coloreSfondo;
+
+  &.night {
+    background-color: $coloreSfondoScuro;
+  }
 }
 
 h1 {
@@ -55,6 +59,10 @@ h1 {
 
 body {
   margin: 0;
+  @include scuro {
+    background-color: #181d16;
+    color: $coloreTestoScuro;
+  }
 }
 
 h2 {
@@ -104,4 +112,17 @@ pre {
 
 h2 {
   margin-top: 2em;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+p,
+span {
+  @include scuro {
+    color: $coloreTestoScuro;
+  }
 }

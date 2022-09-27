@@ -19,6 +19,16 @@ const { title } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      if (localStorage.getItem("temaNotte") === null) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.getElementsByTagName("html")[0].classList.add("night");
+        }
+      } else {
+        if (localStorage.getItem("temaNotte") == "true")
+          document.getElementsByTagName("html")[0].classList.add("night");
+      }
+    </script>
   </head>
   <body>
     <div id="portalNav"></div>

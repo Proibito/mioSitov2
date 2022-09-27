@@ -1,0 +1,22 @@
+{
+  "Definizione": {
+    "prefix": ":def",
+    "body": [":::def\n $0 \n::: \n"],
+    "description": "Definizione"
+  },
+  "latex": {
+    "prefix": "l",
+    "body": ["$$0$"],
+    "description": "Definizione"
+  },
+
+  "mathLatex": {
+    "prefix": "mt",
+    "body": ["\\mathbb $0"]
+  },
+
+  "apri e chiudi": {
+    "prefix": "g",
+    "body": "\\{ $1 \\\\} $0"
+  }
+}

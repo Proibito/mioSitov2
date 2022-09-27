@@ -27,7 +27,7 @@ $spessoreBordi: 3px;
     border-left: $spessoreBordi solid $colorePrincipale;
     transition: background-color $velocitaNormaleTransazione;
     font-size: 0.9rem;
-    display: flex;
+    // display: flex;
     align-items: center;
 
     &:hover {
@@ -56,6 +56,27 @@ $spessoreBordi: 3px;
   .ordinamento {
     div {
       padding: 0.7rem;
+    }
+  }
+}
+
+@include scuroBox {
+  .span {
+    color: $coloreTesto;
+  }
+
+  .ordinamento {
+    div {
+      background-color: $coloreSfondoPiuChiaroScuro;
+
+      &:hover {
+        background-color: $coloreSfondoScuro;
+      }
+    }
+
+    div[data-attivo="true"] {
+      color: white;
+      background-color: $colorePrincipale;
     }
   }
 }

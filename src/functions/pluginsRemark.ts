@@ -91,3 +91,14 @@ export function codiceInline() {
     });
   };
 }
+
+
+export function lazyLoadingImmagini() {
+  return (tree: any) => {
+    visit(tree, "element", (node) => {
+      if(node.tagName == "img"){
+        node.properties.loading = "lazy"
+      }
+    });
+  };
+}

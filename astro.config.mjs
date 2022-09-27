@@ -8,6 +8,7 @@ import {
   ottieniSimboli,
   boxDefinizione,
   codiceInline,
+  lazyLoadingImmagini,
 } from "./src/functions/pluginsRemark";
 import mdx from "@astrojs/mdx";
 import remarkDirective from "remark-directive";
@@ -40,7 +41,7 @@ export default defineConfig({
         ottieniSimboli,
         boxDefinizione,
       ],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [rehypeKatex, lazyLoadingImmagini],
       extendPlugins: "astroDefaults",
     }),
   ],
