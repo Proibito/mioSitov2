@@ -68,7 +68,13 @@ $paddingBottoni: 0.7rem 1.75rem;
 }
 
 @mixin scuro {
-  @media (prefers-color-scheme: dark) {
+  html.night & {
+    @content;
+  }
+}
+
+@mixin scuroBox {
+  :global(html.night) {
     @content;
   }
 }

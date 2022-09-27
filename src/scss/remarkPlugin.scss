@@ -42,7 +42,7 @@ $spessoreBordo: 5px;
 
     @include scuro {
       & {
-        background-color: mix($colore, rgb(37, 37, 37), 10%);
+        background-color: mix($colore, rgb(37, 37, 37), 15%);
       }
     }
   }

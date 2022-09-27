@@ -1,5 +1,19 @@
 @import "../../scss/variabili.scss";
 
+:global(html.night) {
+  .bottoni {
+    color: $coloreTestoScuro;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  .muovi {
+    background-color: ligthen(rgba($colorePrincipale, 0.2), 50);
+  }
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -32,18 +46,4 @@
 .comune {
   text-transform: capitalize;
   border-radius: $bordiBottoni;
-}
-
-@include scuro {
-  .bottoni {
-    color: $coloreTestoScuro;
-
-    &:hover {
-      color: white;
-    }
-  }
-
-  .muovi {
-    background-color: ligthen(rgba($colorePrincipale, 0.2), 50);
-  }
 }

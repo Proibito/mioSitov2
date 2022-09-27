@@ -60,7 +60,7 @@ $spessoreBordi: 3px;
   }
 }
 
-@include scuro {
+@include scuroBox {
   .span {
     color: $coloreTesto;
   }
@@ -72,6 +72,11 @@ $spessoreBordi: 3px;
       &:hover {
         background-color: $coloreSfondoScuro;
       }
+    }
+
+    div[data-attivo="true"] {
+      color: white;
+      background-color: $colorePrincipale;
     }
   }
 }

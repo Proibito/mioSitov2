@@ -13,9 +13,14 @@
   border-radius: 4px;
   margin: 0.1rem;
   padding: 0.5rem 0.9rem;
+
+  @include scuro {
+    display: none;
+    color: $coloreTesto;
+  }
 }
 
-@include scuro {
+@include scuroBox {
   .lettereSconce {
     color: $coloreTesto;
   }

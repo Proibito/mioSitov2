@@ -34,6 +34,12 @@ import { ScritteSconce } from "./scritteSconce";
     box-shadow: 0px 0px 0.7px rgba(0, 0, 0, 0.014), 0px 0px 1.8px rgba(0, 0, 0, 0.02),
       0px 0px 3.4px rgba(0, 0, 0, 0.025), 0px 0px 6px rgba(0, 0, 0, 0.03),
       0px 0px 11.3px rgba(0, 0, 0, 0.036), 0px 0px 27px rgba(0, 0, 0, 0.05);
+
+    @include scuro {
+      & * {
+        color: $coloreTesto;
+      }
+    }
   }
 
   .titoletto {
@@ -44,13 +50,5 @@ import { ScritteSconce } from "./scritteSconce";
     font-size: 0.8rem;
     color: $coloreTestoMoltoChiaro;
     margin-bottom: 0;
-  }
-
-  @include scuro {
-    .box {
-      & * {
-        color: $coloreTesto;
-      }
-    }
   }
 </style>

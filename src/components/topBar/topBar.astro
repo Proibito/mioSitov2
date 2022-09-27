@@ -2,6 +2,7 @@
 import logo from "../../images/24x24.svg";
 import { ElementiTopBar } from "./elementiTopBar";
 import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
+import { SelezionaTema } from "./selezionaTema";
 ---
 
 <div class="barraTop">
@@ -16,7 +17,12 @@ import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
       <div class="pc">
         <ElementiTopBar client:visible />
       </div>
+    </div>
 
+    <div class="elementiDestra">
+      <div class="elemento">
+        <SelezionaTema client:idle />
+      </div>
       <div class="mobile">
         <HamburgerMobile client:visible />
       </div>
@@ -39,6 +45,10 @@ import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
     }
   }
 
+  .elementiDestra {
+    display: flex;
+  }
+
   .wrapper {
     display: flex;
     flex: 1 1 auto;
@@ -50,6 +60,11 @@ import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
     padding: 0.5rem;
     border-bottom: 1px solid #d0d0d0;
     @include paddingGenerale;
+
+    @include scuro {
+      background-color: $coloreSfondoPiuChiaroScuro;
+      border: 1px solid rgb(31, 31, 31);
+    }
   }
 
   .mobile {
@@ -68,13 +83,7 @@ import { HamburgerMobile } from "../hambugerMobile/hamburgerMobile";
     .mobile {
       float: right;
       display: flex;
-    }
-  }
-
-  @include scuro {
-    .wrapper {
-      background-color: $coloreSfondoPiuChiaroScuro;
-      border-color: $coloreBordiScuro;
+      margin-left: 1rem;
     }
   }
 </style>
