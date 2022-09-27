@@ -18,6 +18,8 @@
   }
 
   a[attivo="true"] {
-    color: $colorePrincipale;
+    span {
+      color: $colorePrincipale;
+    }
   }
 }

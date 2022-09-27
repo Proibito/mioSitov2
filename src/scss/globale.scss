@@ -106,7 +106,20 @@ h2 {
   margin-top: 2em;
 }
 
-img{
+img {
   max-width: 100%;
 }
 
+@include scuro {
+  html {
+    background-color: #181d16;
+    color: $coloreTestoScuro;
+  }
+
+  h1,
+  h2,
+  p,
+  span {
+    color: $coloreTestoScuro;
+  }
+}

@@ -55,9 +55,7 @@ export class OrdinaAppunti extends Component<
           ].map((menuItem) => (
             <div
               key={menuItem.valore}
-              data-attivo={
-                this.state.attivo1 === menuItem.valore ? "true" : undefined
-              }
+              data-attivo={this.state.attivo1 === menuItem.valore ? "true" : undefined}
               onClick={() => {
                 this.qua(menuItem, undefined);
                 this.cambia({ tipoDiOrdinamento: menuItem.valore });
@@ -75,9 +73,7 @@ export class OrdinaAppunti extends Component<
           ].map((menuItem) => (
             <div
               key={menuItem.testo}
-              data-attivo={
-                this.state.attivo2 === menuItem.valore ? "true" : undefined
-              }
+              data-attivo={this.state.attivo2 === menuItem.valore ? "true" : undefined}
               onClick={() => {
                 this.qua(undefined, menuItem.valore);
                 this.cambia({ crescente: !!menuItem.valore });

@@ -59,3 +59,19 @@ $spessoreBordi: 3px;
     }
   }
 }
+
+@include scuro {
+  .span {
+    color: $coloreTesto;
+  }
+
+  .ordinamento {
+    div {
+      background-color: $coloreSfondoPiuChiaroScuro;
+
+      &:hover {
+        background-color: $coloreSfondoScuro;
+      }
+    }
+  }
+}

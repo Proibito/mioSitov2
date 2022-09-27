@@ -6,7 +6,9 @@ import { ScritteSconce } from "./scritteSconce";
   <div class="box">
     <div class="scritte">
       <span class="titoletto"
-        >E tutti pensano: <span><ScritteSconce client:idle numeroLettere={3} prima="c" dopo="o" /></span> quanto è figo!</span
+        >E tutti pensano: <span
+          ><ScritteSconce client:idle numeroLettere={3} prima="c" dopo="o" />
+        </span> quanto è figo!</span
       >
       <p class="piccolo">Grazie Astro 🚀</p>
     </div>
@@ -30,8 +32,8 @@ import { ScritteSconce } from "./scritteSconce";
     padding: 3rem 3.5rem;
     background-color: white;
     box-shadow: 0px 0px 0.7px rgba(0, 0, 0, 0.014), 0px 0px 1.8px rgba(0, 0, 0, 0.02),
-      0px 0px 3.4px rgba(0, 0, 0, 0.025), 0px 0px 6px rgba(0, 0, 0, 0.03), 0px 0px 11.3px rgba(0, 0, 0, 0.036),
-      0px 0px 27px rgba(0, 0, 0, 0.05);
+      0px 0px 3.4px rgba(0, 0, 0, 0.025), 0px 0px 6px rgba(0, 0, 0, 0.03),
+      0px 0px 11.3px rgba(0, 0, 0, 0.036), 0px 0px 27px rgba(0, 0, 0, 0.05);
   }
 
   .titoletto {
@@ -42,5 +44,13 @@ import { ScritteSconce } from "./scritteSconce";
     font-size: 0.8rem;
     color: $coloreTestoMoltoChiaro;
     margin-bottom: 0;
+  }
+
+  @include scuro {
+    .box {
+      & * {
+        color: $coloreTesto;
+      }
+    }
   }
 </style>

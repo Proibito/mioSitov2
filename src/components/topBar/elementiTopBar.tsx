@@ -9,8 +9,6 @@ export class ElementiTopBar extends Component {
   constructor(props: any) {
     super(props);
 
-    // Create the ref
-
     this.muoviDiv = React.createRef();
     this.items = React.createRef();
   }
