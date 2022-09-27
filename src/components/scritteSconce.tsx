@@ -30,7 +30,7 @@ export class ScritteSconce extends Component<
 
 class CaratteriSconci extends Component<any, { mostra: string }> {
   caratteri = ["$", "!", "*", "?", "☺", "♥", "&", "@", "€", "£"];
-  intervallo!: number;
+  intervallo!: ReturnType<typeof setTimeout>;
   ref: RefObject<HTMLSpanElement> = createRef();
 
   constructor(props: any) {
