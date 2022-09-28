@@ -17,7 +17,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 const options = {
   // Use one of Shiki's packaged themes
   theme: {
-    dark: JSON.parse(fs.readFileSync("./themes/temaScuro.json", "utf-8")),
+    dark: "one-dark*",
     light: "min-light",
   },
 
@@ -36,9 +36,6 @@ const options = {
   onVisitHighlightedWord(node) {
     node.properties.className = ["word"];
   },
-
-  langs: ["c"],
-  useBackground: true,
 };
 
 // https://astro.build/config

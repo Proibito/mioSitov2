@@ -18,5 +18,10 @@
   "apri e chiudi": {
     "prefix": "g",
     "body": "\\{ $1 \\\\} $0"
+  },
+
+  "codice": {
+    "prefix": "code",
+    "body": "```$1 \n$0\n```"
   }
 }
