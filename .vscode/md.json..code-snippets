@@ -12,12 +12,12 @@
   },
 
   "mathLatex": {
-    "prefix": "m",
+    "prefix": "mm",
     "body": ["\\mathbb $0"]
   },
 
   "apri e chiudi": {
-    "prefix": "g",
+    "prefix": "gg",
     "body": "\\{ $1 \\\\} $0"
   },
 
@@ -27,7 +27,7 @@
   },
 
   "frazione": {
-    "prefix": "f",
+    "prefix": "ff",
     "body": "\\frac{$1}{$2}$0"
   },
   "binom": {
