@@ -3,18 +3,18 @@ capitolo: 3
 layout: "../../../layouts/PostsLayout.astro"
 ---
 
-# I Processi 3
+# I Processi 3.0.0
 
-kernel: gestione processi, memoria primaria e secondaria
+{/* kernel: gestione processi, memoria primaria e secondaria */}
+
 :::def
 Il **processo** è l’unità di lavoro del sistema operativo.
-
 :::
 
 > libro 3.1.1
 
 Ciò che fa un qualsiasi SO è innanzi tutto amministrare la
-vita dei processi che girano sul computer.
+vita dei processi che sono eseguiti da un computer.
 
 Un processo è quasi come un programma (informalmente sono la stessa cosa) in esecuzione con la differenza che un processo è più oggetto di un semplice programma.
 
@@ -45,7 +45,7 @@ Da quando nasce a quando termina un processo cambia di stato. Lo stato di un pro
 
 Questo diagramma fa vedere in che modo un processo cambia di stato:
 
-[Diagramma]
+{/* TODO da aggiungere il diagramma [Diagramma] */}
 
 ## Process Control Block 3.1.3
 
@@ -66,63 +66,68 @@ In sintesi, il PCB si usa semplicemente come deposito per tutte le informazioni 
 Per implementare il multitasking e il time-sharing il SO ha bisogno di implementare lo Scheduling
 
 :::def
-Il SO deve decidere periodicamente quale sarà il prossimo processo a cui assegnare la CPU
+Il SO deve decidere periodicamente quale sarà il prossimo processo a cui assegnare la CPU esso viene chiamato **Scheduling**
 :::
 
-Nel momento in cui il processo è in esecuzione ha a disposizione tutta la macchina. Il SO è incaricato a passare da processo a processo salvando e ripristinando i dati, questo programma.
+Nel momento in cui il processo è in esecuzione ha a disposizione tutta la macchina. Il SO è incaricato a passare da processo a processo, salvando e ripristinando i dati del processo in questione.
 
-### il cambio di contesto
+### Il cambio di contesto
 
-Per commuare la CPU tra due processi il SO deve:
+Per commutare la CPU tra due processi il SO deve:
 
-1. riprendere il controllo della CPU (ad esempio attraverso il maccanismo del timer)
-2. Con l'aiuto dell hardware della CPU, salvare lo stato corrente della computazione del processo che lascia la CPU, ossia copiare il valore del PC E DEGLI ALTRI REGISTRI NEL SUO pcb
+1. Riprendere il controllo della CPU (ad esempio attraverso il meccanismo del timer)
+2. Con l'aiuto dell hardware della CPU, salvare lo stato corrente della computazione del processo che lascia la CPU, ossia copiare il valore del PC e degli altri registri.
 
-IL contex switch richiede tempo, e nel momento in cui cambia programma la CPU va in hoverhead nel senso che c'è un tempo morto che la nostra CPU **non esegue nessun programma** (se non il sistema operativo).
+Il contex switch richiede tempo, e nel momento in cui cambia programma la CPU va in hoverhead cioè ci sarà un momento morto 💀 che la CPU **non esegue nessun programma** (se non il codice del sistema operativo).
 
 ### Code di processi
 
-Per amministrare la vita dell'utente ci sono le **code di processi**. Nel quale il programma aspetta di essere eseguito dalla CPU.
-La coda più importante infatti è la **coda di ready** nel quale un programma è in attesa di essere eseguito; ci sono però altre code nel nostro sistema, come quella di quando programma esce dall'esecuzione il SO mette questo programma in una coda bene determinata che possono essere:
+Ci sono varie _code di processi_. Per spiegarla immaginiamoci questa situazione:
 
-- device queues: code di processi in attesa per l'uso di un dispositivo I/O. Una cosa per ciascun disposivo (La stampante)
-- code di waiting: code di processi in attesa che si verifichi un certo evento. Una code per ciascun evento (ci torneremo più avanti)
+Nel momento in cui un computer è acceso alcuni processi potrebbero voler essere eseguiti nello stesso instante, cosa possibile. Per risolvere il problema la CPU deve decidere quali processi far partire per primi e quali far partire dopo. I processi creeranno una **coda di processi** nel quale il programma aspetta di essere eseguito dalla CPU.
+La coda più importante infatti è la **coda di ready** nel quale un programma è in attesa di essere eseguito; ci sono però altre code nel nostro sistema, come quella del programma che esce dall'esecuzione e il SO mette questo processo in una coda ben determinata che possono essere:
+
+Quando un processo rilascia la CPU, ma non termina e non torna in ready queue, vuol dire che si è messo in attesa di “qualcosa”, e il SO lo “parcheggia” in una tra $n$ possibili code, che possiamo dividere in due grandi categorie:
+
+- **device queues**: code di processi in attesa data dell'uso di un dispositivo I/O. Una coda per ciascun dispositivo (La stampante)
+- **code di waiting**: code di processi in attesa che si verifichi un certo evento. Una code per ciascun evento (ci torneremo più avanti)
 
 Il SO è l'incaricato a gestire in quale coda il processo deve andare.
 
-[diagramma di accodamento]
+{/* TODO [diagramma di accodamento]  mettere il diagramma */}
 
-Il diagramma di rifolumazione stati può anche essere rappresentato come diagramma di **accodamento** in cui i processi si muovono fra le varie code.
+Il diagramma di riformulazione di stati può anche essere rappresentato come diagramma di **accodamento** in cui i processi si muovono fra le varie code.
 
-Quando i processi si trovano nella coda si trovano nella coda della ready to run si attiva un componente **cpu scheduler**
+Quando i processi si trovano nella coda si trovano nella coda della ready to run si attiva un componente **cpu scheduler** il quale sceglierà quale sarà il processo da eseguire
 
 ### CPU scheduler
 
-è un compentente per la gestione dell'ordine di esecuzione dei processi, è una componente molto veloci ed è il cuore del time sharing. Sarà l'argomento del nostro Cap. 5. Ogni sistema operativo ha almeno una System call di creazione di processi, ogni processo è creato da un altro processo usando la system call relativa. (È la system call più importante del SO)
+Il **CPU scheduler** è un componente incaricato alla gestione dell'ordine di esecuzione dei processi, è un componente molto veloce ed è il cuore del time sharing. (Sarà l'argomento del nostro Cap. 5).
+Ogni sistema operativo ha almeno una System call delegata alla creazione di processi, ogni processo è creato da un altro processo usando la system call relativa. (È la system call più importante del SO)
 
 Il processo che crea il processo si chiama **processo padre (o parent)**.
 
-Il processo create è dato **processo figlio 8o child**
+Il processo creato è detto **processo figlio 8o child**
 
-Poichè ogni processo può a sua volta creare altri processi si crea una struttura ad albero chiamato **albero di processi**.
+Poiché ogni processo può a sua volta creare altri processi si crea una struttura ad albero chiamato **albero di processi**.
 
-Quando un processo naschi un nuovo processo il SO:
+Quando un processo crea un nuovo processo il SO:
 
 - Gli assegna un Processo ID o **PID**
-- recupera dall'harddisk il codice da eseguire e lo porta in RAM.
-- ALloca un nuovo PCB e lo inizializza con le informazioni relative al nuovo processo.
-- inserisce il PCB in coda di ready.
+- recupera dall'hard disk il codice da eseguire e lo porta in RAM.
+- ALloca un nuovo [PCB](#process-control-block-313) e lo inizializza con le informazioni relative al nuovo processo.
+- inserisce il [PCB](#process-control-block-313) in coda di ready.
 
 ### Creazione di un processo
 
-Ogni sistema operativo ha la sua SC per genereare un processo lo sviluppatore del SO deve decidere come implementarlo, alcune domande sono:
+Ogni sistema operativo ha la sua SC per generare un processo lo sviluppatore del SO deve decidere come implementarlo, alcune domande sono:
 
 1. Che cosa fa il processo padre quando ha generato un processo figlio?
    - prosegue la sua esecuzione in modo concorrente all’esecuzione del processo figlio
    - si ferma, in attesa del completamento dell’esecuzione del processo figlio.
 2. Quale codice esegue il processo figlio?
    - al processo figlio viene dato lo stesso codice del padre
-   - al codice figlio viene dato un nuovo programma con aventualmente nuovi dati
+   - al codice figlio viene dato un nuovo programma con eventualmente nuovi dati
 
 ```c
 int main(){                 /* fig. 3.8 modificata */
@@ -154,7 +159,7 @@ Spiegazione del codice:
 
 #### Alcune system calls
 
-**eeclp**: riceve in input un puntatore ad un file contentente codice eseguibile. Il processo che la invoca prosegue eseguendo il codice specificato, senza più ritornare alla porzione di codice che viene dopo la execpl.
+**eeclp**: riceve in input un puntatore ad un file contenente codice eseguibile. Il processo che la invoca prosegue eseguendo il codice specificato, senza più ritornare alla porzione di codice che viene dopo la execpl.
 
 **wait**: invocata da un processo parent, lo sospende fino alla terminazione del processo figlio. La wait restituisce il PID del figlio appena terminato.
 
