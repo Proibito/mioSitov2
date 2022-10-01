@@ -1,3 +1,7 @@
+---
+layout: "../../../layouts/PostsLayout.astro"
+---
+
 # Probabilità condizionata
 
 Vogliamo calcolare la probabilità che tengano conto di _informazioni parziali_ sull'esito dell'esperimento.
@@ -32,13 +36,18 @@ Le informazioni parziali delle _condizioni_ nel quale noi dobbiamo creare una nu
 
 :::def
 Dato $(\Omega, \mathbb P)$ e $B$ _evento_ definisco probabilità condizionata a $B$. Indico con $\mathbb P(* | B)$ la seguente funzione:
+
 $$
 \mathbb P(* |B): \mathbb P(\Omega) \longrightarrow \Omega \qquad A -> \mathbb P(A | B) = \frac{\mathbb P(A unito B)}{B}
 $$
+
 a patto che:
-$$\frac{
+
+$$
+\frac{
 \mathbb P(B)}{0}
 $$
+
 :::
 
 Continuando l'esempio:
@@ -62,12 +71,13 @@ Per scoprirlo dobbiamo vedere che le 3 regole della probabilità valgano.
 
 1. _La $\mathbb P(A | B) \geq 0$_? $\forall A \mathbb P(A | B) = \frac{\mathbb P(A unito b)}{\mathbb P(B) \geq 0}$
 2. $\mathbb P(\Omega | B) = 1$ (la somma di tutte le partizioni risulterà 1)?
-$\mathbb P(\Omega | B)= \frac{\Omega \cap B}{\mathbb P(B)} = \frac{\mathbb P(B)}{\mathbb P(B)} = 1$
+   $\mathbb P(\Omega | B)= \frac{\Omega \cap B}{\mathbb P(B)} = \frac{\mathbb P(B)}{\mathbb P(B)} = 1$
 3. $A_1$ e $A_2$ con $A_2$ intersecato $A_1 = \emptyset$ (la legge dei singoletti) $\mathbb P(A_1 \cap A_2 | B) = \mathbb P(A_1 | B) + \mathbb P(a_2 | B)$? Dato che $A_1$ e $A_2$ sono disgiunti anche l'intersezione con $\mathbb B$ sarà disgiunta.
 
 Il punto è che prima avevo $(/Omega, \mathbb P)$ ho definito una nuova misura di probabilità su $\Omega$ che ho chiamato $\mathbb P(* | B)$
 
-osservazione: 
+osservazione:
+
 $$
 \mathbb P(A | B) = \frac{\mathbb P(A \cap B)}{\mathbb P(B)}
 $$
@@ -84,9 +94,9 @@ regola generalizzata: **regola della moltiplicazione**
 
 Per 3 eventi: $A_1, A_2, A_3$
 
-(**) $\mathbb P(A_1 \cup A_2 \cup A_3) = \mathbb P(A_3 | A_1 \cap A_2) \cdot \mathbb P(A_2 | A_1) \cdot \mathbb P(A_1)$
+(\*\*) $\mathbb P(A_1 \cup A_2 \cup A_3) = \mathbb P(A_3 | A_1 \cap A_2) \cdot \mathbb P(A_2 | A_1) \cdot \mathbb P(A_1)$
 
-Appello a (*) con:
+Appello a (\*) con:
 
 $A = A_3$
 
@@ -120,7 +130,7 @@ $$
 
 ## Esercizi
 
-_lancio una moneta equa 3 volte. Sia $A$ l'evento "escono più teste che croci" e sia $B$ l'evento "il primo lancio restituisce testa". <br> Calcolare la probabilità di $A$ e la probabilità di $A$ dato $B$_
+_lancio una moneta equa 3 volte. Sia $A$ l'evento "escono più teste che croci" e sia $B$ l'evento "il primo lancio restituisce testa". <br/> Calcolare la probabilità di $A$ e la probabilità di $A$ dato $B$_
 
 $A =$ "escono più teste che croci"
 
@@ -144,7 +154,7 @@ $$
 
 ### Esercizio 2
 
-_Estraggo 3 carte da un mazzo regolare di 52 senza reibussolamento.<br> Calcolare la probabilità che nessuna delle 3 carte sia di cuori_
+_Estraggo 3 carte da un mazzo regolare di 52 senza reibussolamento.<br/> Calcolare la probabilità che nessuna delle 3 carte sia di cuori_
 
 13 carte per seme. Semi = `Quadri, Cuori, Pichhe, Fiori`.
 

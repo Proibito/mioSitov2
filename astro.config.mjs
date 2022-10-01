@@ -9,6 +9,7 @@ import {
   boxDefinizione,
   codiceInline,
   lazyLoadingImmagini,
+  nascondiTestata,
 } from "./src/functions/pluginsRemark";
 import mdx from "@astrojs/mdx";
 import remarkDirective from "remark-directive";
@@ -18,7 +19,7 @@ const options = {
   // Use one of Shiki's packaged themes
   theme: {
     dark: JSON.parse(fs.readFileSync("./themes/temaScuro.json", "utf-8")),
-    light: "min-light",
+    light: "github-light",
   },
 
   onVisitLine(node) {
@@ -60,8 +61,14 @@ export default defineConfig({
         boxDefinizione,
       ],
       rehypePlugins: [
-        rehypeKatex,
+        [
+          rehypeKatex,
+          {
+            strict: false,
+          },
+        ],
         lazyLoadingImmagini,
+        nascondiTestata,
         [rehypePrettyCode, options],
       ],
       extendPlugins: "astroDefaults",

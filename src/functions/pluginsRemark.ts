@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+import {filter} from 'unist-util-filter'
 import uniq from "lodash/uniq";
 import { h } from "hastscript";
 import { toHast } from "mdast-util-to-hast";
@@ -82,7 +83,6 @@ function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualiz
   ]).children;
 }
 
-
 export function codiceInline() {
   return (tree: any) => {
     visit(tree, "inlineCode", (node) => {
@@ -92,6 +92,11 @@ export function codiceInline() {
   };
 }
 
+export function nascondiTestata() {
+  return (tree: any) => {
+    return filter(tree, (node: any) => node.tagName !== "h1");
+  };
+}
 
 export function lazyLoadingImmagini() {
   return (tree: any) => {

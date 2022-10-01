@@ -3,7 +3,6 @@ capitolo: 3
 layout: "../../../layouts/PostsLayout.astro"
 ---
 
-
 # I Processi 3
 
 kernel: gestione processi, memoria primaria e secondaria
@@ -79,8 +78,6 @@ Per commuare la CPU tra due processi il SO deve:
 1. riprendere il controllo della CPU (ad esempio attraverso il maccanismo del timer)
 2. Con l'aiuto dell hardware della CPU, salvare lo stato corrente della computazione del processo che lascia la CPU, ossia copiare il valore del PC E DEGLI ALTRI REGISTRI NEL SUO pcb
 
-<!-- TODO recuparare sopra -->
-
 IL contex switch richiede tempo, e nel momento in cui cambia programma la CPU va in hoverhead nel senso che c'è un tempo morto che la nostra CPU **non esegue nessun programma** (se non il sistema operativo).
 
 ### Code di processi
@@ -128,7 +125,6 @@ Ogni sistema operativo ha la sua SC per genereare un processo lo sviluppatore de
    - al codice figlio viene dato un nuovo programma con aventualmente nuovi dati
 
 ```c
-
 int main(){                 /* fig. 3.8 modificata */
     pid_t pid, childPid;    /* pid_t il tipo della variabile potrebbe essere int */
     pid = fork();           /* genera un nuovo processo */
@@ -147,7 +143,6 @@ int main(){                 /* fig. 3.8 modificata */
         exit(0);
     }
 }
-
 ```
 
 Spiegazione del codice:
@@ -159,7 +154,7 @@ Spiegazione del codice:
 
 #### Alcune system calls
 
-**eeclp**:  riceve in input un puntatore ad un file contentente codice eseguibile. Il processo che la invoca prosegue eseguendo il codice specificato, senza più ritornare alla porzione di codice che viene dopo la execpl.
+**eeclp**: riceve in input un puntatore ad un file contentente codice eseguibile. Il processo che la invoca prosegue eseguendo il codice specificato, senza più ritornare alla porzione di codice che viene dopo la execpl.
 
 **wait**: invocata da un processo parent, lo sospende fino alla terminazione del processo figlio. La wait restituisce il PID del figlio appena terminato.
 
