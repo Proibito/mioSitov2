@@ -1,16 +1,23 @@
+---
+layout: "../../../layouts/PostsLayout.astro"
+capitolo: 1
+---
+
 # I puntatori
 
 Un :d[puntatore] in C indirizza una variabile all'indirizzo di qualche byte.
 
 Useremo due nuovi (simboli) `&` e `*`:
 
-* `&` ritorna l'indirizzo della variabile
-```c 
+- `&` ritorna l'indirizzo della variabile
+
+```c
  int v = 25; // supponiamo che il suo indirizzo sia 8100
- int * p = &v; 
+ int * p = &v;
  // p = 8100 (l'indirizzo di v); *p = 25 in quanto v = 25 e le p "punta" a v
 ```
-* `*` il puntatore si dichiarano i questo modo:
+
+- `*` il puntatore si dichiarano i questo modo:
 
 ```c
  <type> * <nome>
@@ -28,12 +35,11 @@ esempio:
 
 ## Operazioni che si possono fare
 
-
 ## Array del puntatore
 
 Definiamo un array:
 
-```c 
+```c
 int v[10], *p;
 *v = 8;         // stessa cosa che fare v[0] = 8
 p = v;          // stessa cosa di p = &v[0]
