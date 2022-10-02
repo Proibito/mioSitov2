@@ -24,8 +24,8 @@ Quando chiamiamo una system call il sistema operativo esegue un metodo scritto i
 
 Per esempio nel seguente codice scritto in C:
 
-```c 
-Int fd, i;
+```c showLineNumbers
+int fd, i;
 fd = open(“nomeFile”, O_WRONLY);
 i = write(fd, ”ciao!”, sizeof(“ciao!”));
 close(fd);
@@ -72,5 +72,4 @@ Il SO è responsabile di:
 
 ## Macchine virtuali
 
-Un moderno SO trasforma la macchina reale una sorta di macchia virtuale. 
-
+Un moderno SO trasforma la macchina reale una sorta di macchia virtuale.

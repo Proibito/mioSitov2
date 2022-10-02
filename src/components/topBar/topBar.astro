@@ -20,6 +20,7 @@ import { SelezionaTema } from "./selezionaTema";
     </div>
 
     <div class="elementiDestra">
+      <slot name="elem-mobile-destra" />
       <div class="elemento">
         <SelezionaTema client:idle />
       </div>
@@ -47,6 +48,9 @@ import { SelezionaTema } from "./selezionaTema";
 
   .elementiDestra {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
   }
 
   .wrapper {

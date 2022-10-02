@@ -1,10 +1,17 @@
 import { Component, ReactNode } from "react";
 import type { PostPreviewType } from "../../types/types";
-import { OrdinaAppunti, OrdinamentoOpzioni, OrdinamentoStringa } from "./ordinaAppunti";
+import {
+  OrdinaAppunti,
+  OrdinamentoOpzioni,
+  OrdinamentoStringa,
+} from "./ordinaAppunti";
 import { SingoloAppunto } from "./singoloAppunto";
 import orderBy from "lodash/orderBy";
 
-export class ListaAppunti extends Component<{ posts: PostPreviewType[] }, { posts: PostPreviewType[] }> {
+export class ListaAppunti extends Component<
+  { posts: PostPreviewType[] },
+  { posts: PostPreviewType[] }
+> {
   // grazie Prettier
   constructor(props: any) {
     super(props);
@@ -16,17 +23,27 @@ export class ListaAppunti extends Component<{ posts: PostPreviewType[] }, { post
     // Ordinamento appunti logica
     switch (opzioni.tipoDiOrdinamento) {
       case OrdinamentoStringa.alfabetico:
-        post = orderBy(this.state.posts, (o) => o.titolo.toLowerCase(), opzioni.crescente ? "asc" : "desc");
+        post = orderBy(
+          this.state.posts,
+          (o) => o.titolo.toLowerCase(),
+          opzioni.crescente ? "asc" : "desc"
+        );
         break;
 
       case OrdinamentoStringa.dataDiModifica:
-        post = orderBy(this.state.posts, "ultimaModificaInNumeri", !opzioni.crescente ? "asc" : "desc");
+        post = orderBy(
+          this.state.posts,
+          "ultimaModificaInNumeri",
+          !opzioni.crescente ? "asc" : "desc"
+        );
         break;
 
       case OrdinamentoStringa.importanza:
-        console.log(post);
-
-        post = orderBy(this.state.posts, "frontmatter.capitolo", opzioni.crescente ? "asc" : "desc");
+        post = orderBy(
+          this.state.posts,
+          "frontmatter.capitolo",
+          opzioni.crescente ? "asc" : "desc"
+        );
         break;
     }
 
@@ -34,7 +51,10 @@ export class ListaAppunti extends Component<{ posts: PostPreviewType[] }, { post
   }
 
   componentDidMount(): void {
-    this.cambiato({ tipoDiOrdinamento: OrdinamentoStringa.importanza, crescente: true });
+    this.cambiato({
+      tipoDiOrdinamento: OrdinamentoStringa.importanza,
+      crescente: true,
+    });
   }
 
   render(): ReactNode {

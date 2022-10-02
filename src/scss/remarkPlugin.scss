@@ -55,3 +55,41 @@ $spessoreBordo: 5px;
 a {
   color: $colorePrincipale;
 }
+
+pre > code {
+  display: grid;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+// pre[data-theme='dark'], code[data-theme='dark'] {
+//   display: none;
+// }
+
+pre[data-theme="light"] {
+  @include scuro {
+    display: none;
+  }
+}
+
+html:not(.night) pre[data-theme="dark"] {
+  display: none;
+}
+
+.inizioDefinizione {
+  text-decoration: underline;
+}

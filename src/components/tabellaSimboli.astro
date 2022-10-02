@@ -4,11 +4,11 @@ export interface Props {
 }
 import "../scss/globale.scss";
 const { simboli } = Astro.props;
-
-import katex from "katex";
+import katex, { KatexOptions } from "katex";
+const opzioni: KatexOptions = { strict: false };
 ---
 
-<table>
+<table class="tabellaSimboli">
   <tr>
     <th>Simbolo</th>
     <th>Come è fatto</th>
@@ -17,7 +17,7 @@ import katex from "katex";
   {
     simboli.map((simbolo) => (
       <tr>
-        <td set:html={katex.renderToString(simbolo)} />
+        <td set:html={katex.renderToString(simbolo, opzioni)} />
         <td>
           <code>${simbolo}$</code>
         </td>
@@ -31,5 +31,6 @@ import katex from "katex";
       display: block;
     }
   </style>
+
 
 </table>

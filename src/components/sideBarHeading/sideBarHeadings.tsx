@@ -26,7 +26,8 @@ export class SideBarHeadings extends Component<any, { headings: headings[] }> {
 
   componentDidMount(): void {
     const teste: headings[] = [];
-    const headersRaw = document.querySelectorAll<HTMLHeadingElement>("h1, h2, h3");
+    const headersRaw =
+      document.querySelectorAll<HTMLHeadingElement>("h1, h2, h3");
     headersRaw.forEach((elemento) => {
       const testa: headings = {
         depth: parseInt(elemento.tagName.replace(/^\D+/g, "")),
@@ -54,7 +55,8 @@ export class SideBarHeadings extends Component<any, { headings: headings[] }> {
       return window.innerHeight / 2 - elem.getBoundingClientRect().top > 0;
     });
     const elemento = filtrati[filtrati.length - 1] as HTMLElement;
-    const id = elemento.id;
+
+    const id = elemento?.id ?? "";
     const menu = document.querySelector(`*[href="#${id}"]`) as HTMLElement;
 
     if (this.precedente && this.precedente != menu) {

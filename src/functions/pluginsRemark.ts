@@ -1,14 +1,20 @@
 import { visit } from "unist-util-visit";
+import { filter } from "unist-util-filter";
 import uniq from "lodash/uniq";
 import { h } from "hastscript";
 import { toHast } from "mdast-util-to-hast";
+import { visitParents } from "unist-util-visit-parents";
+import slash from "slash";
+import { readFileSync } from "fs";
+import { text, link } from "mdast-builder";
+
+const rawdata = readFileSync("dizionario.json");
+const dizionario = JSON.parse(rawdata as any);
 
 export function ottieniDescrizione() {
   return function (tree: any, { data }: { data: any }) {
     let testoDaRitornare = "";
     visit(tree, "paragraph", (paragrafi) => {
-    
-      
       for (const figlio of paragrafi.children) {
         if (testoDaRitornare.length > 150) return;
         if (figlio.type === "text") testoDaRitornare += figlio.value;
@@ -61,7 +67,28 @@ export function boxDefinizione() {
   };
 }
 
-function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualizzare?: string) {
+export function cambioTextDirectives() {
+  return (tree) => {
+    visit(tree, "textDirective", (node) => {
+      if (node.name === "d") {
+        const valore = node.children[0].value;
+        const data = node.data || (node.data = {});
+        const tagName = "span";
+        data.hName = tagName;
+        data.hProperties = h(".inizioDefinizione", {
+          id: `${valore}-def`,
+        }).properties;
+      }
+    });
+  };
+}
+
+function ritornaBox(
+  nome: string,
+  urlImmagine: string,
+  node: any,
+  nomeDaVisualizzare?: string
+) {
   const data = node.data || (node.data = {});
   const tagName = "div";
   data.hName = tagName;
@@ -70,7 +97,9 @@ function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualiz
     containerDefinizione.children.push(toHast(child) as any);
   }
 
-  data.hProperties = h(`div.${nome}Container`, { class: ["conteinerSpegazioni"] }).properties;
+  data.hProperties = h(`div.${nome}Container`, {
+    class: ["conteinerSpegazioni"],
+  }).properties;
   data.hChildren = h(`div.${nome}Wraper`, [
     h(`.boxIntestazione${nome}`, { class: ["intestazioneSpiegazione"] }, [
       h("span", nomeDaVisualizzare ?? nome),
@@ -82,7 +111,6 @@ function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualiz
   ]).children;
 }
 
-
 export function codiceInline() {
   return (tree: any) => {
     visit(tree, "inlineCode", (node) => {
@@ -92,13 +120,81 @@ export function codiceInline() {
   };
 }
 
+export function nascondiTestata() {
+  return (tree: any) => {
+    return filter(tree, (node: any) => node.tagName !== "h1");
+  };
+}
 
 export function lazyLoadingImmagini() {
   return (tree: any) => {
     visit(tree, "element", (node) => {
-      if(node.tagName == "img"){
-        node.properties.loading = "lazy"
+      if (node.tagName == "img") {
+        node.properties.loading = "lazy";
       }
     });
   };
+}
+
+export function aggiungiDizionario() {
+  return (tree: any) => {
+    visitParents(tree, "text", (node, ancestor) => {
+      const stringa = node.value;
+
+      if (ancestor[ancestor.length - 1].type === "textDirective") {
+        return node;
+      }
+
+      Object.keys(dizionario).forEach(function (key) {
+        const posizione = node.value.search(key);
+        const lunghezzaStringa = key.length;
+        if (posizione > -1 && !node.creato) {
+          const prima = stringa.slice(0, posizione);
+          const seconda = stringa.slice(posizione + lunghezzaStringa);
+          const appendiQui = ancestor[ancestor.length - 1].children;
+
+          const posizioneElArray = appendiQui.findIndex(
+            (el: any) => el === node
+          );
+          node.value = prima;
+          const valore = dizionario[key].posizioneRelativa.toString();
+
+          appendiQui.insert(
+            posizioneElArray + 1,
+            creaTree(key, "link", true, `/${slash(valore)}#${key}-def`)
+          );
+          appendiQui.insert(
+            posizioneElArray + 2,
+            creaTree(seconda, "text", false)
+          );
+        }
+      });
+    });
+  };
+}
+
+declare global {
+  interface Array<T> {
+    insert(array: T, index: number, ...items: any[]): void;
+  }
+}
+
+Array.prototype.insert = function (index, ...items) {
+  this.splice(index, 0, ...items);
+};
+
+function creaTree(testo: string, tipo: string, creato: boolean, url = "") {
+  if (tipo != "link") {
+    return {
+      type: tipo,
+      value: testo,
+      creato,
+    };
+  } else {
+    const testoMd = text(testo);
+    const linkMD = link(url, testo, [testoMd]);
+    // @ts-ignore
+    testoMd.creato = true;
+    return linkMD;
+  }
 }

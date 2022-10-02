@@ -3,5 +3,21 @@
     "editor.wordWrap": "on",
     "editor.acceptSuggestionOnEnter": "off",
     "editor.snippetSuggestions": "top"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "on",
+      "strings": "on"
+    },
+    "editor.wordBasedSuggestions": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.snippetSuggestions": "top"
+  },
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+  "[scss]": {
+    "editor.detectIndentation": true
   }
 }
