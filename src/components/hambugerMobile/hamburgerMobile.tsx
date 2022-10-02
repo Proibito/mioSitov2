@@ -70,8 +70,9 @@ class Menu extends Component<{ chiudi: any }> {
   }
 }
 
-class PortalNav extends Component<any, any> {
+export class PortalNav extends Component<any, any> {
   el: HTMLElement;
+
   appendiA = document.getElementById("portalNav");
   constructor(props: any) {
     super(props);

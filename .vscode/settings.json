@@ -16,5 +16,8 @@
   },
   "files.associations": {
     "*.mdx": "markdown"
+  },
+  "[scss]": {
+    "editor.detectIndentation": true
   }
 }

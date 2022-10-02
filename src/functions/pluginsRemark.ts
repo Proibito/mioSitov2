@@ -1,23 +1,20 @@
 import { visit } from "unist-util-visit";
-import {filter} from 'unist-util-filter'
+import { filter } from "unist-util-filter";
 import uniq from "lodash/uniq";
 import { h } from "hastscript";
 import { toHast } from "mdast-util-to-hast";
 import { visitParents } from "unist-util-visit-parents";
 import slash from "slash";
-import {readFileSync} from "fs"
+import { readFileSync } from "fs";
 import { text, link } from "mdast-builder";
 
 const rawdata = readFileSync("dizionario.json");
 const dizionario = JSON.parse(rawdata as any);
 
-
 export function ottieniDescrizione() {
   return function (tree: any, { data }: { data: any }) {
     let testoDaRitornare = "";
     visit(tree, "paragraph", (paragrafi) => {
-    
-      
       for (const figlio of paragrafi.children) {
         if (testoDaRitornare.length > 150) return;
         if (figlio.type === "text") testoDaRitornare += figlio.value;
@@ -70,7 +67,28 @@ export function boxDefinizione() {
   };
 }
 
-function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualizzare?: string) {
+export function cambioTextDirectives() {
+  return (tree) => {
+    visit(tree, "textDirective", (node) => {
+      if (node.name === "d") {
+        const valore = node.children[0].value;
+        const data = node.data || (node.data = {});
+        const tagName = "span";
+        data.hName = tagName;
+        data.hProperties = h(".inizioDefinizione", {
+          id: `${valore}-def`,
+        }).properties;
+      }
+    });
+  };
+}
+
+function ritornaBox(
+  nome: string,
+  urlImmagine: string,
+  node: any,
+  nomeDaVisualizzare?: string
+) {
   const data = node.data || (node.data = {});
   const tagName = "div";
   data.hName = tagName;
@@ -79,7 +97,9 @@ function ritornaBox(nome: string, urlImmagine: string, node: any, nomeDaVisualiz
     containerDefinizione.children.push(toHast(child) as any);
   }
 
-  data.hProperties = h(`div.${nome}Container`, { class: ["conteinerSpegazioni"] }).properties;
+  data.hProperties = h(`div.${nome}Container`, {
+    class: ["conteinerSpegazioni"],
+  }).properties;
   data.hChildren = h(`div.${nome}Wraper`, [
     h(`.boxIntestazione${nome}`, { class: ["intestazioneSpiegazione"] }, [
       h("span", nomeDaVisualizzare ?? nome),
@@ -109,8 +129,8 @@ export function nascondiTestata() {
 export function lazyLoadingImmagini() {
   return (tree: any) => {
     visit(tree, "element", (node) => {
-      if(node.tagName == "img"){
-        node.properties.loading = "lazy"
+      if (node.tagName == "img") {
+        node.properties.loading = "lazy";
       }
     });
   };
@@ -133,24 +153,20 @@ export function aggiungiDizionario() {
           const seconda = stringa.slice(posizione + lunghezzaStringa);
           const appendiQui = ancestor[ancestor.length - 1].children;
 
-          const posizioneElArray = appendiQui.findIndex((el: any) => el === node);
+          const posizioneElArray = appendiQui.findIndex(
+            (el: any) => el === node
+          );
           node.value = prima;
           const valore = dizionario[key].posizioneRelativa.toString();
 
           appendiQui.insert(
             posizioneElArray + 1,
-            creaTree(
-              key,
-              "link",
-              true,
-              `/${slash(valore)}#${key}Def`
-            )
+            creaTree(key, "link", true, `/${slash(valore)}#${key}-def`)
           );
           appendiQui.insert(
             posizioneElArray + 2,
             creaTree(seconda, "text", false)
           );
-
         }
       });
     });
@@ -159,7 +175,7 @@ export function aggiungiDizionario() {
 
 declare global {
   interface Array<T> {
-      insert(array: T, index: number, ...items: any[]): void;
+    insert(array: T, index: number, ...items: any[]): void;
   }
 }
 

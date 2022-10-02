@@ -22,7 +22,7 @@ export async function creaDizionario() {
     await unified()
       .use(remarkParse)
       .use(remarkDirective)
-      .use(myRemarkPlugin)
+      .use(prendiIDati)
       .use(remarkRehype as any)
       .use(rehypeStringify)
       .process(await read(file));
@@ -53,13 +53,14 @@ function getAllFiles(dirPath, arrayOfFiles) {
   return arrayOfFiles;
 }
 
-function myRemarkPlugin() {
+function prendiIDati() {
   return (tree) => {
     visit(tree, "textDirective", (node) => {
       if (node.name == "d") {
         array[node.children[0].value] = {
           posizioneAssoluta: posizioneAssolutaCorrente,
           posizioneRelativa: posizioneRelativa.replace(/\.[^/.]+$/, ""),
+          parola: node.children[0].value
         };
       }
     });

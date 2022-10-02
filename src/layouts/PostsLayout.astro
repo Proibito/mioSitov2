@@ -5,6 +5,7 @@ import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
 import TabellaSimboli from "../components/tabellaSimboli.astro";
 import "../scss/remarkPlugin.scss";
 import "../scss/appunti.scss";
+import { RicercaAppunti } from "../components/topBar/ricercaAppunti";
 
 const titolo: string = Astro.props.headings.filter(
   (titolo: any) => titolo.depth == 1
@@ -23,7 +24,11 @@ const frontmatter = Astro.props.frontmatter;
 
 <Layout title={titolo}>
   <nav class="testa" id="barra">
-    <TopBar />
+    <TopBar>
+      <div slot="elem-mobile-destra">
+        <div><RicercaAppunti client:visible /></div>
+      </div>
+    </TopBar>
   </nav>
   <main>
     <div class="main">
@@ -131,6 +136,7 @@ const frontmatter = Astro.props.frontmatter;
     flex: 1 1 auto;
     line-height: 1.75rem;
     text-align: justify;
+    margin-bottom: 10rem;
   }
 
   h2,
