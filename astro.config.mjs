@@ -10,15 +10,18 @@ import {
   codiceInline,
   lazyLoadingImmagini,
   nascondiTestata,
+  aggiungiDizionario,
 } from "./src/functions/pluginsRemark";
 import mdx from "@astrojs/mdx";
 import remarkDirective from "remark-directive";
 import rehypePrettyCode from "rehype-pretty-code";
+import { readFileSync } from "fs";
+import { miaEstensione } from "./plugins/plugin";
 
 const options = {
   // Use one of Shiki's packaged themes
   theme: {
-    dark: JSON.parse(fs.readFileSync("./themes/temaScuro.json", "utf-8")),
+    dark: JSON.parse(readFileSync("./themes/temaScuro.json", "utf-8")),
     light: "github-light",
   },
 
@@ -50,6 +53,7 @@ export default defineConfig({
   integrations: [
     image(),
     react(),
+    miaEstensione(),
     mdx({
       remarkPlugins: [
         ottieniDescrizione,
@@ -59,6 +63,7 @@ export default defineConfig({
         codiceInline,
         ottieniSimboli,
         boxDefinizione,
+        aggiungiDizionario,
       ],
       rehypePlugins: [
         [

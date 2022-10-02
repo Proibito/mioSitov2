@@ -3,6 +3,14 @@ import {filter} from 'unist-util-filter'
 import uniq from "lodash/uniq";
 import { h } from "hastscript";
 import { toHast } from "mdast-util-to-hast";
+import { visitParents } from "unist-util-visit-parents";
+import slash from "slash";
+import {readFileSync} from "fs"
+import { text, link } from "mdast-builder";
+
+const rawdata = readFileSync("dizionario.json");
+const dizionario = JSON.parse(rawdata as any);
+
 
 export function ottieniDescrizione() {
   return function (tree: any, { data }: { data: any }) {
@@ -106,4 +114,71 @@ export function lazyLoadingImmagini() {
       }
     });
   };
+}
+
+export function aggiungiDizionario() {
+  return (tree: any) => {
+    visitParents(tree, "text", (node, ancestor) => {
+      const stringa = node.value;
+
+      if (ancestor[ancestor.length - 1].type === "textDirective") {
+        return node;
+      }
+
+      Object.keys(dizionario).forEach(function (key) {
+        const posizione = node.value.search(key);
+        const lunghezzaStringa = key.length;
+        if (posizione > -1 && !node.creato) {
+          const prima = stringa.slice(0, posizione);
+          const seconda = stringa.slice(posizione + lunghezzaStringa);
+          const appendiQui = ancestor[ancestor.length - 1].children;
+
+          const posizioneElArray = appendiQui.findIndex((el: any) => el === node);
+          node.value = prima;
+          const valore = dizionario[key].posizioneRelativa.toString();
+
+          appendiQui.insert(
+            posizioneElArray + 1,
+            creaTree(
+              key,
+              "link",
+              true,
+              `/${slash(valore)}#${key}Def`
+            )
+          );
+          appendiQui.insert(
+            posizioneElArray + 2,
+            creaTree(seconda, "text", false)
+          );
+
+        }
+      });
+    });
+  };
+}
+
+declare global {
+  interface Array<T> {
+      insert(array: T, index: number, ...items: any[]): void;
+  }
+}
+
+Array.prototype.insert = function (index, ...items) {
+  this.splice(index, 0, ...items);
+};
+
+function creaTree(testo: string, tipo: string, creato: boolean, url = "") {
+  if (tipo != "link") {
+    return {
+      type: tipo,
+      value: testo,
+      creato,
+    };
+  } else {
+    const testoMd = text(testo);
+    const linkMD = link(url, testo, [testoMd]);
+    // @ts-ignore
+    testoMd.creato = true;
+    return linkMD;
+  }
 }

@@ -27,41 +27,43 @@ La soluzione:
 
 Mi comporto diversamente in base a quante biglie vedo nel recipiente:
 
-* Se il recipiente è vuoto dico "no"
-- se il recipiente contiene **una sola biglia**, la rimuove e dico "si"
-- se il recipiente contiene **due o più biglie** ne rimuovo due e ripeto.
+- Se il recipiente è vuoto dico "no"
+
+* se il recipiente contiene **una sola biglia**, la rimuove e dico "si"
+* se il recipiente contiene **due o più biglie** ne rimuovo due e ripeto.
 
 In questo caso è come se noi abbiamo la facoltà di decidere cosa fare in base all'approssimazione della visione. Infatti si noti che ci sono due stati in uno stato. Questi comportamenti comportano il non determinismo.
 
 ### Soluzione schematizzata
 
-* $q_0$ guardo il recipiente e deciso cosa fare, se non ci sono più biglie dico "no"
-* $q_1$ il recipiente contenva una sola sola biglia. l'ho rimossa e dico "si" (il valore di uscita vero)
-- $q_2$ il recipiente contiene due o più biglie, ne ho rimossa una ora rimuovo l'altra
+- $q_0$ guardo il recipiente e deciso cosa fare, se non ci sono più biglie dico "no"
+- $q_1$ il recipiente contenva una sola sola biglia. l'ho rimossa e dico "si" (il valore di uscita vero)
+
+* $q_2$ il recipiente contiene due o più biglie, ne ho rimossa una ora rimuovo l'altra
 
 ## definizione
 
 :::def
- L'acroma è NFA è una quintupla 
+L'acroma è NFA è una quintupla
+
 $$
 A = (Q, \Sigma, \delta, q_0, F)
 $$
+
 Dove:
+
 - $Q$ è un insieme **finito di stati**
 - $\Sigma$ è l'**alfabeto** riconosciuto dall'automa
 - $\delta: Q \times \Delta \rightarrow \wp(Q)$ è la **funziona di transizione** (notare il codominio)
 - $q_0 \in Q$ è lo **stato inziale**
 - $F sottodominio Q$ è l'insieme di stati finiti
-::: 
-
+  :::
 
 :::nb
-- $\delta(q,a)$ è l’insime degli stati in cui l’NFA può scegliere di transire quando si trova nello stato  e legge il simbolo
+
+- $\delta(q,a)$ è l’insime degli stati in cui l’NFA può scegliere di transire quando si trova nello stato e legge il simbolo
 - se $1delta(q,a)$ è un singoletto, c’è una sola scelta (è il caso deterministico)
 - se $\delta(q,a)$ è vuoto l’automa rifiuta la stringa
-:::
+  :::
 
 Così come abbiamo fatto negli automi deterministici definiamo "delta capuccio" ($\hat \delta$) per riflettere il non detrminismo il codominio è l'insieme delle parti cioè l'insieme degli stati in cui l'automa può transisire riconoscendo tutti gli elementi.
-
-
-
