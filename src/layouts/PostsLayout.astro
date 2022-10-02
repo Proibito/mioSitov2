@@ -74,6 +74,12 @@ const frontmatter = Astro.props.frontmatter;
     align-items: stretch;
   }
 
+  @include tablet {
+    .testata {
+      flex-direction: column;
+    }
+  }
+
   .icone {
     display: flex;
     align-items: center;
@@ -81,6 +87,7 @@ const frontmatter = Astro.props.frontmatter;
 
   .h1Titolo {
     text-align: initial;
+    margin: 1rem 0;
     max-width: 90%;
   }
 

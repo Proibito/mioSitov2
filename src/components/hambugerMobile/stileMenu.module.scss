@@ -22,10 +22,9 @@
   text-transform: capitalize;
 }
 
-.menuHamburger {
-  @include scuro {
-    stroke: $coloreTestoScuro;
-  }
+.menuHamburger,
+.bottone {
+  stroke: black;
 }
 
 @include scuroBox {
