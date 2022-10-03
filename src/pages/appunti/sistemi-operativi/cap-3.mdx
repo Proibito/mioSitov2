@@ -47,9 +47,9 @@ Questo diagramma fa vedere in che modo un processo cambia di stato:
 
 {/* TODO da aggiungere il diagramma [Diagramma] */}
 
-## Process Control Block 3.1.3
+## :d[Process Control Block] 3.1.3
 
-Per ogni processo il SO crea una struttura dati il **Process Control Block**, che serve ad amministrare il processo stesso.
+Per ogni processo il SO crea una struttura dati il **Process Control Block** (:d[PCB]), che serve ad amministrare il processo stesso.
 I dati sono:
 
 - **ID** che è il numero univoco del processo
@@ -105,22 +105,22 @@ Quando i processi si trovano nella coda si trovano nella coda della ready to run
 Il **CPU scheduler** è un componente incaricato alla gestione dell'ordine di esecuzione dei processi, è un componente molto veloce ed è il cuore del time sharing. (Sarà l'argomento del nostro Cap. 5).
 Ogni sistema operativo ha almeno una System call delegata alla creazione di processi, ogni processo è creato da un altro processo usando la system call relativa. (È la system call più importante del SO)
 
-Il processo che crea il processo si chiama **processo padre (o parent)**.
+Il processo che crea ne crea un'altro si chiama **processo padre (o parent)**.
 
-Il processo creato è detto **processo figlio 8o child**
+Il processo creato è detto **processo figlio o child**
 
 Poiché ogni processo può a sua volta creare altri processi si crea una struttura ad albero chiamato **albero di processi**.
 
 Quando un processo crea un nuovo processo il SO:
 
-- Gli assegna un Processo ID o **PID**
+- Gli assegna un Processo ID o **:d[PID]**
 - recupera dall'hard disk il codice da eseguire e lo porta in RAM.
-- ALloca un nuovo [PCB](#process-control-block-313) e lo inizializza con le informazioni relative al nuovo processo.
-- inserisce il [PCB](#process-control-block-313) in coda di ready.
+- ALloca un nuovo PCB e lo inizializza con le informazioni relative al nuovo processo.
+- inserisce il PCB in coda di ready.
 
 ### Creazione di un processo
 
-Ogni sistema operativo ha la sua SC per generare un processo lo sviluppatore del SO deve decidere come implementarlo, alcune domande sono:
+Ogni sistema operativo ha la sua System Call per generare un processo lo sviluppatore del SO deve decidere come implementarlo, alcune domande sono:
 
 1. Che cosa fa il processo padre quando ha generato un processo figlio?
    - prosegue la sua esecuzione in modo concorrente all’esecuzione del processo figlio
@@ -167,22 +167,21 @@ Spiegazione del codice:
 
 ### Terminazione di un Processo
 
-Un processo termina dopo l'esecuzione dall'ultima istruzione del codice. Un'altra via è chiamare il metodo `exit()` (in `C`).
+Un processo termina dopo l'esecuzione dall'ultima istruzione del codice. Un'altra via è chiamare il metodo `exit()` (in `C`). Le due situazioni sono identiche.
 
-Di sooti un può processo pu anche uccidere esplicitamente un'altro processo. La system call `kill` in unix e `Terminate Process` in windows.
+Di solito un processo può anche uccidere esplicitamente un'altro processo. La system call `kill` in unix e `Terminate-Process` in Windows.
 
 ### Comunicazione tra processi
 
-Ci sono due tipi di processi tra di loro:
+I processi tra di loro possono decidere se comunicare o no, possiamo distinguerli in due categorie:
 
-- indipendenti: non si infulenzano l'un l'altro
-- cooperanti: si influenzano l'un l'altro allo scopo di scambiarsi informazioni e/o portare avanti una elaborazione che è stata suddivisa tra i vari processi per ragione di efficienza e/o modularità.
+- **indipendenti**: non si influenzano l'un l'altro
+- **cooperanti**: si influenzano l'un l'altro allo scopo di scambiarsi informazioni e/o portare avanti un'elaborazione che è stata _spezzata_ tra i vari processi per ragione di efficienza e/o modularità.
 
 Il SO deve offrire un servizio di comunicazione e sincronizzazione per gestire questi processi.
 
 Un classico problema di processi cooperanti:
-
-un processo _produttore_ produzione informazioni che sono consumante da processo _consumatore_ le informazioni vengono depositate e prelevate da un buffer di dimensione limitata.
+Un processo _produttore_ produce informazioni che sono consumante da processo _consumatore_ le informazioni vengono depositate e prelevate da un buffer di dimensione limitata.
 
 Un esempio di "produttore e consumatore" è il compilatore che prende il codice e produce il codice eseguibile.
 
@@ -224,9 +223,9 @@ out = out+1 mod SIZE;
 until false;
 ```
 
-C'è un problema: la varibaile IN e OUT è sono usate sia dal consumatore che dal produttore.
+C'è un problema: la variabile IN e OUT sono usate sia dal consumatore che dal produttore.
 
-L'incaricato alla gestione di questo problema è il sistema opertiva che implementa **Inter-Process Communication (IPC)**. Opportuna System call che permettono a due (o più processi di comunicare) scambiandosi messaggio o usare la stessa memoria condivisa.
+L'incaricato alla gestione di questo problema è il sistema operativo che implementa **:d[Inter-Process Communication] (:d[IPC])**. Opportune System calls che permettono a due (o più processi di comunicare) scambiandosi messaggio o usare la stessa memoria condivisa.
 
 Per esempio per lo scambio di messaggio viene:
 

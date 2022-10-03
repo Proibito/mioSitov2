@@ -17,8 +17,6 @@ export async function creaDizionario() {
 	const __filename = fileURLToPath(import.meta.url);
 	const __dirname = dirname(__filename);
 	const rotta = resolve(process.cwd(), "./src/pages/appunti");
-	console.log(rotta);
-
 	const files = getAllFiles(rotta, undefined);
 
 	for (let i = 0; i < files.length; i++) {
