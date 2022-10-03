@@ -21,11 +21,25 @@ export class HamburgerMobile extends Component<any, any> {
             this.setState({ visibile: true });
           }}
           xmlns="http://www.w3.org/2000/svg"
-          className="menuHamburger"
+          className={stile.menuHamburger}
           style={{ width: "32px", height: "32px", transform: "rotate(0deg)" }}
         >
-          <line x1="4.8" y1="9.6" x2="27.2" y2="9.6" stroke="var(--color-text)" strokeWidth="3"></line>
-          <line x1="27.2" y1="22.4" x2="4.8" y2="22.4" stroke="var(--color-text)" strokeWidth="3"></line>
+          <line
+            x1="4.8"
+            y1="9.6"
+            x2="27.2"
+            y2="9.6"
+            stroke="inherit"
+            strokeWidth="3"
+          ></line>
+          <line
+            x1="27.2"
+            y1="22.4"
+            x2="4.8"
+            y2="22.4"
+            stroke="inherit"
+            strokeWidth="3"
+          ></line>
         </svg>
         <span>{this.state.visibile}</span>
         {this.state.visibile ? (
@@ -54,8 +68,24 @@ class Menu extends Component<{ chiudi: any }> {
           }}
           className={stile.bottone}
         >
-          <line x1="16" y1="0" x2="16" y2="32" stroke="var(--color-text)" strokeWidth="3" strokeLinecap="round"></line>
-          <line x1="0" y1="16" x2="32" y2="16" stroke="var(--color-text)" strokeWidth="3" strokeLinecap="round"></line>
+          <line
+            x1="16"
+            y1="0"
+            x2="16"
+            y2="32"
+            stroke="inherit"
+            strokeWidth="3"
+            strokeLinecap="round"
+          ></line>
+          <line
+            x1="0"
+            y1="16"
+            x2="32"
+            y2="16"
+            stroke="inherit"
+            strokeWidth="3"
+            strokeLinecap="round"
+          ></line>
         </svg>
         <div className={stile.menu}>
           Menu

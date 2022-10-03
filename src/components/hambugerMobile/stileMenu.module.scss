@@ -1,3 +1,5 @@
+@import "../../scss/variabili.scss";
+
 .wrapper {
   background-color: rgba(255, 255, 255, 1);
   height: 100%;
@@ -18,4 +20,21 @@
   font-size: 1.5rem;
   gap: 2rem;
   text-transform: capitalize;
+}
+
+.menuHamburger,
+.bottone {
+  stroke: black;
+}
+
+@include scuroBox {
+  .menuHamburger,
+  .bottone {
+    stroke: $coloreTestoScuro;
+  }
+
+  .wrapper {
+    background-color: $coloreSfondoScuro;
+    color: $coloreTestoScuro;
+  }
 }

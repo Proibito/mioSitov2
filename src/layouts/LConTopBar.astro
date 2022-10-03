@@ -11,7 +11,9 @@ const { title } = Astro.props;
 
 <Layout title={title}>
   <nav class="barra">
-    <TopBar />
+    <TopBar>
+      <slot name="elem-mobile-destra" slot="elem-mobile-destra" />
+    </TopBar>
   </nav>
 
   <main>

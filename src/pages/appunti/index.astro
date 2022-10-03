@@ -1,16 +1,21 @@
 ---
+import { RicercaAppunti } from "../../components/topBar/ricercaAppunti";
 import LConTopBar from "../../layouts/LConTopBar.astro";
 const titolo = "Appunti di Edoardo";
 import { MATERIEAPPUNTI } from "../../settings/materie-appunti";
 ---
 
 <LConTopBar title={titolo}>
+  <div slot="elem-mobile-destra">
+    <div><RicercaAppunti client:visible /></div>
+  </div>
+
   <div class="wrapper">
     <div class="titoletto">
       <h1>{titolo}</h1>
       <span>
-        Questi sono i miei appunti univerisitari, li uso per studiare. Lascio libero accesso a
-        tutti.</span
+        Questi sono i miei appunti univerisitari, li uso per studiare. Lascio
+        libero accesso a tutti.</span
       >
     </div>
     <hr />
@@ -57,8 +62,14 @@ import { MATERIEAPPUNTI } from "../../settings/materie-appunti";
     border-radius: $bordiBottoni;
     background-color: white;
     padding: 0.25rem;
-    box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.02), 0px 0px 20px rgba(0, 0, 0, 0.04);
-    background-image: linear-gradient(45deg, $coloreBarraSotto, $colorePrincipale 40%, white 60%);
+    box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.02),
+      0px 0px 20px rgba(0, 0, 0, 0.04);
+    background-image: linear-gradient(
+      45deg,
+      $coloreBarraSotto,
+      $colorePrincipale 40%,
+      white 60%
+    );
     background-size: 400%;
     background-position: 100%;
     transition: background-position $animazione;
