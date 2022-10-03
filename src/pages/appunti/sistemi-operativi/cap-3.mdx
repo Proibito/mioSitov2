@@ -164,3 +164,72 @@ Spiegazione del codice:
 **wait**: invocata da un processo parent, lo sospende fino alla terminazione del processo figlio. La wait restituisce il PID del figlio appena terminato.
 
 **exit**: provoca la terminazione istantanea del processo che lo invoca
+
+### Terminazione di un Processo
+
+Un processo termina dopo l'esecuzione dall'ultima istruzione del codice. Un'altra via è chiamare il metodo `exit()` (in `C`).
+
+Di sooti un può processo pu anche uccidere esplicitamente un'altro processo. La system call `kill` in unix e `Terminate Process` in windows.
+
+### Comunicazione tra processi
+
+Ci sono due tipi di processi tra di loro:
+
+- indipendenti: non si infulenzano l'un l'altro
+- cooperanti: si influenzano l'un l'altro allo scopo di scambiarsi informazioni e/o portare avanti una elaborazione che è stata suddivisa tra i vari processi per ragione di efficienza e/o modularità.
+
+Il SO deve offrire un servizio di comunicazione e sincronizzazione per gestire questi processi.
+
+Un classico problema di processi cooperanti:
+
+un processo _produttore_ produzione informazioni che sono consumante da processo _consumatore_ le informazioni vengono depositate e prelevate da un buffer di dimensione limitata.
+
+Un esempio di "produttore e consumatore" è il compilatore che prende il codice e produce il codice eseguibile.
+
+```c
+#define SIZE 10
+typedef struct {...} item;
+item buffer [SIZE]; (shared array)
+int in = 0, out = 0;
+```
+
+Buffer circolare di Size item con due puntatori _in_ e _out_:
+
+- valore corrente di in: prossimo item libero;
+- valore corrente di out: primo item pieno;
+- condizione di buffer vuoto: in=out;
+- condizione di buffer pieno: in+1 mod SIZE = out
+
+Produttore:
+
+```c
+item nextp;
+repeat
+<produci un nuovo item in nextp>
+while (in+1 mod SIZE== out) do no_op; /* buffer full */
+buffer[in] = nextp;
+in = in+1 mod SIZE;
+until false;
+```
+
+consumatore
+
+```c
+item nextc;
+repeat
+while (in == out) do no_op; /*buffer empty */
+nextc = buffer[out];
+out = out+1 mod SIZE;
+<consuma l'item in nextc>
+until false;
+```
+
+C'è un problema: la varibaile IN e OUT è sono usate sia dal consumatore che dal produttore.
+
+L'incaricato alla gestione di questo problema è il sistema opertiva che implementa **Inter-Process Communication (IPC)**. Opportuna System call che permettono a due (o più processi di comunicare) scambiandosi messaggio o usare la stessa memoria condivisa.
+
+Per esempio per lo scambio di messaggio viene:
+
+- line = `msgget()`
+- `send(message,line,processo-id)`
+- `receive(message,line,process-id)`

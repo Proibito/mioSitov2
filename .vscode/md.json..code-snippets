@@ -23,7 +23,7 @@
 
   "codice": {
     "prefix": "code",
-    "body": "```$1 \n$0\n```"
+    "body": "```$1\n$0\n```"
   },
 
   "frazione": {
