@@ -110,3 +110,26 @@
 .inizioDefinizione {
   text-decoration: underline;
 }
+
+@include scuroBox {
+  .ricerca {
+    background-color: mix($coloreBarraSotto, black, 20%);
+    color: $coloreTestoScuro;
+  }
+
+  .barraRicerca {
+    background-color: $coloreSfondoPiuChiaroScuro;
+
+    input {
+      color: $coloreTestoScuro;
+    }
+  }
+
+  .ricerca svg {
+    fill: $coloreTestoScuro;
+  }
+
+  .elementoRisultato {
+    background-color: $coloreSfondoPiuChiaroScuro;
+  }
+}

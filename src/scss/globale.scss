@@ -124,7 +124,8 @@ img {
 h1,
 h2,
 p,
-span {
+span,
+a {
   @include scuro {
     color: $coloreTestoScuro;
   }
