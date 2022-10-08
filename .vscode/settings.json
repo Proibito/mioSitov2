@@ -1,26 +1,27 @@
 {
-  "[mdx]": {
-    "editor.wordWrap": "on",
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.snippetSuggestions": "top"
-  },
-  "[markdown]": {
-    "editor.quickSuggestions": {
-      "other": "on",
-      "comments": "on",
-      "strings": "on"
-    },
-    "editor.wordBasedSuggestions": true,
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.snippetSuggestions": "top"
-  },
-  "files.associations": {
-    "*.mdx": "markdown"
-  },
-  "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Atom One Light",
-  "[scss]": {
-    "editor.detectIndentation": true
-  },
-  "workbench.colorTheme": "Atom One Light"
+	"[mdx]": {
+		"editor.wordWrap": "on",
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.snippetSuggestions": "top"
+	},
+	"[markdown]": {
+		"editor.quickSuggestions": {
+			"other": "on",
+			"comments": "on",
+			"strings": "on"
+		},
+		"editor.wordBasedSuggestions": true,
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.snippetSuggestions": "top"
+	},
+	"files.associations": {
+		"*.mdx": "markdown"
+	},
+	"window.autoDetectColorScheme": true,
+	"workbench.preferredLightColorTheme": "Atom One Light",
+	"workbench.preferredDarkColorTheme": "One Dark Pro",
+	"[scss]": {
+		"editor.detectIndentation": true
+	},
+	"workbench.colorTheme": "One Dark Pro"
 }
