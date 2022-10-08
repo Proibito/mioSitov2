@@ -6,7 +6,7 @@
   },
 
   "latex": {
-    "prefix": "l",
+    "prefix": "ll",
     "body": ["$$0$"],
     "description": "Definizione"
   },
@@ -18,7 +18,7 @@
 
   "apri e chiudi": {
     "prefix": "gg",
-    "body": "\\{ $1 \\\\} $0"
+    "body": "\\{ $1 \\\\}$0"
   },
 
   "codice": {
@@ -33,5 +33,14 @@
   "binom": {
     "prefix": "bi",
     "body": "\\binom{$1}{$2}$0"
+  },
+  "P": {
+    "prefix": "pp",
+    "body": "\\mathbb P($1)$0"
+  },
+  
+  "=?": {
+    "prefix": "ui",
+    "body": "\\stackrel{?}{=}"
   },
 }

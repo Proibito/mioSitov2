@@ -79,4 +79,95 @@ TODO finire
 
 ### Scheduling a priorità
 
-Un processo non verrà mai scelto dall ascheduler si dice va in starvation (muore di fame), per fixxare questo problema si usa un meccanismo di aging: il SO aumenta la priorità di un processo PX man man che trascorre il tempo
+Un processo non verrà mai scelto dall ascheduler si dice va in starvation (muore di fame), per fixxare questo problema si usa un meccanismo di aging: il SO aumenta la priorità di un processo PX man man che trascorre il tempo.
+
+### Scheduling round Robin (RR)
+
+Ogni processo ha disposizione una certa quantità di tempo di CPU chiamato :d[quanto di tempo] (da 10 a 100ms). Se il processo non si interrompe da solo quando il processo finisce il tempo dedicato il SO lo obbliga a lasciare la CPU.
+
+Implmentazione:
+
+– lo scheduler sceglie il primo processo in RQ (ad esempio
+secondo un criterio FCFS)
+– lancia un timer inizializzato al quanto di tempo
+– passa la CPU al processo scelto
+
+Se il processo ha un CPU burst minore del quanto di tempo, il processo rilascierà la CPU **volontariamente** prima dello scadere del tempo assegnatogli
+
+Se invece il CPU burst del processo è maggiore del quanto di tempo, allora:
+
+- il timer scade e invia un interrupt
+- il SO riprende il controllo della CPU
+- toglie la CPU al processo running e lo mette in fondo alla RQ
+- prende il primo processo in RQ e ripete tutto
+
+Se ci sono n processi in coda ready e il quanto di tempo è $q$, allora ogni processo riceve 1/n del tempo della CPU e nessun processo aspetta per più di $(n-1)q$ unità di tempo.
+
+Il RR è l’algoritmo di scheduling naturale per implementare il time sharing, ed è quindi particolarmente adatto per i sistemi interattivi: nel caso peggiore un utente non aspetta mai più di $(n-1)q$ unità di tempo prima che il suo processo venga servito.
+
+Come vederemo negli esempi di casi reali, il SO adotta poi ulteriori misure per migliorare il tempo di risposta dei processi interattivi 
+
+Le prestazioni del RR dipendono molto dal valore del quanto di tempo $q$ scelto.
+
+Se mettiamo la $q$ con valore molto grande il sistema diventa non prientive. Se scelgiamo un tempo molto piccolo il SO dovrà fare molti più content switch.
+il tempo di turnaround dipende dalla surata del quanto di tempo, ama non c'è una relazione precisa fra di loro.
+Una regola empirica dice che l'80% dei brust CPU dovrebbe esere minore di $q$.
+
+## Scheduling a Code Multiple (Multi-level Queue Scheduling)
+
+Si può realizzare quando i processi sono facilmente divisibili in classi differenti; ad esempio:
+
+- foreground (interattivi, ad esempio un editor)
+- background (non interagiscono con l’utente)
+- batch (la loro esecuzione può essere differita)
+
+I processi possono essere inseriti in una di queste 3 code.
+Possiamo per esempio insierire:
+- foreground: RR
+- background e batch: FCFS
+
+Ma come si sceglie fra le code?
+
+- scheduling a priorità fissa: servivere prima tutti i processi nella code foregr
+- time slice: ogni coda ha una certa quantità di tempo di CPU, ad esempio: 80% alla coda foreground e 20% alla coda background e batch.
+
+## Scheduling a Code Multilivello con retroazione (MFQS)
+
+Tutti i sistemi operativi odierni possono spostare dei processi in varie code. In questo modo si ottimizza la CPU brust del processo e mettere i processi simili tutti insieme (anche in ambito di tempo).
+
+Quando un processo nasce viene inserito nella prima cosa. Se non finisce io CPU burst nel quanto assegnatoli, viene "retrocesso" alla coda successiva.
+
+La politica del MFQS è definita dai seguenti parametri:
+
+- numero di code
+- algoritmo di scheduling di ogni coda
+- quando declassare un processo
+- quando promuovere un processo
+- in che coda inserire un processo quando arriva (dall’esterno oppure da un I/O burst)
+
+--- 
+
+I moderni pc hanno più core 2,4,8 ... Questi core si affacciano sulla stessa memoria e condividono la cache. I SO moderno prevedono in particola la **multielaborazione simmetrica** (smp) in cui uno scheduler gira su ogni core presente.
+
+I processi “ready to run” possono essere inseriti in un’unica coda, vista da ciascun scheduler, oppure vi può essere una coda “ready to run” separata per ciascun core.
+
+Quindi il PC può avere sia una coda di ready condivisa e una coda per ogni core. I scheduler che vedono la stessa coda ready devono mettersi d'accordo tra di loro affichè due scheduler non mandino in esecuzione lo stesso processo due volte su ciascun core. Un aspetto importante dei sitemi mult-core è il **bilanciamento del carico**.
+
+Sebbene sembrebbe migliore implementare una coda condivisa per tutti i core oggi si preferisce avere una coda separata per ogni core implica avere un ribilanciamento del carico nel caso in cui in un core in ha processo in atessa viene preso un processo delle altre code e messo nelle altre code. In linux per esempio questo algoritmo parte ogni 200 ms per vedere lo sbilanciamento delle code nei core. Tuttavia la presenza di vari livelli di cache fa si che possa non convenire spostare sempre un processo da un core ad un altro.
+
+Infatti quando un programma va in esecuzione il SO carica anche nella cache dei dati. Quindi se spostiamo un processo su altro core sprovvisto che dei dati nella cache, il core deve andarsi a riprendere i dati dalla memoria primaria perdendo un sacco di tempo!
+
+## Scheduling di solaris
+
+Scheduling di solaris (altrenativa a unix), Solaris ha questo priorità:
+
+1. Real time
+1. sistema
+2. interattiva
+3. time sharing
+
+TODO valutare schema.
+
+
+
+
