@@ -120,8 +120,10 @@ export function codiceInline() {
 	};
 }
 
+// TODO aggiungere l'auto layout
+
 export function nascondiTestata() {
-	return (tree: any) => {
+	return (tree: any, data: { data: any }) => {
 		return filter(tree, (node: any) => node.tagName !== "h1");
 	};
 }
