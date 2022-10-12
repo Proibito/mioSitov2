@@ -10,23 +10,26 @@ export interface Capitolo {
 	children: Documento[];
 }
 
-export interface CapitoloData {
-	numero: number;
-	titolo: string;
-}
 
 export interface Documento {
 	type: "documento";
 	data: DocumentoData;
-	children?: Esercizi[];
+	children: Esercizio[];
 }
 
 export interface DocumentoData {
 	capitolo: string;
 	titolo: string;
+	url: string;
 }
 
-export interface Esercizi {
+export interface CapitoloData {
+	capitolo: string;
+	titolo: string;
+	url: string;
+}
+
+export interface Esercizio {
 	type: "esercizi";
 	data: EserciziData;
 }
@@ -34,4 +37,5 @@ export interface Esercizi {
 export interface EserciziData {
 	titolo: string;
 	capitoloRif: string;
+	url: string
 }

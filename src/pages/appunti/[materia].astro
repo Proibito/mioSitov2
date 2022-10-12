@@ -3,8 +3,8 @@ import { ListaAppunti } from "../../components/ordinaAppunti/listaAppunti";
 import { CreaArrayAppunti } from "../../functions/archivioAppunti";
 import LarchivioAppunti from "../../layouts/LarchivioAppunti.astro";
 import type { PostPreviewType } from "../../types/types";
-import { ListaAppuntiV2 } from "../../components/ListaAppuntiV2/ListaAppuntiV2";
 import { creaListaDocumenti } from "../../functions/listaAppuntiV2";
+import AlberoDoc from "../../components/ListaAppuntiV2/alberoDoc.astro";
 
 export function getStaticPaths() {
 	return [
@@ -64,10 +64,7 @@ const albero = creaListaDocumenti(cartella, listaEsercizi);
 				<h2>Non ho ancora crato nulla a quanto pare 😁</h2>
 			</div>
 		) : (
-			<ListaAppuntiV2
-				albero={albero}
-				client:idle
-			/>
+			<AlberoDoc albero={albero} />
 		)
 	}
 </LarchivioAppunti>
