@@ -1,0 +1,126 @@
+---
+capitolo: 2.1
+---
+
+# Variabili aleatorie discrete
+
+Una variabile aleatoria discreta è:
+
+$X: \Omega \rightarrow \Omega$ cioè una funzione.
+
+_lancio 5 volte una moneta equa e conto il numero di teste ottenute_
+
+Per la parte "lancio 5 volte una moneta equa" si usa $\Omega ,\mathbb P$ mentre "conto il numero di teste ottenute": $X$.
+
+Le funzioni che definiremo non saranno come le "solite" ma saranno definite a parole
+
+$X((T,T,C,C,C)) = 2$
+
+---
+Uso metodo classico
+
+$A$ = "ottengo 2 teste"
+
+$\mathbb P(A) = ?$
+
+Prima elencavamo così: $A = \{ (T,T,C,C,C), (T,C,T,C,C), ... \}$
+
+$$
+\#A = \binom{5}{2}
+$$
+
+Con il metodo nuovo
+
+Se associamo $A$ e lo associamo a $\R$ tutti i punti di $A$ finiscono tutti in $2$.
+
+$A = X^{-1}(2)$ quindi $A$ e la controimmagine mediante $X$ di $2$.
+
+Sostanzialmente conteremo $\mathbb P$ di contro-immagini $\mathbb P(A) = \mathbb P(\{ w \in \Omega | X(w)= 2 \})$ e $\{ w \in \Omega | X(w)= 2 \} = X^{-1}(2)$
+
+$$
+\frac{\#A}{\Omega} = \frac{\# X^{-1}(2)}{\#\Omega} = \frac{\binom{5}{2}}{25} = \frac{10}{25} = \frac{10}{32}
+$$
+
+Osservazione: invece che scrivere $\{ w \in \Omega | X(w)= 2 \}$ scriveremo = $\mathbb P(X = 2)$
+
+---
+
+$B =$ "ottengo meno di 3 teste"
+
+TODO AGGIUNGERE DISEGNO
+
+$X^{-1}(2) = \{ w \in \Omega | X(w)= 2 \}$
+
+$X^{-1}(1) = \{ w \in \Omega | X(w)= 1 \}$
+
+$X^{-1}(0) = \{ w \in \Omega | X(w)= 0 \}$
+
+Tutti questi insiemi sono disgiunti perché da una funzione parte solo e una sola associazione
+
+$B = X^{-1}(2) \cup X^{-1}(1) \cup X^{-1}(0)$
+
+$\mathbb P(B) = \mathbb P( \{ X = 2 \} \cup \{ X = 1 \} \cup \{ X = 0 \}    ) = \\ \mathbb P(X=2) + \mathbb P(X =1) + \mathbb P(X = 0)$
+
+:::def
+La funzione della massa di probabilità (probability mass function) **PMF** è così definita viene indicata con la lettera minuscola
+$$
+P_{X}: Imm(X) \rightarrow \R \\
+k \rightarrow \mathbb P(X = k) = P_X(k) = \{ w \in \R | X(w)= k \}
+$$
+
+TODO AGGIUNGERE DISEGNO
+
+:::
+
+---
+
+$B =$ "lancio 4 volta la moneta qua e conto il numero di teste"
+
+PMF di $X$?
+
+1. $Imm(X) = \{ 0,1,2,3,4,5 \}$
+2. $\forall k \in Imm(X) \quad P_X(k)= \mathbb P(X=k)$
+
+$$
+k= 0 \\ \qquad P_X(0) = \mathbb P(X= 0) = \mathbb P(\{ w \in \R | X(w)= 1 \}) = \\ \mathbb P(( T,C,C,C,C), ....) = \frac{\binom{5}{1}}{32} = \binom{5}{32}
+$$
+
+$k= 2 \quad P_X(2) = \mathbb P(X=2)$
+
+quindi per un generico $k$ allora
+
+$P_X(k) = \binom{5}{k} \cdot \frac{1}{32}$
+
+Le contro-immagini di $X$ partizionano $\Omega$
+
+$$
+\stackrel{\bigcup}{k}
+$$
+
+TODO FINIRE FORUMULA
+
+ogni $A$ può essere scritto come unione disgiunta di contro-immagini
+
+$$
+\mathbb P(A) = \mathbb P((\bigcup_{k}\{ x =k \}))
+$$
+
+$\Sigma_k \mathbb P(X = k) = \Sigma_k P_X(k)$
+
+es: $C$ = "ottengo al più una testa
+
+$C = \{ X = 0 \} \cup \{ X = 1 \}$
+
+$\mathbb P(C) = \mathbb P(\{ X = 0 \} \cup \{ X = 1 \})$
+
+$\mathbb P(X = 0) + \mathbb P(X = 1)$
+
+$P_X(0) + P_X(1)$
+
+$\frac{1}{32} + \frac{5}{32} = \frac{6}{32}$
+
+$C = \{ X  \geq 1 \} = \{ w \in \R | X(w) \geq 1 \}$
+
+$D = \{ X \neq 5 \} = \{ X = 5 \}^C$
+
+$\mathbb P(D) = \mathbb P(X \neq 5) = 1, ..., \mathbb P(X =5)$
