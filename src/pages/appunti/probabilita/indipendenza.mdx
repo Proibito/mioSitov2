@@ -1,9 +1,9 @@
 ---
 layout: "../../../layouts/PostsLayout.astro"
-capitolo: 3
+capitolo: 1.3.1
 ---
 
-# Indipendenza
+# Indipendenza probabilistica
 
 :::def
 $A$ e $B$ sono **indipendenti** se $\mathbb P(A | B) = \mathbb P(A)$
@@ -11,7 +11,8 @@ $A$ e $B$ sono **indipendenti** se $\mathbb P(A | B) = \mathbb P(A)$
 
 Cioè due eventi si dicono indipendenti se il verificarsi del primo non modifica la probabilità di verificarsi dell’altro. Si dicono dipendenti invece in caso contrario.
 
-Osservazione:  
+Osservazione:
+
 $$
 \mathbb P(A|B) = \mathbb P(A) \\
 \frac{\mathbb P(A\cap B)}{\mathbb P(B)}
@@ -21,7 +22,7 @@ $$
 
 :::def
 Definizione 2 uguale a quella sopra
- $A$ e $B$ sono indipendenti se $\mathbb P(A \cap B) = \mathbb P(A) \cdot \mathbb P(B)$
+$A$ e $B$ sono indipendenti se $\mathbb P(A \cap B) = \mathbb P(A) \cdot \mathbb P(B)$
 :::
 
 Osservazione: $\mathbb P(A|B) = \mathbb P(A)$ uso bays $\frac{\mathbb P(B | A) \cdot \mathbb P(A)}{\mathbb P(B)} = \mathbb P(B |A) = \mathbb P(B)$
@@ -44,7 +45,7 @@ _lancio 2 dadi equi a 4 facce_
 1. $A_i$ = "il 1° lancio sostituisce $i$"
 2. $B_i$ = "il 2° lancio sostituisce $i$"
 
-$A_i$ e $B_i$ sono indipendenti? 
+$A_i$ e $B_i$ sono indipendenti?
 TODO DA FARE
 
 $A_1$ = "il primo lancio
@@ -55,8 +56,7 @@ $C$ = "la somma fa 4"
 
 $\mathbb P(A_1)= \frac{4}{16} \qquad \mathbb P(C)=\frac{3}{16}$
 
-
-$D$ =  "il massimo tra i due lanci è 2"
+$D$ = "il massimo tra i due lanci è 2"
 
 $E$ = "il minimo dei due lanci e due"
 
@@ -135,7 +135,7 @@ cioè $\mathbb P$ e $\mathbb P^1$ si parlano bene
 Avendo una collezione $(Ai)^n_{i=2}$
 
 :::def
- La collezione è indipendente se tutti gli eventi indipendenti. La collezione  $(Ai)^n_{i=2}$ è una collazzione di eventi indipendenti a due a due se ogni coppia è indipendente ovvero.
+La collezione è indipendente se tutti gli eventi indipendenti. La collezione $(Ai)^n_{i=2}$ è una collazzione di eventi indipendenti a due a due se ogni coppia è indipendente ovvero.
 :::
 
 $$
@@ -145,7 +145,7 @@ $$
 $$
 
 :::def
- Le collezione $(Ai)^n_{i=2}$ è una collezione di eventi **indipendenti** (mutamente) se la probabilità $\mathbb P(\cap_{i \in S} = \prod_{i \in S} \mathbb P(Ai)$ 
+Le collezione $(Ai)^n_{i=2}$ è una collezione di eventi **indipendenti** (mutamente) se la probabilità $\mathbb P(\cap_{i \in S} = \prod_{i \in S} \mathbb P(Ai)$
 Dove $S$ è un qualunque sottoinsieme dell'insieme degli indici $\{ 1,2,3, \cdots,n \}$
 :::
 
@@ -198,13 +198,11 @@ $\frac{1}{4} \stackrel{?}{=}\frac{2}{4} \cdot \frac{2}{4} \cdot \frac{2}{4}$
 
 $\frac{1}{4} \neq \frac{1}{8}$
 
-
-
 ## Esercizi di riepilogo
 
-* Lancio un dado equo a 6 facce;
-* Se escono i numeri 1 o 2 estraiamo con reimbussolamento tre palline dalla scatola $S_1$ altrimenti estraiamo con reimbussolamento tre palline dalla scatolo $S_2$
-* La scatola $S_1$ è composta con 5 palline verdi e 2 aplline nere, mentre la scatola $S_2$ è composta con 1 pallina verde e 3 nere.
+- Lancio un dado equo a 6 facce;
+- Se escono i numeri 1 o 2 estraiamo con reimbussolamento tre palline dalla scatola $S_1$ altrimenti estraiamo con reimbussolamento tre palline dalla scatolo $S_2$
+- La scatola $S_1$ è composta con 5 palline verdi e 2 aplline nere, mentre la scatola $S_2$ è composta con 1 pallina verde e 3 nere.
 
 Calcolare la probabilità di estrarre tre palline verdi, calcolare la prob di estrarre una verde alla pria estrazione e quella di estrarre una verde all seconda. SOno eveneti indipendenti?
 
@@ -220,7 +218,6 @@ $A=$ "estraggo 3 palline verdi"
 $\Omega = \{ (d, e_1, e_2, e_3) \quad d \in \{ 1,2,3,4,5,6 \}, e_i \in \{ v,n \} \}$
 
 Defido di partizionare $\Omega$ in due parti che sono l'estrazione $S_1$ (estrazione 1 nella scatola) idem per $S_2$
-
 
 $S_1 = \{ (d,e_1,e_2,e_3) \quad d \in \{ 1,2 \} \quad e_i \in \{ v,n \}   \}$
 
@@ -265,6 +262,7 @@ Qual è la probabilità che la pianta sia viva al tuo ritono?
 se è morta, qual è la probabilità che il tuo vicino si sia scordato?
 
 ---
+
 Definisco gli eventi
 
 $W$ = "il vicino bagna la pianta"
@@ -336,4 +334,3 @@ unificata $\mathbb P()$
 
 metodo moltiplicativo
 e dell'uniforme discreta
-

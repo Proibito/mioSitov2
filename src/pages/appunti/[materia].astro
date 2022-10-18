@@ -3,6 +3,8 @@ import { ListaAppunti } from "../../components/ordinaAppunti/listaAppunti";
 import { CreaArrayAppunti } from "../../functions/archivioAppunti";
 import LarchivioAppunti from "../../layouts/LarchivioAppunti.astro";
 import type { PostPreviewType } from "../../types/types";
+import { creaListaDocumenti } from "../../functions/listaAppuntiV2";
+import AlberoDoc from "../../components/ListaAppuntiV2/alberoDoc.astro";
 
 export function getStaticPaths() {
 	return [
@@ -51,7 +53,8 @@ switch (materia) {
 		break;
 }
 
-const array: PostPreviewType[] = await CreaArrayAppunti(cartella);
+const listaEsercizi = esercizi;
+const albero = creaListaDocumenti(cartella, listaEsercizi);
 ---
 
 <LarchivioAppunti titoloMateria={titolo}>
@@ -61,7 +64,7 @@ const array: PostPreviewType[] = await CreaArrayAppunti(cartella);
 				<h2>Non ho ancora crato nulla a quanto pare 😁</h2>
 			</div>
 		) : (
-			<ListaAppunti posts={array} client:idle />
+			<AlberoDoc albero={albero} />
 		)
 	}
 </LarchivioAppunti>

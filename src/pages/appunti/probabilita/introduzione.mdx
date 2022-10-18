@@ -1,6 +1,6 @@
 ---
 layout: "../../../layouts/PostsLayout.astro"
-capitolo: 1
+capitolo: 1.1
 ---
 
 # Probabilità
@@ -156,32 +156,3 @@ $B = \{ttc, tct, ctt \}$
 :::nb
 $ttt$ non è valido perché ha più di 2 teste, se il testo citasse "almeno due teste" avremmo potuto aggiungerlo.
 :::
-
-## Probabilità di $\mathbb P$ dedotte dagli assiomi
-
-Se $A,B,C$ sono sottoinsiemi di $\Omega$:
-
-1. $A\sube B → \mathbb P(A)≤\mathbb P(B)$ se A sottoinsieme proprio di **monotonia**, pensando alla $\mathbb P$ come area ci dice che $A$ è più piccolo dell'area di $B$.
-2. $\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)-P(A\cap B)$ La legge dall'inclusione esclusione, di non contare due volte la stessa probabilità
-3. **Subaddività** viene dalla due se togliamo un numero maggiore di 0 $\mathbb P(A\cup B)≤ \mathbb P(A)+\mathbb P(B)$
-4. Sempre il principio di inclusione esclusione
-
-## Esercizi
-
-### Esercizio 1
-
-_Una scatola contiene 3 biglie: una rossa, una verde e una blu. Considero il seguente esperimento: estraggo una biglia, la reimbussolo(parola coniata che significa: "la guardo e la rimetto dentro") e ne estraggo una seconda. Scrivere un possibile modello probabilistico e calcolare la probabilità che le due biglie estratte siano uguali_
-
-Possibile modello
-
-- $\Omega = \{(w_1,w_2)\} \quad w_1 \in \{r,v,b\}$ la cardinalità di $\Omega$ è $3^2 = 9$ (3 possibilità, 2 estrazioni)
-- $\mathbb P$ posso usare la P come uniforme discreta? sì perché $\Omega$ è **finito** e le estrazioni casuali continuano a garantire **equità** dei singoletti.
-
-$A =$ l'evento che "le due biglie uguali sono uguali"  
-$A = \{(v,v), (b,b), (r,r) = \mathbb P(A) = \frac{3}{9} = \frac{1}{3}\}$
-
-### Esercizio 2
-
-_Un dado a 4 facce equo viene lanciato ripetutamente fino a che esce un numero pari. Scrivere lo spazio campionario per questo esperimento. Quanti sono gli esiti possibili? posso usare la legge uniforme discreta?_
-
-- $\Omega$ dato che non so quanti lanci farò $\Omega$ e quando uscirà un pari. $\Omega = \{\ (w_1, w_2, w_3, ..., w_n) \}$ $w_i \in \{1,2,3,4 \}$ l'unico cosa certa è che l'ultimo numero sarà pari mentre tutti saranno dispari; <br/> $\Omega$ ha cardinalità infinita dato che potrei lanciare infinite volte e ottenere sempre un dispari. Non posso usare la legge uniforme discreta perché $\Omega$ non è finito.
