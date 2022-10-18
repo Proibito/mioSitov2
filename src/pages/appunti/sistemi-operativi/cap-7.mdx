@@ -1,0 +1,46 @@
+TODO    DA FARE TUTTO
+
+## Problema dei Lettori-scrittori 7.1.2
+
+Problema: condividere un dile tra molti processi. ALcuni programmi devo scriverci sopra (scrittori) altri devono leggerlo (lettori)
+
+Sutture deti condivise:
+
+```
+semaphore mutex = 1,scrivi = 1
+int numerolettori = 0
+```
+
+Processo scrittore:
+
+``` 
+wait(scrivi);
+...
+scrivi sul file
+...
+signal(scrivi);
+```
+
+Codice del lettore:
+
+```
+wait(mutex);
+numeroLettori++;
+if(numeroLettori == 1) wait(scrivi);
+signal(mutex);
+...
+leggi il file
+...
+wait(mutex);
+numeroLettori--
+if numeroLettori == 0 signal(scrivi)
+signal(mutex)
+```
+
+## Problema dei 5 filosifi
+
+Ci sono 5 filosfi che passano la vita mangiando e parlando. I filosofi confivisono un tavolo rotono con 5 posti. Un filofo per mangiare deve usare due macchette/risorse.
+
+Dobbiamo implementare un sistema nel quale nessun processo vada in starvation e deadlock.
+
+f

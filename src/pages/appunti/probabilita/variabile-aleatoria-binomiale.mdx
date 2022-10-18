@@ -1,0 +1,52 @@
+---
+capitolo: 2.2
+---
+
+# Variabili Aleatorie Binomiale
+
+Esperimento probabilistico dicotomico: **successo** o **insuccesso** `->` **prova bernulliana**.
+
+In caso di variabile aleatoria binomiale provo $n$ volte le provo bernulliana in maniera indipendente e identica. In tutto cioò conto quanti successi ottengo.
+
+Esempio: "lancio 5 volte un dado equo"
+
+$n=5$
+
+$X:$ conto quanti 6 ho ottenuto
+
+$X: \Omega \rightarrow \R$
+
+$(w_1,w_2,...,w_5) \rightarrow X((w_1,...,w_5)) = \#$ di occorenze dell'uscita 6.
+
+Successo: "ottengo 6 nel lancio"
+
+$X_N$ binomiale $(n,p)$ con $p=$ proabilità di sucesso nella singola prova
+
+La PMF di $X$?  
+$n=5$  
+$p = \frac{1}{6}$  
+PMF di $X \sim$ binomiale $(n,p)$
+
+1. $Imm(X)=\{ 0,1,2,3,4,5 \} = \{ 0,1,2,3,4,...,n \}$
+2. $\forall$ le $\in Imm(X)$  
+   $P_X(k) = \mathbb P(X=k)= \mathbb P(\{ w \in \R | X(w) = k \})$
+
+$$
+k=0 \quad P_X(0)=\mathbb P(X=0)= \mathbb P(\{ (w_1, ..., w_5), w_i \in \{ 1,2,3,4,5 \} \}) \\ = \frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \cdot\frac{5}{6} = \bigg(\frac{5}{6}\bigg)^5 = (1-p)^n
+$$
+
+$$
+k=1 \quad  P_X (1) = \mathbb P(X=1) = \\ (6,3,1,4,2), (6,no,no,no,no) = \frac{1}{6} \cdot \frac{5}{6} \cdot \frac{5}{6} \cdot \frac{5}{6}  \cdot \frac{5}{6} = \\
+\bigg(\frac{1}{6}\bigg) \cdot \bigg(\frac{5}{6}\bigg)^{n-k} = \\ = p^k \cdot (1-p)^{n-k} = \\
+(no, no, 6, no, no) =\frac{5}{6} \cdot \frac{5}{6} \cdot \frac{1}{6} \cdot \frac{5}{6} \cdot \frac{5}{6}\\
+
+P_X = \mathbb P(X=1)= \textup{probabiilità del singolo punto} \{ X = 1 \} = \\
+
+\binom{n}{k}p^k \cdot (1-p)^{n-k} \\
+
+P_X(3)= \binom{5}{3} \cdot \bigg(\frac{1}{6}\bigg)^3 \cdot \bigg(\frac{5}{6}\bigg)^2
+$$
+
+$X \sim$ binomiale $(n,p)$
+
+$P_X(k)= \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k} \quad k \in \{ 1,2,...,n \}$
