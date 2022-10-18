@@ -11,6 +11,14 @@ import { visitParents } from "unist-util-visit-parents";
 const rawdata = readFileSync("dizionario.json");
 const dizionario = JSON.parse(rawdata as any);
 
+export function impostaLayout() {
+	return function (tree: any, { data }: { data: any }) {
+		let layout = data.astro.layout;
+		if (!layout) layout = "E:/Desktop/mioSitoV2/src/layouts/PostsLayout.astro";
+		data.astro.frontmatter.layout = layout;
+	};
+}
+
 export function ottieniDescrizione() {
 	return function (tree: any, { data }: { data: any }) {
 		let testoDaRitornare = "";

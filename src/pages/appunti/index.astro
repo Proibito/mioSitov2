@@ -1,8 +1,8 @@
 ---
+import { IMPOSTAZIONI } from "../../../impostazioni";
 import { RicercaAppunti } from "../../components/topBar/ricercaAppunti";
 import LConTopBar from "../../layouts/LConTopBar.astro";
-import { MATERIEAPPUNTI } from "../../settings/materie-appunti";
-const titolo = "Appunti di Edoardo";
+const titolo = "Appunti di";
 ---
 
 <LConTopBar title={titolo}>
@@ -12,7 +12,7 @@ const titolo = "Appunti di Edoardo";
 
 	<div class="wrapper">
 		<div class="titoletto">
-			<h1>{titolo}</h1>
+			<h1>{titolo} {IMPOSTAZIONI.nome}</h1>
 			<span>
 				Questi sono i miei appunti univerisitari, li uso per studiare. Lascio
 				libero accesso a tutti.</span
@@ -21,11 +21,11 @@ const titolo = "Appunti di Edoardo";
 		<hr />
 		<div class="appunti">
 			{
-				MATERIEAPPUNTI.map((materia) => (
+				IMPOSTAZIONI.materie.map((materia) => (
 					<div class="appunto">
 						<div class="inner">
-							<a href={`${materia.link}`}>
-								<h3>{materia.titolo}</h3>
+							<a href={`${materia.nomeCartella}`}>
+								<h3>{materia.nomeVisibile}</h3>
 							</a>
 						</div>
 					</div>

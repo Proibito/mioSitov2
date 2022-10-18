@@ -12,6 +12,7 @@ import {
 	nascondiTestata,
 	aggiungiDizionario,
 	cambioTextDirectives,
+	impostaLayout,
 } from "./src/functions/pluginsRemark";
 import mdx from "@astrojs/mdx";
 import remarkDirective from "remark-directive";
@@ -65,6 +66,7 @@ export default defineConfig({
 				boxDefinizione,
 				aggiungiDizionario,
 				cambioTextDirectives,
+				impostaLayout,
 			],
 			rehypePlugins: [
 				[

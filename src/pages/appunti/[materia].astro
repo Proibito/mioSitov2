@@ -31,9 +31,6 @@ let cartella: Record<string, any>[] = [];
 let esercizi: Record<string, any>[] = [];
 switch (materia) {
 	//
-	case "sistemi-operativi":
-		cartella = await Astro.glob("./sistemi-operativi/*.mdx");
-		break;
 
 	case "probabilita":
 		cartella = await Astro.glob("./probabilita/*.mdx");
@@ -50,6 +47,10 @@ switch (materia) {
 
 	case "C":
 		cartella = await Astro.glob("./C/*.mdx");
+		break;
+
+	case "sistemi-operativi":
+		cartella = await Astro.glob("./sistemi-operativi/*.mdx");
 		break;
 }
 
