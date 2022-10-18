@@ -22,6 +22,5 @@
 	"workbench.preferredDarkColorTheme": "One Dark Pro",
 	"[scss]": {
 		"editor.detectIndentation": true
-	},
-	"workbench.colorTheme": "Atom One Light"
+	}
 }
