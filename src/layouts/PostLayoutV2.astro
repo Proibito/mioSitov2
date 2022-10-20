@@ -1,0 +1,110 @@
+---
+import Layout from "./Layout.astro";
+import TopBar from "../components/topBar/topBar.astro";
+import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
+import "../scss/remarkPlugin.scss";
+import "../scss/appunti.scss";
+import { RicercaAppunti } from "../components/topBar/ricercaAppunti";
+
+const titolo: string = Astro.props.headings.filter(
+	(titolo: any) => titolo.depth == 1
+)[0].text;
+const frontmatter = Astro.props.frontmatter;
+---
+
+<Layout title={"bella"}>
+	<div class="wrapper">
+		<div class="head"><TopBar /></div>
+		<div class="content">
+			<div class="sideDestro">
+				<div class="destraProva">
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>primo</p>
+					<p>ultimo</p>
+				</div>
+			</div>
+			<div class="sideCentrale"><slot /></div>
+			<div class="sideSinistro">sinistra</div>
+		</div>
+	</div>
+</Layout>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+	integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
+	crossorigin="anonymous"
+	onload="this.onload=null;this.rel='stylesheet'"
+	rel="preload"
+	as="style"
+/>
+
+<style lang="scss">
+	@import "../scss/variabili.scss";
+	.wrapper {
+		dispay: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	.head {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background: white;
+		z-index: 2;
+	}
+
+	.content {
+		padding-top: $altezzaBarra + 20px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.sideCentrale {
+		flex-grow: 2;
+		padding: 0 1.4em;
+		width: 60%;
+	}
+
+	.sideDestro,
+	.sideSinistro {
+		width: 20%;
+	}
+
+	.destraProva {
+		height: 100vh;
+		background-color: red;
+	}
+</style>

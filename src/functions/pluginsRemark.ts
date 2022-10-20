@@ -17,12 +17,12 @@ const __dirname = dirname(__filename);
 
 export function impostaLayout() {
 	return function (tree: any, { data }: { data: any }) {
-		let layout = data.astro.layout;
+		let layout = data.astro.frontmatter.layout;
 		// if (!layout) layout = normalize(`${__dirname}../layouts/PostsLayout.astro`);
 		if (!layout)
 			layout = normalize(`${__dirname}/../layouts/PostsLayout.astro`);
 
-		data.astro.frontmatter.layout = layout;
+		// data.astro.frontmatter.layout = layout;
 	};
 }
 
