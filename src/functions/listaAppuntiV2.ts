@@ -5,7 +5,7 @@ import type {
 	Capitolo,
 	Documento,
 	DocumentoData,
-	Esercizio
+	Esercizio,
 } from "../types/alberoAppunti";
 
 export function creaListaDocumenti(
@@ -17,11 +17,12 @@ export function creaListaDocumenti(
 	documenti.forEach((value) => {
 		if (value.frontmatter.capitolo) {
 			value.frontmatter.capitolo = value.frontmatter.capitolo.toString();
+			value.frontmatter.ordinaCapitolo = parseInt(value.frontmatter.capitolo);
 		} else {
 			value.frontmatter.capitolo = "-1";
 		}
 	});
-	documentiOrdinati = orderBy(documenti, "frontmatter.capitolo");
+	documentiOrdinati = orderBy(documenti, "frontmatter.ordinaCapitolo");
 	const capitoliCapi = ritornoCapoCapitoli(documentiOrdinati);
 
 	capitoliCapi.map((capitolo) => {

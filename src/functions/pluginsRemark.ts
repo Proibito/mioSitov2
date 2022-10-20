@@ -7,14 +7,21 @@ import slash from "slash";
 import { filter } from "unist-util-filter";
 import { visit } from "unist-util-visit";
 import { visitParents } from "unist-util-visit-parents";
+import { dirname, normalize } from "path";
+import { fileURLToPath } from "url";
 
 const rawdata = readFileSync("dizionario.json");
 const dizionario = JSON.parse(rawdata as any);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export function impostaLayout() {
 	return function (tree: any, { data }: { data: any }) {
 		let layout = data.astro.layout;
-		if (!layout) layout = "E:/Desktop/mioSitoV2/src/layouts/PostsLayout.astro";
+		// if (!layout) layout = normalize(`${__dirname}../layouts/PostsLayout.astro`);
+		if (!layout)
+			layout = normalize(`${__dirname}/../layouts/PostsLayout.astro`);
+
 		data.astro.frontmatter.layout = layout;
 	};
 }
@@ -128,8 +135,6 @@ export function codiceInline() {
 		});
 	};
 }
-
-// TODO aggiungere l'auto layout
 
 export function nascondiTestata() {
 	return (tree: any, data: { data: any }) => {

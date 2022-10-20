@@ -1,0 +1,112 @@
+---
+capitolo: 15
+---
+
+# Esercizi
+
+## es 1
+
+Sia data la seguente funzione:
+
+$$
+f(x) =  \begin{cases}
+      \frac{1}{4} & x= -3,0\\
+      \frac{1}{6} & x= 1\\
+      \frac{1}{3} & x = 2
+    \end{cases}
+$$
+
+1. È una possibile PMF?
+2. Chaima $X$ la variabile aleatoria che ha $f$ come pmf. calcola:
+   1. $\mathbb P(X< 1)$
+   2. $\mathbb P(X \geq 0)$
+   3. $\mathbb P(-2 \leq X \leq 2)$
+
+---
+
+1. $f$ è possibile PMF?
+   - dominio di $F$ è discreto? $Imm(X)$ e $dom(f)= \{ -3,0,1,2 \}$ ✅ è discreto
+   - I valori assunti cioè le $Imm(PMF)$ sono delle probabilità. Appartengono $\in [0,1] \sube \R$ vale per la $f$? $\frac{1}{6}, \frac{1}{4}, \frac{1}{3} \in [0,1]$ ✅
+   - $1 = \mathbb P(\Omega) = \Sigma \quad \mathbb P(X = k) k\in Imm(X)$  
+    $1 \stackrel{?}{=} \Sigma_{k \in Dom(f)} f(k) = \frac{1}{4}+\frac{1}{4}+\frac{1}{6}+\frac{1}{3}$ ✅
+
+Si è una PMF perchè ha le 3 proprietà richiesta✅. Chiamo $X$ la va che fa $f$ come PMF.
+
+2. $\mathbb P(X < 1) = \mathbb P(\{ w \in \Omega / X(w) < 1 \})$ cerchiamo di riscriverla come unione della opportuna contrommiagini nella forma $\{ X=k \}$  
+l'insieme $\{ X < 1 \} = \{ X = 0 \} \cup \{ X = -3 \}$  
+$$
+\mathbb P(X < 1) =  \mathbb P(\{ X = 0 \} \cup \{ x = -3 \}) \\
+\mathbb P(X =0) + \mathbb P(X = -3) \\
+= f(0) + f(-3)  \\
+= \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+$$
+
+$$
+\mathbb P(x \geq 0) = \mathbb P(\{ X = 0 \} \cup \{ X = 1 \} \cup \{ X = 2 \}) = \\
+\mathbb P(X = 0) + \mathbb P(X = 1) + \mathbb P(X = 2) \\
+f(0) + f(1)+ f(2) \\
+=\frac{1}{4} + \frac{1}{6} + \frac{1}{3} = \frac{3}{4} \\
+\{ X \geq 0 \}^C = \{ X = -3 \}
+$$
+
+$$
+\mathbb P(X \geq 0) = 1 - \mathbb P(\{ x \geq 0 \}^C) = 1-\mathbb P(\{ X = -3 \})
+$$
+
+
+## es 2
+
+testo
+
+$p = 0.1$ probabilità di successo. Produco un pezzo difettoso.
+
+Estrae con reimbussolmento cioè prove ripetute di tepo bernulliano
+
+$n = 10$ 
+
+$X$ variabile aleatoria che conta il numero di pezzi difettosi di cui 10 estratti. COnta il numero di successi sdi prova ripetute di tipo bernulliano.
+
+$X \sim$ Bernulliano $(n,p)$ $p = 0.1$ $n=10$
+
+$\mathbb P(X = 0) = ?$
+
+$\mathbb P(X= 0) = P_x(0) = \binom{10}{0} 0.1^0 (0.9)^{10-0} = (0.9)^{10} = 0.3487 \\
+P_x(k) = \binom{n}{k} p^k(1p)^{n-k} \quad Imm(X)= \{ 0,1,2,...,n \}$
+
+## es 3
+
+due scatoline. La prima 2 palline bianche e 3 nere la saconda una pallina bianca e 4 palline nere. Scelgo a caso una delle due scatole e poi procedo a estrarre con reimbussolamento palline finchè ottengo la prima pallina bianca. Calcolare la PMF della variabile aleatoria $X$ che conta il numero di prove di estrazioni fatte, se ho fatto 2 estrazioni con che probabilità ho estratto le palline dalla seconda scatola?
+
+ne estraggo da $S_2$ il numero di prove è $geom( p = \frac{2}{5})$
+Se estraggo da $S_2$, il numero di prove è $geom(p=\frac{1}{5})$
+
+$X:$ conta il numero di estrazioni.
+
+## es 4
+
+un giornalio vende in un'ora un numero di giornali che è distributio come una v.a. di poisson di paramentro 0.5. Calcolare la probabilità che venda più di 3 giornali in due ore
+
+$X:$ conta il numero di giornali venduti in 1 ora
+
+$Y$: conta il numero di giornali venduti in 2 ore
+
+$X \sim$ Poisson (0.5) `->` $Y \sim$ Poisson(1)
+
+$$
+\mathbb P(Y > 3) \stackrel{?}{=} \mathbb P(\{ y = 4 \} \cup \{ y=5 \} \cup ...) = \mathbb P(\bigcup_{k=4}^{+ \infty} \{ y = k \}) = \\
+\sum_{k = 4}^{+ \infty} \mathbb P(Y=k)
+$$
+
+Passo al complementare
+
+$$
+\mathbb P(A) = 1- \mathbb P(\{ y \leq 3 \})\\
+= 1 - \mathbb P(\{ Y = 3 \} \cup \{ Y= 2 \} \cup \{ Y = 1 \} \cup \{  Y = 0 \}) \\
+= 1 - [\mathbb P(y = 3) + \mathbb P(y = 2) + \mathbb P(y = 1) + \mathbb P(Y = 0)] \\
+= 1 - [P_y(3) + P_y(2) + P_y(1) + P_y(0)] \\
+= 1 - [\frac{1}{3!}^3 e^{-1} + \frac{1}{2!}^3 e^{-1}  + \frac{1}{1!}^3 e^{-1} + \frac{1}{0!}^3 e^{-1} ] \\
+= 1 - [\frac{1}{3!}^3  e^{-1} + \frac{1}{2!}^3 e^{-1} + \frac{1}{1!}^3 e^{-1}+ \frac{1}{0!}^3 e^{-1}] \\
+= 0.01898 = 0.0190
+$$
+
+

@@ -1,0 +1,109 @@
+---
+capitolo: 3
+---
+
+# Media varianza e momenti di variabili aleatorie discrete
+
+- $X$ va discreta PMF
+  1. $Imm(X)$
+  2. $P_X(t) \quad \forall k \in Imm(X)$
+  3. $\mathbb P(X = k)$
+
+Introduciamo oggetti che riassumono/ comprimono l'infomrazione contenuta nella PMF.
+
+:::def
+Chiamo media della Va discrata $X$ la variabile discreta la seguente quantità:
+
+$\mathbb E(X) = \sum_{k\in Imm(X)} k \cdot P_x(k) = \sum_{k \in Imm(X)} k \cdot \mathbb P(X=k)$
+:::
+
+es: $X\sim$ Bernulli(p)
+$Imm(X) = \{ 0.1 \}$
+
+$P_x(0) = 1 - p$
+
+$P_x(1) = p$
+
+$\mathbb E(X) = \sum_{k \in Imm(X)} k \cdot P_x(k) = 0 \cdot P_x(0) +1 \cdot P_x(1) = \\ 0 \cdot \mathbb P(X = 0) + 1 \cdot \mathbb P(X = 1)$
+
+È una media pesata
+
+$$
+\sum_{k \in Imm(X)} k\cdot \mathbb P(X=k)
+$$
+
+$k$ sono i valori di cui faccio la media
+
+$\mathbb P(X=k)$ sono i pesi della media
+
+Es guardo $X$ come una ruota della fortuna
+
+$a_1 \quad P_x(a_1) = p_1 = \mathbb P(X = a_1)$
+
+$a_2 \quad P_x(a_2) = p_2 = \mathbb P(X = a_2)$
+
+...
+
+...
+
+Faccio girare la ruota della forutna $k$ volte (tante)
+
+es: $a_1, a_3, a_{10}, a_7, ....$
+
+Una volta fatta la media aritmetica dei valori ottenuti:
+
+$$
+\frac{a_1 \cdot k_1 + a_2 \cdot k_2 + ... + a_n \cdot k_n}{k}
+$$
+
+$k$ quante volte ho ottenuto la $a$
+
+$$
+a_1 \cdot \frac{k_1}{K} + a_2 \cdot \frac{k_2}{K} + ... + a_n \cdot \frac{k_n}{k}
+$$
+
+le $a \in Imm(X)$ valori assunti
+
+$\frac{k_n}{K}$ frequenze relative di occorenze degli $a_i$
+
+$$
+k \rightarrow + \infty \quad \frac{k_i}{K} \approx pi = \mathbb P(X = a_i)\\
+\approx \frac{a_1 \cdot p_1 + a_2 \cdot p_2 + ... + a_n \cdot p_n}{\mathbb E(X)}
+$$
+
+la $\mathbb E(X)$ è la media dei valori assunti dalla V.a. se immagino di "lanciarla" $K$ volte con $K \rightarrow + \infty$
+
+---
+
+:::def
+Chiamo vallanza della v.a. discreta $X$ la seguente quantità
+
+$Van(X) = \mathbb E[(x-\mathbb E(X))^2]$
+
+$(X- \mathbb E(X))^2$
+:::
+
+La vairanza è la media dello scarto quadratico della v.a. $X$ mi dice quanto mediamenta la v.a. $X$ scarta (al quadrato) della media (si allontana)
+
+Come si calcola?
+
+Se uso la Def data dovrei calcolare la $\mathbb E$ della v.a. ma non so che PMf ha.
+
+$\mathbb E(y) = \sum_{y \in Imm(y)} y \cdot \mathbb P(Y = y)$
+
+teo: se $Y = g(X)$
+
+$$
+\mathbb E(Y) = \sum_{k \in Imm(X)} g(k) \cdot P_x(k) = \\
+\sum_{k \in Imm(X)} g(k) \cdot \mathbb P(X = k)
+$$
+
+es: $X \sim$ Bernulli(p)
+
+$\mathbb E(X) = p$
+
+$Van(X) = \mathbb E((X-\mathbb E(x)^2) = \\ g(0) \cdot P_x(1) + g(1) \cdot P_x(1) = (0-p)^2 \cdot ( 1 - p) + (1-p)^2 \cdot p = p \cdot (1-p)$
+
+$Van(X)$ e $\mathbb E(X)$ non hanno la stessa unità di misura
+
+Deviazione standard: $stdev(C) = \sqrt{Va(X)}$

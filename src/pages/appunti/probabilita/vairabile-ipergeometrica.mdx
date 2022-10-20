@@ -1,0 +1,24 @@
+---
+capitolo:15
+---
+
+# Variabile aleatoria ipergeometrica
+
+Effettuiamo estrazioni senza reimbussolamento da una scatola. La scatola è composta di $c$ elementi dotati di una caratteristica che ci interessa
+e $N-C$ elementi cenza tale caratteristica. La scatola è divisa in 2, una parte di oggetti ha la caratteristica (per esempio è rossa) l'altra parte non ce l'ha (sono non rosse).
+
+Estraggo $n$ palline/oggetti senza reimbussolamento.
+
+$X:$ conta il numero di successi cioè il numero di oggetti con caratterisica di interesse che abbiamo estratto.
+
+$PMF$ di $X$ ?
+
+1. $Imm(X) = \{ 0,1,2,3,..., min(n,C) \}$.  
+   $n,C$ se $C > n$ mi fermo a $n$  
+   se $C < n$ mi fermo a $C$
+2. $\forall k \in Imm(X) \quad px(k) = \mathbb P(X = k)$  
+   $$
+   k = 0 \quad P_x(0)= \frac{\binom{C}{0}\cdot \binom{N-C}{n-0}}{\binom{N}{n}}\\
+   k \quad P_x(k)= \frac{\binom{C}{k}\cdot \binom{N-C}{n-k}}{\binom{N}{n}}
+   $$
+   
