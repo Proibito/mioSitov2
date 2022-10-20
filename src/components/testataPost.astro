@@ -1,0 +1,73 @@
+---
+export interface Props {
+	title: string;
+}
+const { titolo } = Astro.props;
+---
+
+<div class="testata">
+	<h1 class="h1Titolo">{titolo}</h1>
+	<div class="icone">
+		<div class="print icona" onclick="window.print();">
+			<div class="svg">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 48 48"
+					fill="inherit"
+					><path
+						d="M12.1 14.1V6h23.8v8.1Zm24.85 9.25q.6 0 1.05-.45.45-.45.45-1.05 0-.6-.45-1.05-.45-.45-1.05-.45-.6 0-1.05.45-.45.45-.45 1.05 0 .6.45 1.05.45.45 1.05.45ZM15.1 39h17.8v-9.6H15.1Zm-3 3v-8.8H4V20.9q0-2.25 1.525-3.775T9.3 15.6h29.4q2.25 0 3.775 1.525T44 20.9v12.3h-8.1V42Z"
+					></path>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="nascondi" />
+
+<style lang="scss">
+	@import "../scss/variabili.scss";
+
+	.testata {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+	}
+
+	@include tablet {
+		.testata {
+			flex-direction: column;
+		}
+	}
+
+	.icone {
+		display: flex;
+		align-items: center;
+	}
+
+	.h1Titolo {
+		text-align: initial;
+		margin: 1rem 0;
+		max-width: 90%;
+	}
+
+	.icona {
+		cursor: pointer;
+		padding: 0.5rem;
+		border-radius: 100px;
+		transition: all 250ms;
+
+		&:is(:hover, :focus-within) {
+			background-color: mix($colorePrincipale, white, 15%);
+		}
+	}
+
+	.svg {
+		display: flex;
+		width: 100%;
+
+		svg {
+			width: 30px;
+			fill: $colorePrincipale;
+		}
+	}
+</style>

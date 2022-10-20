@@ -66,7 +66,7 @@ export default defineConfig({
 				boxDefinizione,
 				aggiungiDizionario,
 				cambioTextDirectives,
-				// impostaLayout,
+				impostaLayout,
 			],
 			rehypePlugins: [
 				[
