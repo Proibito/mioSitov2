@@ -1,0 +1,74 @@
+# Gestione della memoria
+
+Supponiamo che la memoria in certo momento la Ram sia completamente occupata da 3 processi utente P!, P2, P3, un nuovo processo P4 viene fatto partire è immediatamente pronto per usare la CPU ma non c'è più spazioin Ram che si fa? Immaginiamo che P2 sia in attesa di essere esguito, il Pc potrebbe spostare tutto il programma e tutto cioò che serve nella memoria secondaria. Dopo un po' P1 termina e libera una porzione di ram. a questo punto la P2 viene messo nel posto di P1 ma ora lo spazio è diverso da quello inziale. QUesto processo si chiamo **swap**. Nei periodi moderni non si usa più ma mette il luce un probelma: funziona ancora corretamente P2 dopo essere spostato? Quando il SO riceve il comando di esecuzione recupera il codice dalla memoria e lo carica nella ram.
+
+## Binding (associazioni delgi indirizzi)
+
+Quando il programma viene compilato e caricato in
+Memoria Primaria (MP) per essere eseguito, ad ogni
+variabile è associato l’indirizzo di una locazione di
+memoria che ne contiene il valore.  
+Alle istruzioni di controllo del flusso di esecuzione del
+programma (ossia i salti condizionati e incondizionati) è
+associato l’indirizzo di destinazione del salto.  
+L’operazione di associazione di variabili e istruzioni agli
+indirizzi di memoria è detta binding degli indirizzi.
+
+L'accesso alla variabile in lettura e scrittura corrisponde alla letture e scrittura della cella di memoria in cui indirizzo è stato assegnato.
+
+Ad esempio in
+
+```c
+counter = counter +1;
+```
+tradotto sarà
+``` 
+load(R1, 10456)
+Add(R1, #1);
+store(R1, 10456) 
+```
+
+con `10456` indirizzo della variabile assegnato alla variabile counter;
+
+TODO aggiunere il disegno
+
+Il bidngig può essere eseguito in una delle 3 fasi:
+1. compilazione
+2. caricamento in ram
+3. esecuzione
+
+---
+
+1. fase di compilazione  
+  Viene generato codice assoulto o statico, il compilatore quindi genera gli indirizzo in modo statico. In caso di spostamento del programma esso dovrà essere ricompilato.
+
+2. fase di caricamento in Ram
+   viene generato codice staticamente rilocabile, il compilatore associa ad istruzione e variabili delgi indirizzi relativi rispetto all'inizio del programma che inizia da un ipotetico indirizzo 0 virtuale. Gli indirizzo veri e propri verranno generati nel momento in cui il codice viene caricato nel momento in cui viene in memoria primaria.
+
+3. Fase di esecuzione  
+   il bidngig dinamico degli indirizzi. Il compilatore genera tutti indirizzi relativi, crea un registro di rilocazione e viene usato per trasformare un indirizzo relativo nel corrispondente indirizzo assoluto durante l'esecuzione delle istruzioni. La memort managemnt unit si occuperà di trasformare gli indirizzi relativi in assoluti, usando il regitro di rilocazione, per accedere alle celle di RAM indirizzate delle istruzioni. Quindi per creare tutti gli indirizzi assoluti bisognerà soltato guardare il registro di rilocazione e sommare l'indirizzo relativo.
+
+La fase di esecuzione è quella adottata da tutti i SO. QUelli moderni usano una cosa più complicata ma con questa fase come base.
+
+Riassunto:
+
+- codice statico gli indirizzi nascono assoluti
+- nel codice staticamente rilocabile gli indirizzi nascono relativi e vengono trasformati in assoluti in fase di caricamento del programma in RAM
+- nel codice dinamicamente rilocabile gli indirizzi nascono relativi e rimangono tali anche quando il programma viene caricato in RAM ed eseguito
+
+## Spazio degli indirizzi logici e fisici
+
+Indirizzi logici (o virtuali): indirizzi generati dalla CPU. GLi indirizzi logici devono essere trasformati in assoluti. Per trasformarmi bisogna sommarli con l'indirizzo che si trova nel registro di rilocazione.
+
+Il programma è caricato dal SO in ram a partita da una cella di memoria con indirizzo diverso da 0. Una volta gli indirizzi logici vengono generati e trasformati diventano indirizzi fisici: indirizzi caricati nel memory addresss ragiser per indirizzare una cella della memoria
+centrale (in termini approssimativi, un indirizzo che esce
+dalla MMU e arriva alla RAM, identificando una ben
+precisa cella di memoria RAM).
+
+Gli indirizzi odierni possono indirizzare da $2^{40}$ alla $2^{64}$ ma contando che $2^{40}$ è (quasi) equivalemnte ad un terabyte e nessun computer generico ha una ram da 1000 terbayte.
+
+## Le librerie
+
+Ci sono due librerie: **statiche** e **dinamiche**. Quelle statiche in ogni programma che questa libreria copia il codice, quindi ci potrebbe essere lo stesso codice copiato e incollato più e più volte.  
+
+Le librerie dinamiche più efficienti per via della loro funzione. Vengono caricate in memeoria primaria in runtime e quindi solo se vengono utilizzate e nel momento in cui venogno utilizzate. 
