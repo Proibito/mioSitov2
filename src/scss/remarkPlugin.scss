@@ -3,7 +3,7 @@
 $spessoreBordo: 5px;
 
 .conteinerSpegazioni {
-	$paddingBox: 2rem;
+	$paddingBox: 1rem;
 
 	padding: 1rem;
 	margin: 2em 0;
@@ -92,4 +92,10 @@ html:not(.night) pre[data-theme="dark"] {
 
 .inizioDefinizione {
 	text-decoration: underline;
+}
+
+.katex-html {
+	.newline {
+		height: 1em;
+	}
 }

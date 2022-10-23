@@ -3,7 +3,7 @@ import { ListaAppunti } from "../../components/ordinaAppunti/listaAppunti";
 import { CreaArrayAppunti } from "../../functions/archivioAppunti";
 import LarchivioAppunti from "../../layouts/LarchivioAppunti.astro";
 import type { PostPreviewType } from "../../types/types";
-import { creaListaDocumenti } from "../../functions/listaAppuntiV2";
+import { creaAlbero, creaListaDocumenti } from "../../functions/listaAppuntiV2";
 import AlberoDoc from "../../components/ListaAppuntiV2/alberoDoc.astro";
 
 export function getStaticPaths() {
@@ -27,45 +27,12 @@ export function getStaticPaths() {
 const { materia } = Astro.params;
 const { titolo } = Astro.props;
 
-let cartella: Record<string, any>[] = [];
-let esercizi: Record<string, any>[] = [];
-switch (materia) {
-	//
 
-	case "probabilita":
-		cartella = await Astro.glob("./probabilita/*.mdx");
-		esercizi = await Astro.glob("./probabilita/esercizi/*.mdx");
-		break;
-
-	case "compilatore":
-		cartella = await Astro.glob("./compilatore/*.mdx");
-		break;
-
-	case "sistemi-operativi-lab":
-		cartella = await Astro.glob("./sistemi-operativi-lab/*.mdx");
-		break;
-
-	case "C":
-		cartella = await Astro.glob("./C/*.mdx");
-		break;
-
-	case "sistemi-operativi":
-		cartella = await Astro.glob("./sistemi-operativi/*.mdx");
-		break;
-}
-
-const listaEsercizi = esercizi;
-const albero = creaListaDocumenti(cartella, listaEsercizi);
+const albero = await creaAlbero(materia as string);
 ---
 
 <LarchivioAppunti titoloMateria={titolo}>
 	{
-		cartella.length <= 0 ? (
-			<div>
-				<h2>Non ho ancora crato nulla a quanto pare 😁</h2>
-			</div>
-		) : (
-			<AlberoDoc albero={albero} />
-		)
+		<AlberoDoc albero={albero} />
 	}
 </LarchivioAppunti>

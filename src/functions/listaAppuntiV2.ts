@@ -6,7 +6,7 @@ import type {
 	Documento,
 	DocumentoData,
 	Esercizio,
-} from "../types/alberoAppunti";
+} from ".../pages/appuntitypes/alberoAppunti";
 
 export function creaListaDocumenti(
 	documenti: documentoAstro[],
@@ -22,7 +22,8 @@ export function creaListaDocumenti(
 			value.frontmatter.capitolo = "-1";
 		}
 	});
-	documentiOrdinati = orderBy(documenti, "frontmatter.ordinaCapitolo");
+	documentiOrdinati = ordinaDocumenti(documenti);
+
 	const capitoliCapi = ritornoCapoCapitoli(documentiOrdinati);
 
 	capitoliCapi.map((capitolo) => {
@@ -42,9 +43,9 @@ function ritornoCapoCapitoli(documenti: documentoAstro[]): documentoAstro[] {
 	let numeroAttuale = 0;
 	const capoCapitoli = [];
 	for (let i = 0; i < documenti.length; i++) {
-		const documento = documenti[i];
-		numeroAttuale = parseInt(documento.frontmatter.capitolo);
+		const documento: documentoAstro = documenti[i];
 
+		numeroAttuale = parseInt(documento.frontmatter.capitolo);
 		if (numeroAttuale != numeroPrecedente && numeroAttuale != -1) {
 			numeroPrecedente = numeroAttuale;
 			capoCapitoli.push(documento);
@@ -52,6 +53,49 @@ function ritornoCapoCapitoli(documenti: documentoAstro[]): documentoAstro[] {
 	}
 	return capoCapitoli;
 }
+
+function ordinaDocumenti(documenti: documentoAstro[]): documentoAstro[] {
+	const ausiliaria: any[] = [];
+	const daOrdinare: number[] = [];
+	let maxIndex = 0;
+
+	for (const el of documenti) {
+		const push = el.frontmatter.capitolo.split(".");
+		ausiliaria.push(push);
+		maxIndex = push.length > maxIndex ? push.length : maxIndex;
+	}
+
+	for (const el of ausiliaria) {
+		let pusha = 0;
+		for (let i = 0; i < maxIndex; i++) {
+			pusha *= 10;
+			if (el[i]) {
+				pusha += parseInt(el[i]);
+			}
+		}
+		daOrdinare.push(pusha);
+	}
+
+	for (let i = 0; i < daOrdinare.length; i++) {
+		let indicePiccolo = i;
+		let k = i
+		for (; k < daOrdinare.length; k++) {
+			if (daOrdinare[indicePiccolo] > daOrdinare[k]) indicePiccolo = k
+		}
+		const b = daOrdinare[indicePiccolo]
+		daOrdinare[indicePiccolo] = daOrdinare[i]
+		daOrdinare[i] = b
+
+		const a = documenti[indicePiccolo]
+		documenti[indicePiccolo] = documenti[i]
+		documenti[i] = a
+	}
+
+	return documenti;
+}
+
+
+
 
 function ottieniDocumentiPerCapitolo(
 	documenti: documentoAstro[],
@@ -122,6 +166,53 @@ function getHead1(nodo: documentoAstro): string {
 	).filter((head) => head.depth == 1 && head.text);
 
 	return risultati[0] ? risultati[0].text : "";
+}
+
+export async function creaAlbero(materia: string): Promise<AlberoDocumenti> {
+	let cartella: any;
+	let esercizi: any;
+
+	switch (materia) {
+		//
+
+		case "probabilita":
+			cartella = await import.meta.glob("../pages/appunti/probabilita/*.mdx");
+			esercizi = await import.meta.glob(
+				"../pages/appunti/probabilita/esercizi/*.mdx"
+			);
+			break;
+
+		case "compilatore":
+			cartella = await import.meta.glob("../pages/appunti/compilatore/*.mdx");
+			break;
+
+		case "sistemi-operativi-lab":
+			cartella = await import.meta.glob(
+				"../pages/appunti/sistemi-operativi-lab/*.mdx"
+			);
+			break;
+
+		case "C":
+			cartella = await import.meta.glob("../pages/appunti/C/*.mdx");
+			break;
+
+		case "sistemi-operativi":
+			cartella = await import.meta.glob(
+				"../pages/appunti/sistemi-operativi/*.mdx"
+			);
+			break;
+	}
+
+	const listaCartella = [];
+	const listaEsercizi = [];
+	for (const property in cartella) {
+		listaCartella.push(await cartella[property]());
+	}
+	for (const property in esercizi) {
+		listaEsercizi.push(await esercizi[property]());
+	}
+
+	return creaListaDocumenti(listaCartella, listaEsercizi);
 }
 
 export type documentoAstro = Record<string, any>;

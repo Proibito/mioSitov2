@@ -1,25 +1,24 @@
 @import "../../scss/variabili.scss";
 
 .wrapper {
-  max-height: calc(100vh - $altezzaEpadding);
-  width: 100%;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  font-size: 14px;
-  width: 20vw;
+	max-height: calc(100vh - $altezzaEpadding);
+	width: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	font-size: 14px;
 
-  a {
-    margin: 0.3em 0;
-    color: $coloreDisattivato;
-    cursor: pointer;
-    text-decoration: none;
-  }
+	a {
+		margin: 0.3em 0;
+		color: $coloreDisattivato;
+		cursor: pointer;
+		text-decoration: none;
+	}
 
-  a[attivo="true"] {
-    span {
-      color: $colorePrincipale;
-    }
-  }
+	a[attivo="true"] {
+		span {
+			color: $colorePrincipale;
+		}
+	}
 }

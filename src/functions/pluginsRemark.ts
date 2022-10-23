@@ -20,9 +20,9 @@ export function impostaLayout() {
 		let layout = data.astro.frontmatter.layout;
 		// if (!layout) layout = normalize(`${__dirname}../layouts/PostsLayout.astro`);
 		if (!layout)
-			layout = normalize(`${__dirname}/../layouts/PostsLayout.astro`);
+			layout = normalize(`${__dirname}/../layouts/PostLayoutV2.astro`);
 
-		// data.astro.frontmatter.layout = layout;
+		data.astro.frontmatter.layout = layout;
 	};
 }
 

@@ -5,58 +5,32 @@ import { SideBarHeadings } from "../components/sideBarHeading/sideBarHeadings";
 import "../scss/remarkPlugin.scss";
 import "../scss/appunti.scss";
 import { RicercaAppunti } from "../components/topBar/ricercaAppunti";
+import TestataPost from "../components/testataPost.astro";
+import { creaAlbero } from "../functions/listaAppuntiV2";
+import AlberoPost from "../components/alberoPost.astro";
 
 const titolo: string = Astro.props.headings.filter(
 	(titolo: any) => titolo.depth == 1
 )[0].text;
 const frontmatter = Astro.props.frontmatter;
+
+const albero = await creaAlbero(Astro.url.pathname.split("/")[2]);
 ---
 
-<Layout title={"bella"}>
+<Layout title={titolo}>
 	<div class="wrapper">
 		<div class="head"><TopBar /></div>
 		<div class="content">
 			<div class="sideDestro">
 				<div class="destraProva">
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>primo</p>
-					<p>ultimo</p>
+					<AlberoPost albero={albero} />
 				</div>
 			</div>
-			<div class="sideCentrale"><slot /></div>
-			<div class="sideSinistro">sinistra</div>
+			<div class="sideCentrale">
+				<TestataPost titolo={titolo} />
+				<slot />
+			</div>
+			<div class="sideSinistro"><SideBarHeadings client:idle /></div>
 		</div>
 	</div>
 </Layout>
@@ -76,6 +50,22 @@ const frontmatter = Astro.props.frontmatter;
 		dispay: flex;
 		flex-direction: column;
 		min-height: 100vh;
+
+		&:before {
+			content: "";
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -999;
+			background-image: linear-gradient(
+				mix($colorePrincipale, white, 03%),
+				mix($colorePrincipale, white, 03%) calc(10rem),
+				rgb(253, 254, 255)
+			);
+		}
 	}
 
 	.head {
@@ -87,7 +77,6 @@ const frontmatter = Astro.props.frontmatter;
 	}
 
 	.content {
-		padding-top: $altezzaBarra + 20px;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -96,15 +85,23 @@ const frontmatter = Astro.props.frontmatter;
 		flex-grow: 2;
 		padding: 0 1.4em;
 		width: 60%;
+		padding: $altezzaBarra;
+		flex: 1 1 auto;
+		line-height: 1.75rem;
+		text-align: justify;
 	}
 
 	.sideDestro,
 	.sideSinistro {
+		height: 100vh;
 		width: 20%;
+		position: sticky;
+		height: calc(100vh - $altezzaBarra);
+		overflow: auto;
+		top: 60px;
 	}
 
-	.destraProva {
-		height: 100vh;
-		background-color: red;
+	.sideCentrale :global(*) {
+		scroll-margin-top: 100px;
 	}
 </style>
