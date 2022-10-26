@@ -1,60 +1,66 @@
 @import "../scss/variabili.scss";
 
 .main p {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 @media print {
-  .wrapper,
-  .sideBar,
-  .barraSotto,
-  .tabellaSimboli,
-  .icone,
-  .nascondi {
-    display: none;
-  }
+	.wrapper,
+	.sideBar,
+	.barraSotto,
+	.tabellaSimboli,
+	.icone,
+	.nascondi,
+	.sideDestro,
+	.sideSinistro {
+		display: none;
+	}
 
-  html,
-  body {
-    background: white;
-    overflow: visible;
-    width: 210mm;
-    height: 279mm;
-  }
+	.sidesideCentrale {
+		display: inherit;
+	}
 
-  .main li,
-  .conteinerSpegazioni {
-    break-inside: avoid;
-    overflow: visible;
-  }
+	html,
+	body {
+		background: white;
+		overflow: visible;
+		width: 210mm;
+		height: 279mm;
+	}
 
-  .main {
-    height: 100mm;
+	.main li,
+	.conteinerSpegazioni {
+		break-inside: avoid;
+		overflow: visible;
+	}
 
-    p,
-    h1,
-    h2,
-    h3 {
-      display: block;
-      width: 100%;
-      page-break-inside: avoid;
-      break-inside: avoid;
-      overflow: visible;
-    }
-  }
+	.main {
+		height: 100mm;
 
-  code {
-    .line {
-      max-width: 100vw;
-      word-break: break-word;
-      display: inline-flex;
-      flex: 1 1 auto;
-      flex-wrap: wrap;
-    }
-  }
+		p,
+		h1,
+		h2,
+		h3 {
+			display: block;
+			width: 100%;
+			page-break-inside: avoid;
+			break-inside: avoid;
+			overflow: visible;
+		}
+	}
+
+	code {
+		.line {
+			max-width: 100vw;
+			word-break: break-word;
+			display: inline-flex;
+			flex: 1 1 auto;
+			flex-wrap: wrap;
+		}
+	}
 }
 
 @page {
-  size: A4 portrait;
-  margin: 10mm 5mm;
+	size: A4 portrait;
+	margin: 10mm 5mm;
 }

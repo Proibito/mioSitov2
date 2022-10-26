@@ -1,0 +1,66 @@
+---
+capitolo: 0
+---
+
+# Riassunto
+
+## Capitolo 1
+
+- Eventi:
+
+  $$
+    A = \text{evento XXX}
+  $$
+
+- Omega:
+
+  $$
+  \Omega = \text{Insieme con tutti i possibili risultati}
+  $$
+
+- Legge di Probabilità:
+
+  $$
+  \mathbb P = \frac{\text{casi favorevoli}}{\text{casi possibili}}
+  $$
+
+- Modello probabilistico:
+
+  $\Omega$ e $\mathbb P$
+
+- Probabilità condizionata:
+
+  $$
+    \mathbb P(A | B) = \frac{\mathbb P(A \cap B)}{\mathbb P(B)}
+  $$
+
+  **"la probabilità che l'evento $A$ si realizzi dato che si è verificato $B$"**  
+
+- Formula delle probabilità totali:
+
+  $$
+  \mathbb P(B) = \mathbb P(A_1 \cap B) + \cdots + \mathbb P(A_n \cap B) =  \\ \mathbb P(A_1)\mathbb P(A |A_1)+ \cdots + \mathbb P(A_n)\mathbb P(B|A_n)
+  $$
+
+  Il teorema della probabilità totale consente di calcolare la probabilità che si verifichi almeno uno di due o più eventi, ovvero la probabilità dell'unione di essi. Gli eventi devono essere disgiunti
+
+- Teorema Di Bayes:
+
+  $$
+  \mathbb P(A | B) = \frac{\mathbb P(A) \mathbb (B|A)}{\mathbb P(B)}
+  $$
+
+  Serve a calcolare la probabilità di una causa che ha provocato l'evento verificato. (inverte causa ed effetto)
+
+- Indipendenza:
+
+  Due eventi sono indipendenti se:
+
+  - $\mathbb P(A | B) = \mathbb P(A)$
+  - Se $A$ e $B$ sono indipendenti allora anche $A$ e $B^C$ lo sono
+
+  Due si dicono condizionalmente indipendenti se dato un'altro evento $C$ il quale $\mathbb P(C) > 0$ se:
+
+  - $\mathbb P(A \cap B | C) = \mathbb P(A | C)\mathbb P(B|C) = \\ \mathbb P(A \cap B | C) = \mathbb P(A |C) \mathbb P(B |C)$
+  
+  L'indipendenza e quella condizionata non si implicano a vicenda

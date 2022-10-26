@@ -6,7 +6,7 @@ import type {
 	Documento,
 	DocumentoData,
 	Esercizio,
-} from ".../pages/appuntitypes/alberoAppunti";
+} from "../types/alberoAppunti";
 
 export function creaListaDocumenti(
 	documenti: documentoAstro[],
@@ -93,9 +93,6 @@ function ordinaDocumenti(documenti: documentoAstro[]): documentoAstro[] {
 
 	return documenti;
 }
-
-
-
 
 function ottieniDocumentiPerCapitolo(
 	documenti: documentoAstro[],
